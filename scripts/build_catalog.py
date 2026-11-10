@@ -58,7 +58,55 @@ BUILDINGS = [
         "year": "1925–1926",
         "intro": "格羅皮烏斯的德紹校舍。玻璃幕牆與不對稱體量，是二十世紀平面與建築共用的幾何語法。",
     },
+    {
+        "match": r"salk institute",
+        "title": "Salk Institute",
+        "maker": "Louis Kahn",
+        "year": "1965",
+        "intro": "路易斯·康的薩克研究所。一條朝向太平洋的水渠把兩排研究室編成對稱的節奏。",
+    },
+    {
+        "match": r"fallingwater",
+        "title": "Fallingwater",
+        "maker": "Frank Lloyd Wright",
+        "year": "1935–1939",
+        "intro": "賴特的流水別墅。水平出挑疊在瀑布之上，是二十世紀最完整的一張建築構圖。",
+    },
+    {
+        "match": r"pantheon",
+        "title": "Pantheon",
+        "maker": "Unknown",
+        "year": "c. 126",
+        "intro": "羅馬萬神殿穹頂。圓洞把光線做成建築本身，構圖封閉而完整。",
+    },
+    {
+        "match": r"farnsworth",
+        "title": "Farnsworth House",
+        "maker": "Ludwig Mies van der Rohe",
+        "year": "1951",
+        "intro": "密斯的范斯沃斯住宅。白鋼與玻璃的水平盒子，留白和結構一樣重要。",
+    },
+    {
+        "match": r"villa savoye|savoye",
+        "title": "Villa Savoye",
+        "maker": "Le Corbusier",
+        "year": "1929–1931",
+        "intro": "柯布西耶的薩伏伊別墅。底層架空、自由平面與長窗，現代住宅的原型。",
+    },
+    {
+        "match": r"ronchamp|notre-dame-du-haut|notre dame du haut",
+        "title": "Notre Dame du Haut",
+        "maker": "Le Corbusier",
+        "year": "1955",
+        "intro": "柯布西耶的朗香教堂。厚牆與捲曲屋頂把光線收成幾道切口。",
+    },
 ]
+
+TARGET_MIN = 32
+TARGET_MAX = 36
+TARGET = 34
+ARCH_MAX = 6
+FURN_MAX = 14
 
 FURN_TYPE = re.compile(
     r"chair|stool|table|armchair|cabinet|desk|bench|furniture|sideboard",
@@ -269,7 +317,7 @@ def victoria() -> list[dict]:
             img_id = rec.get("_primaryImageId")
             if not img_id:
                 continue
-            image = f"https://framemark.vam.ac.uk/collections/{img_id}/full/!1280,/0/default.jpg"
+            image = f"https://framemark.vam.ac.uk/collections/{img_id}/full/!1920,/0/default.jpg"
             item = work(
                 id=f"va-{oid}",
                 title=title,
@@ -298,8 +346,15 @@ def commons_few() -> list[dict]:
     queries = [
         "Paimio Sanatorium2",
         "Bauhaus Dessau 2018",
+        "Salk Institute.jpg",
+        "Fallingwater, the classic view",
+        "Interior oculus of the Rome Pantheon",
+        "Farnsworth House Plano-9995",
+        "Villa Savoye Poissy",
+        "Chapelle Notre-Dame-du-Haut Ronchamp",
     ]
     out: list[dict] = []
+    seen: set[str] = set()
     for q in queries:
         params = {
             "action": "query",
@@ -307,10 +362,10 @@ def commons_few() -> list[dict]:
             "generator": "search",
             "gsrsearch": q,
             "gsrnamespace": "6",
-            "gsrlimit": "2",
+            "gsrlimit": "3",
             "prop": "imageinfo",
             "iiprop": "url|size|extmetadata|mime",
-            "iiurlwidth": "1280",
+            "iiurlwidth": "1920",
         }
         url = "https://commons.wikimedia.org/w/api.php?" + urllib.parse.urlencode(params)
         try:
@@ -320,28 +375,39 @@ def commons_few() -> list[dict]:
             continue
         pages = (payload.get("query") or {}).get("pages") or {}
         for page in pages.values():
+            pid = str(page.get("pageid") or "")
+            if not pid or pid in seen:
+                continue
             infos = page.get("imageinfo") or []
             if not infos:
                 continue
             info = infos[0]
+            width = int(info.get("width") or 0)
+            height = int(info.get("height") or 0)
+            if max(width, height) < 1920 or min(width, height) < 900:
+                continue
             meta = info.get("extmetadata") or {}
             license_name = (meta.get("LicenseShortName") or {}).get("value") or ""
+            if not re.search(r"cc|public domain|pd-|gfdl", license_name, re.I):
+                continue
             title = page.get("title", "").replace("File:", "")
+            if re.search(r"banner|wikivoyage|under construction|selfie|crowd", title, re.I):
+                continue
             thumb = (info.get("thumburl") or info.get("url") or "").split("?", 1)[0]
             source_url = info.get("descriptionurl") or ""
             if source_url:
                 name = urllib.parse.unquote(source_url.split("/wiki/File:")[-1])
-                image = "https://commons.wikimedia.org/wiki/Special:FilePath/" + urllib.parse.quote(name) + "?width=1280"
+                image = "https://commons.wikimedia.org/wiki/Special:FilePath/" + urllib.parse.quote(name) + "?width=1920"
             else:
                 image = thumb
             rec = work(
-                id=f"commons-{page.get('pageid')}",
+                id=f"commons-{pid}",
                 title=re.sub(r"\.\w+$", "", title).replace("_", " "),
                 maker=clean((meta.get("Artist") or {}).get("value")),
                 year="",
                 medium="Photograph",
                 source="Wikimedia Commons",
-                source_id=str(page.get("pageid")),
+                source_id=pid,
                 source_url=source_url,
                 image=image,
                 image_hi=image,
@@ -351,6 +417,7 @@ def commons_few() -> list[dict]:
                 tags=["commons"],
             )
             if rec:
+                seen.add(pid)
                 out.append(rec)
                 break
         time.sleep(1.0)
@@ -374,7 +441,8 @@ WANT = re.compile(
     r"table|bench|cabinet|thonet|hoffmann|sussex|thebes|mackmurdo|"
     r"bugatti|majorelle|bauhaus|cassandre|alphabet|type|specimen|"
     r"textile|paimio|secession|lembrée|lorenzaccio|sagot|"
-    r"vuillard|bonnard|werkstätte|book jacket|furniture|moser",
+    r"vuillard|bonnard|werkstätte|book jacket|furniture|moser|"
+    r"salk|fallingwater|pantheon|farnsworth|savoye|ronchamp|kahn",
     re.I,
 )
 
@@ -417,7 +485,20 @@ def maker_key(w: dict) -> str:
     return raw[:18]
 
 
-def curate(works: list[dict]) -> list[dict]:
+def load_archive_ids() -> set[str]:
+    ids: set[str] = set()
+    if ARCHIVE.exists():
+        try:
+            for item in json.loads(ARCHIVE.read_text(encoding="utf-8")).get("works") or []:
+                if item.get("id"):
+                    ids.add(item["id"])
+        except Exception:
+            pass
+    return ids
+
+
+def curate(works: list[dict], archive_ids: set[str] | None = None) -> list[dict]:
+    archive_ids = archive_ids or set()
     by_id = {w["id"]: w for w in works}
     ordered: list[dict] = []
     seen_id: set[str] = set()
@@ -425,6 +506,7 @@ def curate(works: list[dict]) -> list[dict]:
     arch = 0
     furn_n = 0
     maker_n: dict[str, int] = {}
+    pinned = {f"cma-{i}" for i in CMA_PINNED} | {f"va-{i}" for i in VAM_PINNED}
 
     def take(w: dict) -> bool:
         nonlocal arch, furn_n
@@ -440,10 +522,10 @@ def curate(works: list[dict]) -> list[dict]:
             return False
         if is_arch(w):
             arch += 1
-            if arch > 2:
+            if arch > ARCH_MAX:
                 return False
         if is_furn(w):
-            if furn_n >= 14:
+            if furn_n >= FURN_MAX:
                 return False
             mk = maker_key(w)
             if mk:
@@ -471,21 +553,28 @@ def curate(works: list[dict]) -> list[dict]:
     for w in arch_works:
         take(w)
 
+    def fill(item: dict) -> None:
+        if item["id"] in archive_ids and item["id"] not in pinned:
+            return
+        take(item)
+
     i = j = 0
-    while len(ordered) < 36 and (i < len(graphic) or j < len(furn)):
+    while len(ordered) < TARGET and (i < len(graphic) or j < len(furn)):
         if i < len(graphic):
-            take(graphic[i])
+            fill(graphic[i])
             i += 1
-        if len(ordered) >= 36:
+        if len(ordered) >= TARGET:
             break
         if j < len(furn):
-            take(furn[j])
+            fill(furn[j])
             j += 1
 
     for w in rest:
-        if len(ordered) >= 36:
+        if len(ordered) >= TARGET:
             break
-        take(w)
+        fill(w)
+    if len(ordered) > TARGET_MAX:
+        ordered[:] = ordered[:TARGET_MAX]
     return ordered
 
 
@@ -519,7 +608,9 @@ def main() -> None:
             works.extend(bucket())
         except Exception as exc:
             print("bucket failed", bucket.__name__, exc)
-    curated = curate(works)
+    curated = curate(works, load_archive_ids())
+    if not (TARGET_MIN <= len(curated) <= TARGET_MAX):
+        print(f"warning: catalog size {len(curated)} outside {TARGET_MIN}-{TARGET_MAX}")
     merge_archive(curated)
     catalog = {
         "generated": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),

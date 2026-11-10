@@ -15,6 +15,7 @@
   <body>
     <main id="stage">
       <img id="slide" alt="" draggable="false" referrerpolicy="no-referrer" />
+      <div id="grid" aria-hidden="true"></div>
     </main>
 
     <button id="prev" class="edge left" type="button" aria-label="上一件">
@@ -26,22 +27,43 @@
 
     <header id="chrome">
       <div class="chrome-row">
-        <button id="fav" type="button">收藏</button>
+        <button id="fav" type="button" aria-pressed="false" aria-label="Like">
+          <svg class="heart" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              class="heart-fill"
+              d="M12.1 21.35 10.6 20C6.14 15.24 3 12.39 3 8.9 3 6.24 5.12 4.2 7.7 4.2c1.54 0 3.04.74 4 1.9a5.05 5.05 0 0 1 4-1.9c2.58 0 4.7 2.04 4.7 4.7 0 3.49-3.14 6.34-7.9 11.46z"
+            />
+          </svg>
+          <span class="fav-label">Like</span>
+        </button>
         <nav id="modes" aria-label="播放清單">
           <button type="button" data-mode="all">全部</button>
           <button type="button" data-mode="fav">收藏</button>
           <button type="button" data-mode="mix">穿插</button>
         </nav>
       </div>
+      <div class="chrome-io">
+        <button id="fav-export" type="button">Export likes</button>
+        <button id="fav-import" type="button">Import likes</button>
+        <input id="fav-file" type="file" accept="application/json,text/plain,.json,.txt" hidden />
+      </div>
       <ol id="list"></ol>
     </header>
 
     <section id="intro">
-      <p class="kicker" id="intro-kicker"></p>
-      <h1 id="intro-title"></h1>
-      <p class="lede" id="intro-lede"></p>
-      <p class="body" id="intro-body"></p>
-      <p class="cite" id="intro-cite"></p>
+      <div class="intro-copy">
+        <p class="kicker" id="intro-kicker"></p>
+        <h1 id="intro-title"></h1>
+        <p class="lede" id="intro-lede"></p>
+        <p class="body" id="intro-body"></p>
+        <p class="cite" id="intro-cite"></p>
+        <p class="control" id="intro-tools">
+          <button id="mosaic" type="button" aria-pressed="true">低清拼合 開</button>
+        </p>
+      </div>
+      <a id="intro-thumb-link" class="intro-thumb" target="_blank" rel="noopener noreferrer">
+        <img id="intro-thumb" alt="" draggable="false" referrerpolicy="no-referrer" />
+      </a>
     </section>
 
     <script type="module" src="./app.js"></script>

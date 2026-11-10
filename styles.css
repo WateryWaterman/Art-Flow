@@ -62,6 +62,47 @@ body.idle {
   animation: pan-y 90s linear infinite alternate;
 }
 
+#grid {
+  display: none;
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  padding: 2.4vh;
+  gap: 2.4vh;
+  background: var(--paper);
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+#grid.on {
+  display: grid;
+}
+
+#grid .cell {
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
+  min-height: 0;
+}
+
+#grid .tile {
+  position: absolute;
+  inset: -1px;
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  object-fit: cover;
+  object-position: 50% 50%;
+  user-select: none;
+}
+
+#grid .tile.pan-x {
+  animation: pan-x 90s linear infinite alternate;
+}
+
+#grid .tile.pan-y {
+  animation: pan-y 90s linear infinite alternate;
+}
+
 @keyframes pan-x {
   from {
     object-position: 0% 50%;
@@ -201,9 +242,55 @@ body.idle {
 
 .chrome-row {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
+}
+
+#fav {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+}
+
+#fav .heart {
+  width: 1.05em;
+  height: 1.05em;
+  flex: 0 0 auto;
+}
+
+#fav .heart-fill {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.55;
+  stroke-linejoin: round;
+}
+
+#fav[aria-pressed="true"] .heart-fill {
+  fill: currentColor;
+}
+
+.chrome-io {
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 0.85rem;
+  font-size: clamp(0.88rem, 1.2vw, 1.05rem);
+  letter-spacing: 0.04em;
+  color: var(--mute);
+}
+
+#chrome .chrome-io {
+  opacity: 0;
+  transition: opacity 0.22s ease;
+}
+
+#chrome:hover .chrome-io,
+#chrome:focus-within .chrome-io {
+  opacity: 1;
+}
+
+.chrome-io button {
+  font-size: inherit;
 }
 
 #chrome button {
@@ -238,7 +325,11 @@ body.idle {
 
 #list li {
   break-inside: avoid;
-  padding: 0.18rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.08rem;
+  padding: 0.32rem 0;
   font-size: clamp(0.95rem, 1.3vw, 1.15rem);
   line-height: 1.35;
   color: var(--mute);
@@ -250,8 +341,26 @@ body.idle {
   color: var(--ink);
 }
 
-#list li.starred::before {
+#list li.starred .list-title::before {
   content: "· ";
+  color: var(--accent);
+}
+
+.list-id {
+  font-family: inherit;
+  font-size: 0.72em;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: color-mix(in srgb, var(--ink) 38%, var(--paper));
+  cursor: copy;
+}
+
+#list li:hover .list-id,
+#list li.current .list-id {
+  color: color-mix(in srgb, var(--ink) 62%, var(--paper));
+}
+
+.list-id.copied {
   color: var(--accent);
 }
 
@@ -261,6 +370,10 @@ body.idle {
   bottom: 0;
   left: 0;
   z-index: 7;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2.4rem;
   height: var(--bottom);
   overflow: hidden;
   padding: 2.2rem 10vw 2.4rem;
@@ -270,11 +383,50 @@ body.idle {
   transition: height 0.32s ease, background 0.32s ease, color 0.32s ease;
 }
 
+.intro-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.intro-thumb {
+  flex: 0 0 min(22vw, 15rem);
+  width: min(22vw, 15rem);
+  margin: 0;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.28s ease, transform 0.28s ease;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.intro-thumb.is-off {
+  pointer-events: none;
+  cursor: default;
+}
+
+.intro-thumb img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: min(36vh, 16.5rem);
+  object-fit: contain;
+  object-position: center bottom;
+  background: color-mix(in srgb, var(--ink) 7%, var(--paper));
+}
+
+.intro-thumb:hover img,
+.intro-thumb:focus-visible img {
+  outline: 1px solid color-mix(in srgb, var(--ink) 28%, var(--paper));
+  outline-offset: 4px;
+}
+
 #intro .kicker,
 #intro-title,
 #intro .lede,
 #intro .body,
-#intro .cite {
+#intro .cite,
+#intro .control {
   opacity: 0;
   transform: translateY(8px);
   transition: opacity 0.28s ease, transform 0.28s ease;
@@ -293,11 +445,15 @@ body.idle {
 #intro:hover .lede,
 #intro:hover .body,
 #intro:hover .cite,
+#intro:hover .control,
+#intro:hover .intro-thumb,
 #intro:focus-within .kicker,
 #intro:focus-within #intro-title,
 #intro:focus-within .lede,
 #intro:focus-within .body,
-#intro:focus-within .cite {
+#intro:focus-within .cite,
+#intro:focus-within .control,
+#intro:focus-within .intro-thumb {
   opacity: 1;
   transform: none;
 }
@@ -339,6 +495,31 @@ body.idle {
   max-width: 36rem;
 }
 
+.control {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 1.4rem 1.8rem;
+  margin-top: 1.6rem;
+}
+
+#mosaic {
+  appearance: none;
+  border: 0;
+  background: none;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  font-size: 1.02rem;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+
+#mosaic:hover,
+#mosaic[aria-pressed="true"] {
+  color: var(--accent);
+}
+
 @media (max-width: 720px) {
   #list {
     columns: 1;
@@ -350,5 +531,12 @@ body.idle {
 
   #intro {
     padding: 1.6rem 8vw 1.8rem;
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .intro-thumb {
+    width: min(42vw, 11rem);
+    flex-basis: auto;
   }
 }
