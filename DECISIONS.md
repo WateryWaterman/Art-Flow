@@ -84,7 +84,7 @@
 - 本地用 `python -m http.server` 驗收。
 - 不把大圖進 git。畫面讀博物館 / Commons 的高清 JPEG。
 - 收藏只存作品 id；完整元數據在倉庫的現在推送與過往推送裡。關頁清圖，下次用 id 再載。可匯出／匯入 id 清單。
-- 部署與自訂域名等你本地驗收通過再做。GitHub 帳號與倉庫名還沒定。
+- 部署：GitHub Pages，倉庫 `WateryWaterman/Art-Flow`，公網 https://waterywaterman.github.io/Art-Flow/
 
 ---
 
@@ -97,9 +97,8 @@
 
 ---
 
-## 等你拍板的事（不擋本地驗收）
+## 等你拍板的事
 
-1. GitHub 使用者名稱與倉庫名  
-2. 要不要自訂域名，還是用 `username.github.io/repo`  
-3. 3 分鐘是否太長或太短  
-4. 要不要在 Finna 的 Cloudflare 能過之後，把芬蘭館藏設成優先於克利夫蘭
+1. 3 分鐘是否太長或太短  
+2. 要不要在 Finna 的 Cloudflare 能過之後，把芬蘭館藏設成優先於克利夫蘭  
+3. 要不要再掛自訂域名

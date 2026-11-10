@@ -288,6 +288,28 @@ function hideGrid() {
   toolsEl.classList.remove("on-grid");
 }
 
+function waitFade(el) {
+  return new Promise((resolve) => {
+    const opacity = parseFloat(getComputedStyle(el).opacity);
+    if (!(opacity > 0.02)) {
+      resolve();
+      return;
+    }
+    let settled = false;
+    const finish = () => {
+      if (settled) return;
+      settled = true;
+      el.removeEventListener("transitionend", onEnd);
+      resolve();
+    };
+    const onEnd = (event) => {
+      if (event.target === el && event.propertyName === "opacity") finish();
+    };
+    el.addEventListener("transitionend", onEnd);
+    window.setTimeout(finish, 1000);
+  });
+}
+
 function showGrid(img) {
   toolsEl.classList.add("on-grid");
   requestAnimationFrame(() => {
@@ -350,6 +372,7 @@ function show(work) {
   const token = (state.token += 1);
   slide.classList.remove("on", "pan-x", "pan-y");
   hideGrid();
+  const faded = Promise.all([waitFade(slide), waitFade(gridEl)]);
   renderIntro(work);
   renderChrome();
   loadSlide(sources(work), async (url, img, cors) => {
@@ -366,6 +389,7 @@ function show(work) {
     } else {
       revokeTiles();
     }
+    await faded;
     if (token !== state.token) return;
     if (grid) {
       slide.classList.remove("on", "pan-x", "pan-y");

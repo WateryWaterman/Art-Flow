@@ -1,10 +1,12 @@
-# Standby
+# Art Flow
+
+Live: https://waterywaterman.github.io/Art-Flow/
 
 Open the page, press **F11**, and the browser becomes a fullscreen standby board. It behaves like a screensaver: one design work at a time, filling the screen, advancing on its own. Hover the top edge to **收藏** a work so you can keep watching it after the weekly push changes.
 
 The author replaces the current push with a new set of works each week. Favourites are stored as unique ids in this browser. Closing the tab drops the images; the ids remain, and the next visit loads the works again from the repo.
 
-This is a static GitHub Pages site. There is no account, no backend, and no images in git.
+This is a static GitHub Pages site (`WateryWaterman/Art-Flow`). There is no account, no backend, and no images in git.
 
 For the weekly replacement playbook see [UPDATE.md](./UPDATE.md). For sources that are in use or already ruled out, see [SOURCES.md](./SOURCES.md). Locked product choices live in [DECISIONS.md](./DECISIONS.md).
 
@@ -15,6 +17,8 @@ For the weekly replacement playbook see [UPDATE.md](./UPDATE.md). For sources th
 The picture covers the screen (`object-fit: cover`) and keeps its aspect ratio. Overflow pans slowly (Ken Burns). The cursor hides after two seconds of stillness.
 
 Works that cannot cover 1920×1080 without upscaling — and furniture still below a 2500px long edge — can be shown as a 3×3 Warhol-style mosaic: the same image, nine palettes, paper gutters, **all nine tiles panning together**. Toggle that in the bottom intro. Default is on. The original thumbnail sits on the right of the intro so you can see the whole work without waiting for the pan.
+
+Switching always dims through the black stage in 0.9s, for photographs and for the mosaic. The next picture is not swapped in until the current one has faded out, so a cached high-res pair does not flash-cut.
 
 ---
 
@@ -40,7 +44,7 @@ Every work has one stable id, stored next to its metadata in this same repositor
 
 | Layer | Where | Who writes it | What it holds |
 | --- | --- | --- | --- |
-| Current push | `data/catalog.json` | Weekly update (script or hand) | The 32–36 works on the board now, each with id, title, image URL, source page, license, intro |
+| Current push | `data/catalog.json` | Weekly update (script or hand) | The works on the board now (this snapshot is 40; weekly replacement target is 32–36), each with id, title, image URL, source page, license, intro |
 | Past + current | `data/archive.json` | Merge-only, never delete | Full metadata for every work that has ever been pushed, so an old favourite still resolves |
 | Favourites | Browser `localStorage` key `standby.favs` | Only the 收藏 control | An array of ids. No images. No full cards |
 
@@ -102,7 +106,7 @@ Do not drop files into git. Edit metadata and pins, then let the page hotlink mu
 2. Collect every id already in `data/archive.json`. New works must not reuse those ids.
 3. Change the pin lists and search queries in `scripts/build_catalog.py` (`CMA_PINNED`, `VAM_PINNED`, `BUILDINGS`, `queries`, `DROP`, `WANT`).
 4. Run `python scripts/build_catalog.py`. Target **32–36** works. Architecture ≤ 6. Furniture ≤ 14 and ≤ 2 per maker family. Rest posters / type / graphic / textile.
-5. Confirm 全部 lists the new ids, thumbnails open `sourceUrl`, and likes still resolve through archive.
+5. Confirm 全部 lists every new title, thumbnails open `sourceUrl`, and favourites still resolve through archive.
 6. Commit `data/catalog.json`, `data/archive.json`, and the pin changes. If you added or dropped a source, edit `SOURCES.md` in the same change.
 
 ### Catalog record
@@ -144,6 +148,8 @@ If a source is added, dropped, or blocked, update [SOURCES.md](./SOURCES.md) in 
 
 ## 中文
 
+線上：https://waterywaterman.github.io/Art-Flow/
+
 打開網頁，按 **F11** 進入全螢幕待機頁。它可以像螢幕保護程式一樣使用：每次一件設計作品，舖滿畫面，自己往前切。滑鼠移到頂部可以 **收藏** 作品，方便在每週換推送之後繼續看。
 
 作者每週會把現在這一批作品整批換成新的。收藏只在這台瀏覽器裡存唯一標記。關掉頁面會丟掉圖片；標記還在，下次進來再從倉庫載入。
@@ -154,7 +160,7 @@ If a source is added, dropped, or blocked, update [SOURCES.md](./SOURCES.md) in 
 
 ### 畫面
 
-作品舖滿螢幕、比例不變，多出來的邊會慢速平移。達不到 1080p 的圖（以及長邊仍低於 2500px 的家具）可做成九宮格：同一張圖九種配色，格間留紙色，**九格齊步平移**。底部簡介可關，預設開。簡介右側是原圖縮略圖，點它打開來源網頁。
+作品舖滿螢幕、比例不變，多出來的邊會慢速平移。達不到 1080p 的圖（以及長邊仍低於 2500px 的家具）可做成九宮格：同一張圖九種配色，格間留紙色，**九格齊步平移**。底部簡介可關，預設開。簡介右側是原圖縮略圖，點它打開來源網頁。切換時原圖與九宮格都先在 0.9 秒內暗到黑底，暗完再換下一張，避免緩存裡的高清圖閃切。
 
 ### 操作
 
@@ -182,4 +188,4 @@ If a source is added, dropped, or blocked, update [SOURCES.md](./SOURCES.md) in 
 
 ### 若要改圖片
 
-先讀 UPDATE 與 SOURCES。新作品的 id 不得已在 archive 裡出現過。改 `scripts/build_catalog.py` 的 pinned 與查詢，跑腳本，目標 32–36 件。建築最多 6，家具最多 14、同一作者家族最多 2。畫面文案對應位置見上方英文表。來源有增刪時必須同步改 `SOURCES.md`。
+先讀 UPDATE 與 SOURCES。新作品的 id 不得在 archive 裡出現過。改 `scripts/build_catalog.py` 的 pinned 與查詢，跑腳本，目標 32–36 件。建築最多 6，家具最多 14、同一作者家族最多 2。畫面文案對應位置見上方英文表。來源有增刪時必須同步改 `SOURCES.md`。
