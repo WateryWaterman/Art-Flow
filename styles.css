@@ -1,0 +1,354 @@
+:root {
+  --paper: #efe8dc;
+  --ink: #161412;
+  --mute: color-mix(in srgb, var(--ink) 42%, var(--paper));
+  --accent: #9c2b1b;
+  --edge: 9vw;
+  --top: 9vh;
+  --bottom: 14vh;
+  --font: "Newsreader", "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  background: var(--ink);
+  color: var(--ink);
+  font-family: var(--font);
+  font-optical-sizing: auto;
+  text-rendering: optimizeLegibility;
+  overflow: hidden;
+}
+
+body.idle {
+  cursor: none;
+}
+
+#stage {
+  position: relative;
+  height: 100vh;
+  height: 100dvh;
+  background: var(--ink);
+  overflow: hidden;
+}
+
+#slide {
+  position: absolute;
+  inset: -1px;
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  object-fit: cover;
+  object-position: 50% 50%;
+  user-select: none;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+}
+
+#slide.on {
+  opacity: 1;
+}
+
+#slide.pan-x {
+  animation: pan-x 90s linear infinite alternate;
+}
+
+#slide.pan-y {
+  animation: pan-y 90s linear infinite alternate;
+}
+
+@keyframes pan-x {
+  from {
+    object-position: 0% 50%;
+  }
+  to {
+    object-position: 100% 50%;
+  }
+}
+
+@keyframes pan-y {
+  from {
+    object-position: 50% 0%;
+  }
+  to {
+    object-position: 50% 100%;
+  }
+}
+
+.edge {
+  position: fixed;
+  top: 0;
+  z-index: 6;
+  width: var(--edge);
+  height: 100vh;
+  height: 100dvh;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  color: var(--paper);
+}
+
+.edge.left {
+  left: 0;
+}
+
+.edge.right {
+  right: 0;
+}
+
+.edge::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.28s ease;
+  pointer-events: none;
+}
+
+.edge.left::before {
+  background: linear-gradient(
+    to right,
+    color-mix(in srgb, var(--ink) 64%, transparent) 0%,
+    color-mix(in srgb, var(--ink) 28%, transparent) 46%,
+    transparent 100%
+  );
+}
+
+.edge.right::before {
+  background: linear-gradient(
+    to left,
+    color-mix(in srgb, var(--ink) 64%, transparent) 0%,
+    color-mix(in srgb, var(--ink) 28%, transparent) 46%,
+    transparent 100%
+  );
+}
+
+.edge:hover::before,
+.edge:focus-visible::before {
+  opacity: 1;
+}
+
+.chev {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  width: 1.85rem;
+  height: 1.85rem;
+  border-style: solid;
+  border-color: var(--paper);
+  border-width: 0.42rem 0.42rem 0 0;
+  opacity: 0;
+  transition: opacity 0.22s ease;
+  pointer-events: none;
+  filter: drop-shadow(0 0 1px var(--ink));
+}
+
+.edge.left .chev {
+  left: 1.5rem;
+  transform: translateY(-50%) rotate(-135deg);
+}
+
+.edge.right .chev {
+  right: 1.5rem;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.edge:hover .chev,
+.edge:focus-visible .chev {
+  opacity: 1;
+}
+
+#chrome {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 7;
+  height: var(--top);
+  overflow: hidden;
+  padding: 1.1rem 8vw 1.4rem;
+  color: var(--paper);
+  pointer-events: auto;
+  transition: height 0.28s ease, background 0.28s ease, color 0.28s ease;
+}
+
+#chrome:hover,
+#chrome:focus-within {
+  height: min(78vh, 42rem);
+  overflow: auto;
+  color: var(--ink);
+  background: linear-gradient(to bottom, var(--paper) 0%, color-mix(in srgb, var(--paper) 92%, transparent) 78%, transparent);
+}
+
+#chrome .chrome-row,
+#chrome #list {
+  opacity: 0;
+  transition: opacity 0.22s ease;
+}
+
+#chrome:hover .chrome-row,
+#chrome:hover #list,
+#chrome:focus-within .chrome-row,
+#chrome:focus-within #list {
+  opacity: 1;
+}
+
+.chrome-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+#chrome button {
+  appearance: none;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+
+#chrome button:hover,
+#chrome button[aria-pressed="true"] {
+  color: var(--accent);
+}
+
+#modes {
+  display: flex;
+  gap: 1.25rem;
+}
+
+#list {
+  max-height: 62vh;
+  margin-top: 1.4rem;
+  overflow: auto;
+  list-style: none;
+  columns: 2;
+  column-gap: 3rem;
+}
+
+#list li {
+  break-inside: avoid;
+  padding: 0.18rem 0;
+  font-size: clamp(0.95rem, 1.3vw, 1.15rem);
+  line-height: 1.35;
+  color: var(--mute);
+  cursor: pointer;
+}
+
+#list li:hover,
+#list li.current {
+  color: var(--ink);
+}
+
+#list li.starred::before {
+  content: "· ";
+  color: var(--accent);
+}
+
+#intro {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 7;
+  height: var(--bottom);
+  overflow: hidden;
+  padding: 2.2rem 10vw 2.4rem;
+  max-width: none;
+  color: var(--paper);
+  pointer-events: auto;
+  transition: height 0.32s ease, background 0.32s ease, color 0.32s ease;
+}
+
+#intro .kicker,
+#intro-title,
+#intro .lede,
+#intro .body,
+#intro .cite {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.28s ease, transform 0.28s ease;
+}
+
+#intro:hover,
+#intro:focus-within {
+  height: min(58vh, 32rem);
+  overflow: auto;
+  color: var(--ink);
+  background: linear-gradient(to top, var(--paper) 0%, color-mix(in srgb, var(--paper) 94%, transparent) 72%, transparent);
+}
+
+#intro:hover .kicker,
+#intro:hover #intro-title,
+#intro:hover .lede,
+#intro:hover .body,
+#intro:hover .cite,
+#intro:focus-within .kicker,
+#intro:focus-within #intro-title,
+#intro:focus-within .lede,
+#intro:focus-within .body,
+#intro:focus-within .cite {
+  opacity: 1;
+  transform: none;
+}
+
+.kicker {
+  font-size: 0.92rem;
+  letter-spacing: 0.12em;
+  color: var(--mute);
+  margin-bottom: 0.9rem;
+}
+
+#intro-title {
+  font-size: clamp(1.8rem, 4.2vw, 3.2rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  max-width: 22ch;
+}
+
+.lede {
+  margin-top: 0.9rem;
+  font-size: clamp(1.05rem, 1.7vw, 1.3rem);
+  line-height: 1.4;
+}
+
+.body {
+  margin-top: 0.9rem;
+  font-size: 1.08rem;
+  line-height: 1.65;
+  max-width: 42rem;
+  color: color-mix(in srgb, var(--ink) 82%, var(--paper));
+}
+
+.cite {
+  margin-top: 1.4rem;
+  font-size: 0.88rem;
+  font-style: italic;
+  color: var(--mute);
+  max-width: 36rem;
+}
+
+@media (max-width: 720px) {
+  #list {
+    columns: 1;
+  }
+
+  .edge {
+    width: 16vw;
+  }
+
+  #intro {
+    padding: 1.6rem 8vw 1.8rem;
+  }
+}

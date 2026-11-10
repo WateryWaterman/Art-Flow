@@ -1,0 +1,10 @@
+.DS_Store
+Thumbs.db
+.env
+node_modules/
+.vscode/
+*.log
+images/
+downloads/
+*.tif
+*.tiff

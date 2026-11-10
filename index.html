@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Standby</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main id="stage">
+      <img id="slide" alt="" draggable="false" referrerpolicy="no-referrer" />
+    </main>
+
+    <button id="prev" class="edge left" type="button" aria-label="上一件">
+      <span class="chev" aria-hidden="true"></span>
+    </button>
+    <button id="next" class="edge right" type="button" aria-label="下一件">
+      <span class="chev" aria-hidden="true"></span>
+    </button>
+
+    <header id="chrome">
+      <div class="chrome-row">
+        <button id="fav" type="button">收藏</button>
+        <nav id="modes" aria-label="播放清單">
+          <button type="button" data-mode="all">全部</button>
+          <button type="button" data-mode="fav">收藏</button>
+          <button type="button" data-mode="mix">穿插</button>
+        </nav>
+      </div>
+      <ol id="list"></ol>
+    </header>
+
+    <section id="intro">
+      <p class="kicker" id="intro-kicker"></p>
+      <h1 id="intro-title"></h1>
+      <p class="lede" id="intro-lede"></p>
+      <p class="body" id="intro-body"></p>
+      <p class="cite" id="intro-cite"></p>
+    </section>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

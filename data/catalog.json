@@ -1,0 +1,688 @@
+{
+  "generated": "2026-11-10T08:34:40Z",
+  "intervalSeconds": 180,
+  "works": [
+    {
+      "id": "cma-129201",
+      "title": "May Milton",
+      "maker": "Henri de Toulouse-Lautrec (French, 1864–1901)",
+      "year": "1895",
+      "medium": "color lithograph",
+      "source": "Cleveland Museum of Art",
+      "sourceId": "129201",
+      "sourceUrl": "https://clevelandart.org/art/1952.10",
+      "image": "https://openaccess-cdn.clevelandart.org/1952.10/1952.10_print.jpg",
+      "imageHi": "https://openaccess-cdn.clevelandart.org/1952.10/1952.10_print.jpg",
+      "license": "CC0",
+      "credit": "May Milton, 1895. Henri de Toulouse-Lautrec (French, 1864–1901). Color lithograph; sheet: 79.5 x 61.5 cm (31 5/16 x 24 3/16 in.). The Cleveland Museum of Art, Mr. and Mrs. Lewis B. Williams Collection, 1952.10",
+      "intro": "Posters grew in popularity after 1881, when many restrictions on their placement were lifted and it became unlawful to remove or destroy them. The first exhibition of posters took place in 1884, and they were soon accepted as a legitimate art form. Lautrec, a gifted draftsman, excelled at designing arresting lithographs. May Milton , one of his boldest compositions, illustrates Lautrec's innovative style based on a dynamic pattern of flat, simplified, brightly colored shapes and dramatic silhouettes. Lautrec, an astute observer of character and physical features, captured the life of a decadent era in his radically concise, vigorous representations. May Milton was an English dancer who appeared at the Moulin Rouge, one of Paris's most popular café-concerts. This poster was made to advertise her tour of the United States.",
+      "tags": [
+        "cleveland",
+        "print"
+      ]
+    },
+    {
+      "id": "cma-153129",
+      "title": "Sculptress",
+      "maker": "Eugène Grasset (French, 1841–1917)",
+      "year": "1897",
+      "medium": "lithograph with watercolor added by hand",
+      "source": "Cleveland Museum of Art",
+      "sourceId": "153129",
+      "sourceUrl": "https://clevelandart.org/art/1986.136",
+      "image": "https://openaccess-cdn.clevelandart.org/1986.136/1986.136_print.jpg",
+      "imageHi": "https://openaccess-cdn.clevelandart.org/1986.136/1986.136_print.jpg",
+      "license": "CC0",
+      "credit": "Sculptress, 1897. Eugène Grasset (French, 1841–1917). Lithograph with watercolor added by hand; sheet: 64.5 x 49.5 cm (25 3/8 x 19 1/2 in.); image: 53.1 x 37 cm (20 7/8 x 14 9/16 in.). The Cleveland Museum of Art, Gift of Henry H. Hawley, 1986.136",
+      "intro": "Grasset, greatly influenced by the art of Japan, Persia, and Egypt, created designs for stained glass windows, furniture, tapestries, and fabrics. This female allegory of Sculpture was meant for an 1898 exhibition poster. Only the black areas and lines were printed. Rather than using a separate stone to print each color, watercolor was applied with the aid of a stencil.",
+      "tags": [
+        "cleveland",
+        "print"
+      ]
+    },
+    {
+      "id": "cma-143846",
+      "title": "Poster for the Lembrée Gallery",
+      "maker": "Theo van Rysselberghe (Belgian, 1862–1926)",
+      "year": "1897",
+      "medium": "color lithograph",
+      "source": "Cleveland Museum of Art",
+      "sourceId": "143846",
+      "sourceUrl": "https://clevelandart.org/art/1968.257",
+      "image": "https://openaccess-cdn.clevelandart.org/1968.257/1968.257_print.jpg",
+      "imageHi": "https://openaccess-cdn.clevelandart.org/1968.257/1968.257_print.jpg",
+      "license": "CC0",
+      "credit": "Poster for the Lembrée Gallery, 1897. Theo van Rysselberghe (Belgian, 1862–1926). Color lithograph; image: 62.5 x 44.3 cm (24 5/8 x 17 7/16 in.). The Cleveland Museum of Art, Mr. and Mrs. Charles G. Prasse Collection, 1968.257",
+      "intro": "Poster for the Lembrée Gallery（1897）。克利夫蘭藝術博物館開放典藏。",
+      "tags": [
+        "cleveland",
+        "print"
+      ]
+    },
+    {
+      "id": "cma-147115",
+      "title": "Lorenzaccio",
+      "maker": "Alphonse Mucha (Czech, 1860–1939)",
+      "year": "1896–1900",
+      "medium": "color lithograph",
+      "source": "Cleveland Museum of Art",
+      "sourceId": "147115",
+      "sourceUrl": "https://clevelandart.org/art/1973.1018",
+      "image": "https://openaccess-cdn.clevelandart.org/1973.1018/1973.1018_print.jpg",
+      "imageHi": "https://openaccess-cdn.clevelandart.org/1973.1018/1973.1018_print.jpg",
+      "license": "CC0",
+      "credit": "Lorenzaccio, 1896–1900. Alphonse Mucha (Czech, 1860–1939). Color lithograph; sheet: 39.9 x 29 cm (15 11/16 x 11 7/16 in.); image: 32.6 x 11.2 cm (12 13/16 x 4 7/16 in.). The Cleveland Museum of Art, The Harold T. Clark Educational Extension Fund, 1973.1018",
+      "intro": "Lorenzaccio（1896–1900）。克利夫蘭藝術博物館開放典藏。",
+      "tags": [
+        "cleveland",
+        "print"
+      ]
+    },
+    {
+      "id": "cma-160672",
+      "title": "Sagot's Gallery",
+      "maker": "Georges Alfred Bottini (French, 1874–1907)",
+      "year": "1898",
+      "medium": "color proof of the Remarque Woman with Cat",
+      "source": "Cleveland Museum of Art",
+      "sourceId": "160672",
+      "sourceUrl": "https://clevelandart.org/art/1998.42.7",
+      "image": "https://openaccess-cdn.clevelandart.org/1998.42.7/1998.42.7_print.jpg",
+      "imageHi": "https://openaccess-cdn.clevelandart.org/1998.42.7/1998.42.7_print.jpg",
+      "license": "CC0",
+      "credit": "Sagot's Gallery, 1898. Georges Alfred Bottini (French, 1874–1907). Color proof of the Remarque Woman with Cat; sheet: 39.2 x 24 cm (15 7/16 x 9 7/16 in.); image: 10.7 x 6.7 cm (4 3/16 x 2 5/8 in.). The Cleveland Museum of Art, John L. Severance Fund, 1998.42.7",
+      "intro": "The last decades of the 19th century was the golden era of French color lithography. Jules Cheret (1836–1932) popularized the technique to make colorful posters which, by 1884, were also exhibited as a legitimate art form. In 1891 Cheret began to design posters without lettering to frame and hang on walls—still an unusual idea since prints were usually stored in portfolios. The explosion in color lithography was also encouraged by the use of zinc plates, which were lighter, cheaper, and more pliable than traditional lithographic stones. Also important was the formation of artist's organizations like the Société des artistes lithographie (Society of Lithographic Artists) and the Société de l'estampe originale (Society of Original Prints), which stimulated original printmaking. By the 1890s a proliferation of fine printers, independent exhibitions, publications devoted to prints, critics, publishers, and dealers like Sagot, all supported color lithography.",
+      "tags": [
+        "cleveland",
+        "print"
+      ]
+    },
+    {
+      "id": "cma-125928",
+      "title": "The Square at Evening",
+      "maker": "Pierre Bonnard (French, 1867–1947), Published by Ambroise Vollard; Printed by Auguste Clot",
+      "year": "1899",
+      "medium": "lithograph",
+      "source": "Cleveland Museum of Art",
+      "sourceId": "125928",
+      "sourceUrl": "https://clevelandart.org/art/1948.156.7",
+      "image": "https://openaccess-cdn.clevelandart.org/1948.156.7/1948.156.7_print.jpg",
+      "imageHi": "https://openaccess-cdn.clevelandart.org/1948.156.7/1948.156.7_print.jpg",
+      "license": "CC0",
+      "credit": "Some Scenes of Parisian Life: The Square at Evening, 1899. Pierre Bonnard (French, 1867–1947), Published by Ambroise Vollard; Printed by Auguste Clot. Lithograph; sheet: 40.3 x 53 cm (15 7/8 x 20 7/8 in.); image: 27 x 38 cm (10 5/8 x 14 15/16 in.). The Cleveland Museum of Art, Gift of the Hanna Fund, 1948.156.7",
+      "intro": "By the mid-19th century lithography was used primarily for commercial purposes, but was revived as a creative artistic medium by the success of color printing. The growing popularity of posters by artists such as Jules Cheret (1836-1932) and Henri de Toulouse-Lautrec contributed to a renewed interest in color lithography at the end of the century. In addition, zinc plates, which are lighter, cheaper, and more flexible than traditional lithographic stones, had been perfected. There was also the influence of Japanese color woodblock prints and the formation of artist's organizations, like the Société des artistes lithographes Français (Society of French Lithographic Artists) and the Société de l'estampe originale (Society of the Original Print), to stimulate printmaking. By the 1890s a proliferation of fine printers, dealers, independent exhibitions, publications devoted to original prints, critics, and publishers all supported color lithography, which flourished in France as the favored printmaking medium of avant-garde artists.",
+      "tags": [
+        "cleveland",
+        "print"
+      ]
+    },
+    {
+      "id": "cma-680793",
+      "title": "Phänomen Vase",
+      "maker": "Johann Lötz Witwe, Klostermühle (German)",
+      "year": "c. 1898–1903",
+      "medium": "glass",
+      "source": "Cleveland Museum of Art",
+      "sourceId": "680793",
+      "sourceUrl": "https://clevelandart.org/art/2024.102",
+      "image": "https://openaccess-cdn.clevelandart.org/2024.102/2024.102_print.jpg",
+      "imageHi": "https://openaccess-cdn.clevelandart.org/2024.102/2024.102_print.jpg",
+      "license": "CC0",
+      "credit": "Phänomen Vase, c. 1898–1903. Johann Lötz Witwe, Klostermühle (German). Glass; height: 25.4 cm (10 in.). The Cleveland Museum of Art, Gift of the family of Harold S. Meyer, 2024.102",
+      "intro": "Johann Lötz Witwe was a renowned Bohemian glass manufacturer whose works are outstanding examples of Art Nouveau glass. In the 1890s, it produced cheaper versions of Tiffany’s colored glasses with metallic iridescence. Eventually, the Bohemian factory developed its own aesthetic and technique and commissioned leading designers of the Vienna Secession movement. The Phänomen (Phenomenon) range, patented in 1898, is one of the signature products of Lötz.",
+      "tags": [
+        "cleveland",
+        "sculpture"
+      ]
+    },
+    {
+      "id": "cma-117129",
+      "title": "Strawberry Thief",
+      "maker": "William Morris (British, 1834–1896)",
+      "year": "c 1936",
+      "medium": "plain weave cotton, discharge printed",
+      "source": "Cleveland Museum of Art",
+      "sourceId": "117129",
+      "sourceUrl": "https://clevelandart.org/art/1937.696",
+      "image": "https://openaccess-cdn.clevelandart.org/1937.696/1937.696_print.jpg",
+      "imageHi": "https://openaccess-cdn.clevelandart.org/1937.696/1937.696_print.jpg",
+      "license": "CC0",
+      "credit": "Strawberry Thief, c 1936. Designed by William Morris (British, 1834–1896). Plain weave cotton, discharge printed; overall: 88.3 x 99.1 cm (34 3/4 x 39 in.). The Cleveland Museum of Art, Gift of Mrs. Henry Chisholm, 1937.696",
+      "intro": "Perhaps the most recognizable of Morris’s textiles, Strawberry Thief celebrates the thrushes in Kelmscott Manor’s garden. May Morris remarked, “You can picture my Father going out in the early morning and watching the rascally thrushes at work on the fruit beds and telling the gardener who growls, ‘I’d like to wring their necks!’ that no bird in the garden must be touched.” With Strawberry Thief, Morris perfected the indigo-discharge process, which required the entire cloth to be dyed blue before it was bleached and block printed, in this case with more colors than any of his other textiles.",
+      "tags": [
+        "cleveland",
+        "textile"
+      ]
+    },
+    {
+      "id": "cma-130609",
+      "title": "Peacock and Dragon",
+      "maker": "William Morris (British, 1834–1896)",
+      "year": "1878",
+      "medium": "weft-faced compound twill; wool",
+      "source": "Cleveland Museum of Art",
+      "sourceId": "130609",
+      "sourceUrl": "https://clevelandart.org/art/1953.330",
+      "image": "https://openaccess-cdn.clevelandart.org/1953.330/1953.330_print.jpg",
+      "imageHi": "https://openaccess-cdn.clevelandart.org/1953.330/1953.330_print.jpg",
+      "license": "CC0",
+      "credit": "Peacock and Dragon , 1878. William Morris (British, 1834–1896). Weft-faced compound twill; wool; overall: 206.6 x 174.7 cm (81 5/16 x 68 3/4 in.). The Cleveland Museum of Art, Gift of Mrs. Philip White, 1953.330",
+      "intro": "Morris sought to produce textiles that could function as he imagined medieval wall hangings had, bringing warmth to stone-cold rooms. Boldly designed with soothing colors in thick wool, Peacock and Dragon is the closest Morris came to achieving this ideal. In the same year he designed this textile, Morris visited the shop of the London dealer Vincent Robinson, where he saw a room re-created from Damascus, “all vermillion and gold and ultramarine, very beautiful, and is just like going into the Arabian nights.” It partly inspired the exotic motifs seen here. This design was one of the most popular among Morris’s customers; it was available in five colorways.",
+      "tags": [
+        "cleveland",
+        "textile"
+      ]
+    },
+    {
+      "id": "cma-370537",
+      "title": "Jack-in-the-Pulpit Vase",
+      "maker": "Quezal Art Glass and Decorating Company (American, 1901–1924)",
+      "year": "c. 1900–1920",
+      "medium": "blown glass",
+      "source": "Cleveland Museum of Art",
+      "sourceId": "370537",
+      "sourceUrl": "https://clevelandart.org/art/2019.244",
+      "image": "https://openaccess-cdn.clevelandart.org/2019.244/2019.244_print.jpg",
+      "imageHi": "https://openaccess-cdn.clevelandart.org/2019.244/2019.244_print.jpg",
+      "license": "CC0",
+      "credit": "Jack-in-the-Pulpit Vase, c. 1900–1920. Quezal Art Glass and Decorating Company (American, 1901–1924). Blown glass; 30.5 x 20.3 cm (12 x 8 in.). The Cleveland Museum of Art, Gift of June Greenwald, 2019.244",
+      "intro": "The Quezal Art Glass and Decorating Company was begun by former employees of Louis Comfort Tiffany as a rival operation in 1902. With its expressive form and brilliant golden iridescence, this vase represents the finest work produced by the Queens, New York, company in the Art Nouveau style.",
+      "tags": [
+        "cleveland",
+        "glass"
+      ]
+    },
+    {
+      "id": "cma-129173",
+      "title": "Interior with Pink Wallpaper III",
+      "maker": "Édouard Vuillard (French, 1868–1940)",
+      "year": "1899",
+      "medium": "color lithograph",
+      "source": "Cleveland Museum of Art",
+      "sourceId": "129173",
+      "sourceUrl": "https://clevelandart.org/art/1951.65.8",
+      "image": "https://openaccess-cdn.clevelandart.org/1951.65.8/1951.65.8_print.jpg",
+      "imageHi": "https://openaccess-cdn.clevelandart.org/1951.65.8/1951.65.8_print.jpg",
+      "license": "CC0",
+      "credit": "Landscapes and Interiors: Interior with Pink Wallpaper III, 1899. Édouard Vuillard (French, 1868–1940). Color lithograph; sheet: 39.2 x 34 cm (15 7/16 x 13 3/8 in.). The Cleveland Museum of Art, Gift of the Hanna Fund, 1951.65.8",
+      "intro": "The optical beauty of the patterning and luscious color of Interior with Wallpaper I, II, and III distracts from their ambivalent undercurrents. Across the three sheets, Vuillard creates an airless enclosure in which the wallpaper replicates itself, metastasizing across the surface and threatening the figures partially glimpsed through interior doors. Hidden figures recur in Vuillard’s work, adding an element of the uncanny to familiar settings.",
+      "tags": [
+        "cleveland",
+        "print"
+      ]
+    },
+    {
+      "id": "cma-151714",
+      "title": "Casement Window",
+      "maker": "Frank Lloyd Wright (American, 1867–1959), Linden Glass Co. (American)",
+      "year": "c. 1904",
+      "medium": "leaded glass panes in metal frame",
+      "source": "Cleveland Museum of Art",
+      "sourceId": "151714",
+      "sourceUrl": "https://clevelandart.org/art/1984.11",
+      "image": "https://openaccess-cdn.clevelandart.org/1984.11/1984.11_print.jpg",
+      "imageHi": "https://openaccess-cdn.clevelandart.org/1984.11/1984.11_print.jpg",
+      "license": "CC0",
+      "credit": "Casement Window, c. 1904. Designed by Frank Lloyd Wright (American, 1867–1959), made by Linden Glass Co. (American). Leaded glass panes in metal frame; overall: 105.1 x 28.5 cm (41 3/8 x 11 1/4 in.). The Cleveland Museum of Art, Purchase from the J. H. Wade Fund, 1984.11",
+      "intro": "This window was made for the Darwin D. Martin House built in Buffalo, New York, in 1905.",
+      "tags": [
+        "cleveland",
+        "glass"
+      ]
+    },
+    {
+      "id": "cma-151884",
+      "title": "Cabinet",
+      "maker": "Carlo Bugatti (Italian, 1856–1940)",
+      "year": "c. 1895",
+      "medium": "wood with metal inlays and painted parchment, glass doors and mirror",
+      "source": "Cleveland Museum of Art",
+      "sourceId": "151884",
+      "sourceUrl": "https://clevelandart.org/art/1984.177",
+      "image": "https://openaccess-cdn.clevelandart.org/1984.177/1984.177_print.jpg",
+      "imageHi": "https://openaccess-cdn.clevelandart.org/1984.177/1984.177_print.jpg",
+      "license": "CC0",
+      "credit": "Cabinet, c. 1895. Carlo Bugatti (Italian, 1856–1940). Wood with metal inlays and painted parchment, glass doors and mirror; overall: 224.5 x 141 x 55.3 cm (88 3/8 x 55 1/2 x 21 3/4 in.). The Cleveland Museum of Art, Gift of Barry Friedman and Patricia Pastor, New York, 1984.177",
+      "intro": "In both form and decoration this cabinet typifies the work of Carlo Bugatti. Asymmetrical, with a tower-like element at one side, there are Islamic-inspired ornaments throughout its design, notably the onion-shaped arches in the upper half of the cabinet. Japanese influence is also evident in the white metal inlays and in the sepia-painted parchment panels. The cabinet displays an extensive vocabulary of other decorative devices, including the partial ebonized frame, the turned wooden ornaments, metal reliefs, mirrored and green glass, and silk tassels. Despite their diversity, Bugatti organized all these elements into a coherent design.",
+      "tags": [
+        "cleveland",
+        "furniture and woodwork"
+      ]
+    },
+    {
+      "id": "cma-156112",
+      "title": "Tea Table",
+      "maker": "Carlo Bugatti (Italian, 1856–1940)",
+      "year": "c. 1907",
+      "medium": "inlaid wood (mahogany?), cast and gilded bronze mounts, inlays of ivory or bone, metal, and mother-of-pearl (marine mussels or pearl oysters)",
+      "source": "Cleveland Museum of Art",
+      "sourceId": "156112",
+      "sourceUrl": "https://clevelandart.org/art/1991.45",
+      "image": "https://openaccess-cdn.clevelandart.org/1991.45/1991.45_print.jpg",
+      "imageHi": "https://openaccess-cdn.clevelandart.org/1991.45/1991.45_print.jpg",
+      "license": "CC0",
+      "credit": "Tea Table, c. 1907. Carlo Bugatti (Italian, 1856–1940). Inlaid wood (mahogany?), cast and gilded bronze mounts, inlays of ivory or bone, metal, and mother-of-pearl (marine mussels or pearl oysters); overall: 71.5 x 67.1 x 41.3 cm (28 1/8 x 26 7/16 x 16 1/4 in.). The Cleveland Museum of Art, Leonard C. Hanna Jr. Fund, 1991.45",
+      "intro": "Luxurious materials might catch the eye first, but a closer look reveals the imaginary creatures that adorn the surface of this table. Featuring elaborate arches, a favorite motif that appeared throughout Bugatti's furniture, this fantastical imagery is a window into the designer's expressive imagination.",
+      "tags": [
+        "cleveland",
+        "furniture and woodwork"
+      ]
+    },
+    {
+      "id": "cma-148803",
+      "title": "Cabinet",
+      "maker": "Louis Majorelle (French, 1859–1926)",
+      "year": "c. 1910",
+      "medium": "wood marquetry with metal mounts",
+      "source": "Cleveland Museum of Art",
+      "sourceId": "148803",
+      "sourceUrl": "https://clevelandart.org/art/1976.53",
+      "image": "https://openaccess-cdn.clevelandart.org/1976.53/1976.53_print.jpg",
+      "imageHi": "https://openaccess-cdn.clevelandart.org/1976.53/1976.53_print.jpg",
+      "license": "CC0",
+      "credit": "Cabinet, c. 1910. Louis Majorelle (French, 1859–1926). Wood marquetry with metal mounts; overall: 130.8 x 162.5 x 58.4 cm (51 1/2 x 64 x 23 in.). The Cleveland Museum of Art, John L. Severance Fund, 1976.53",
+      "intro": "The Majorelle family operated a large furniture making business at Nancy in eastern France. There they produced distinguished furniture in the Art Nouveau style. That style is well illustrated in the curvilinear, abstract wood marquetry (an inlaid, veneered pattern) on the doors of this cabinet.",
+      "tags": [
+        "cleveland",
+        "furniture and woodwork"
+      ]
+    },
+    {
+      "id": "cma-146091",
+      "title": "Bench",
+      "maker": "Louis Majorelle (French, 1859–1926)",
+      "year": "c. 1900",
+      "medium": "gilt wood",
+      "source": "Cleveland Museum of Art",
+      "sourceId": "146091",
+      "sourceUrl": "https://clevelandart.org/art/1971.28",
+      "image": "https://openaccess-cdn.clevelandart.org/1971.28/1971.28_print.jpg",
+      "imageHi": "https://openaccess-cdn.clevelandart.org/1971.28/1971.28_print.jpg",
+      "license": "CC0",
+      "credit": "Bench, c. 1900. Attributed to Louis Majorelle (French, 1859–1926). Gilt wood; overall: 75 x 118.1 x 40.7 cm (29 1/2 x 46 1/2 x 16 in.). The Cleveland Museum of Art, James Parmelee Fund, 1971.28",
+      "intro": "In the 20th century, designers of French furniture in the Art Nouveau style began to take inspiration from Rococo pieces of around 1750. With its gently curving forms, this bench exhibits the Majorelle firm's version of this refined taste. It is presently covered with a Japanese brocade of about 1900.",
+      "tags": [
+        "cleveland",
+        "furniture and woodwork"
+      ]
+    },
+    {
+      "id": "va-O1405126",
+      "title": "Normandie",
+      "maker": "Cassandre",
+      "year": "1935",
+      "medium": "poster",
+      "source": "Victoria and Albert Museum",
+      "sourceId": "O1405126",
+      "sourceUrl": "https://collections.vam.ac.uk/item/O1405126/",
+      "image": "https://framemark.vam.ac.uk/collections/2017KC2259/full/!1280,/0/default.jpg",
+      "imageHi": "https://framemark.vam.ac.uk/collections/2017KC2259/full/!1280,/0/default.jpg",
+      "license": "V&A, non-commercial with attribution",
+      "credit": "Normandie. Cassandre. Victoria and Albert Museum, O1405126.",
+      "intro": "Normandie。Cassandre。維多利亞與阿爾伯特博物館館藏。",
+      "tags": [
+        "vam",
+        "poster"
+      ]
+    },
+    {
+      "id": "va-O1103502",
+      "title": "Exposition Internationale des Arts Décoratifs, Paris, 1925",
+      "maker": "Loupot, Charles",
+      "year": "1925",
+      "medium": "Poster",
+      "source": "Victoria and Albert Museum",
+      "sourceId": "O1103502",
+      "sourceUrl": "https://collections.vam.ac.uk/item/O1103502/",
+      "image": "https://framemark.vam.ac.uk/collections/2006AL4799/full/!1280,/0/default.jpg",
+      "imageHi": "https://framemark.vam.ac.uk/collections/2006AL4799/full/!1280,/0/default.jpg",
+      "license": "V&A, non-commercial with attribution",
+      "credit": "Exposition Internationale des Arts Décoratifs, Paris, 1925. Loupot, Charles. Victoria and Albert Museum, O1103502.",
+      "intro": "Exposition Internationale des Arts Décoratifs, Paris, 1925。Loupot, Charles。維多利亞與阿爾伯特博物館館藏。",
+      "tags": [
+        "vam",
+        "poster"
+      ]
+    },
+    {
+      "id": "va-O540389",
+      "title": "Book jacket design for 'The Soldier and the Angel'",
+      "maker": "Amaral, Maria Luiza",
+      "year": "1946",
+      "medium": "Design",
+      "source": "Victoria and Albert Museum",
+      "sourceId": "O540389",
+      "sourceUrl": "https://collections.vam.ac.uk/item/O540389/",
+      "image": "https://framemark.vam.ac.uk/collections/2008BT7675/full/!1280,/0/default.jpg",
+      "imageHi": "https://framemark.vam.ac.uk/collections/2008BT7675/full/!1280,/0/default.jpg",
+      "license": "V&A, non-commercial with attribution",
+      "credit": "Book jacket design for 'The Soldier and the Angel'. Amaral, Maria Luiza. Victoria and Albert Museum, O540389.",
+      "intro": "Book jacket design for 'The Soldier and the Angel'。Amaral, Maria Luiza。維多利亞與阿爾伯特博物館館藏。",
+      "tags": [
+        "vam",
+        "design"
+      ]
+    },
+    {
+      "id": "va-O7878",
+      "title": "The Thebes Stool",
+      "maker": "William Birch & Co",
+      "year": "1884",
+      "medium": "Stool",
+      "source": "Victoria and Albert Museum",
+      "sourceId": "O7878",
+      "sourceUrl": "https://collections.vam.ac.uk/item/O7878/",
+      "image": "https://framemark.vam.ac.uk/collections/2006AU6217/full/!1280,/0/default.jpg",
+      "imageHi": "https://framemark.vam.ac.uk/collections/2006AU6217/full/!1280,/0/default.jpg",
+      "license": "V&A, non-commercial with attribution",
+      "credit": "The Thebes Stool. William Birch & Co. Victoria and Albert Museum, O7878.",
+      "intro": "The Thebes Stool。William Birch & Co。維多利亞與阿爾伯特博物館館藏。",
+      "tags": [
+        "vam",
+        "stool"
+      ]
+    },
+    {
+      "id": "va-O84639",
+      "title": "Moser, Koloman Desk and showcase",
+      "maker": "Moser, Koloman",
+      "year": "1904",
+      "medium": "Desk and showcase",
+      "source": "Victoria and Albert Museum",
+      "sourceId": "O84639",
+      "sourceUrl": "https://collections.vam.ac.uk/item/O84639/",
+      "image": "https://framemark.vam.ac.uk/collections/2006AF2430/full/!1280,/0/default.jpg",
+      "imageHi": "https://framemark.vam.ac.uk/collections/2006AF2430/full/!1280,/0/default.jpg",
+      "license": "V&A, non-commercial with attribution",
+      "credit": "Moser, Koloman Desk and showcase. Moser, Koloman. Victoria and Albert Museum, O84639.",
+      "intro": "Moser, Koloman Desk and showcase。Moser, Koloman。維多利亞與阿爾伯特博物館館藏。",
+      "tags": [
+        "vam",
+        "desk-and-showcase"
+      ]
+    },
+    {
+      "id": "commons-15118072",
+      "title": "Paimio Sanatorium",
+      "maker": "Alvar Aalto",
+      "year": "1929–1933",
+      "medium": "Photograph",
+      "source": "Wikimedia Commons",
+      "sourceId": "15118072",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Paimio_Sanatorium2.jpg",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Paimio_Sanatorium2.jpg?width=1280",
+      "imageHi": "https://commons.wikimedia.org/wiki/Special:FilePath/Paimio_Sanatorium2.jpg?width=1280",
+      "license": "CC BY 2.0",
+      "credit": "Paimio Sanatorium2.jpg. Leon Liao from Barcelona, España. CC BY 2.0.",
+      "intro": "阿爾瓦·阿爾托為結核病療養院做的白色現代主義建築。橫向長窗把休養做成節奏。",
+      "tags": [
+        "commons"
+      ]
+    },
+    {
+      "id": "commons-73392906",
+      "title": "Bauhaus Dessau",
+      "maker": "Walter Gropius",
+      "year": "1925–1926",
+      "medium": "Photograph",
+      "source": "Wikimedia Commons",
+      "sourceId": "73392906",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bauhaus_Dessau_2018.jpg",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bauhaus_Dessau_2018.jpg?width=1280",
+      "imageHi": "https://commons.wikimedia.org/wiki/Special:FilePath/Bauhaus_Dessau_2018.jpg?width=1280",
+      "license": "CC BY-SA 4.0",
+      "credit": "Bauhaus Dessau 2018.jpg. Aufbacksalami. CC BY-SA 4.0.",
+      "intro": "格羅皮烏斯的德紹校舍。玻璃幕牆與不對稱體量，是二十世紀平面與建築共用的幾何語法。",
+      "tags": [
+        "commons"
+      ]
+    },
+    {
+      "id": "va-O1325271",
+      "title": "Thonet 18",
+      "maker": "Thonet Frères",
+      "year": "1876",
+      "medium": "Chair",
+      "source": "Victoria and Albert Museum",
+      "sourceId": "O1325271",
+      "sourceUrl": "https://collections.vam.ac.uk/item/O1325271/",
+      "image": "https://framemark.vam.ac.uk/collections/2016JG7854/full/!1280,/0/default.jpg",
+      "imageHi": "https://framemark.vam.ac.uk/collections/2016JG7854/full/!1280,/0/default.jpg",
+      "license": "V&A, non-commercial with attribution",
+      "credit": "Thonet 18. Thonet Frères. Victoria and Albert Museum, O1325271.",
+      "intro": "Thonet 18。Thonet Frères。維多利亞與阿爾伯特博物館館藏。",
+      "tags": [
+        "vam",
+        "chair"
+      ]
+    },
+    {
+      "id": "va-O183375",
+      "title": "Thonet, Michael Pair of children's chairs",
+      "maker": "Thonet, Michael",
+      "year": "1859",
+      "medium": "Pair of children's chairs",
+      "source": "Victoria and Albert Museum",
+      "sourceId": "O183375",
+      "sourceUrl": "https://collections.vam.ac.uk/item/O183375/",
+      "image": "https://framemark.vam.ac.uk/collections/2009CR2544/full/!1280,/0/default.jpg",
+      "imageHi": "https://framemark.vam.ac.uk/collections/2009CR2544/full/!1280,/0/default.jpg",
+      "license": "V&A, non-commercial with attribution",
+      "credit": "Thonet, Michael Pair of children's chairs. Thonet, Michael. Victoria and Albert Museum, O183375.",
+      "intro": "Thonet, Michael Pair of children's chairs。Thonet, Michael。維多利亞與阿爾伯特博物館館藏。",
+      "tags": [
+        "vam",
+        "pair-of-children's-chairs"
+      ]
+    },
+    {
+      "id": "va-O114827",
+      "title": "Chair model B403",
+      "maker": "Kramer, Ferdinand",
+      "year": "1927",
+      "medium": "Chair",
+      "source": "Victoria and Albert Museum",
+      "sourceId": "O114827",
+      "sourceUrl": "https://collections.vam.ac.uk/item/O114827/",
+      "image": "https://framemark.vam.ac.uk/collections/2006AB5956/full/!1280,/0/default.jpg",
+      "imageHi": "https://framemark.vam.ac.uk/collections/2006AB5956/full/!1280,/0/default.jpg",
+      "license": "V&A, non-commercial with attribution",
+      "credit": "Chair model B403. Kramer, Ferdinand. Victoria and Albert Museum, O114827.",
+      "intro": "Chair model B403。Kramer, Ferdinand。維多利亞與阿爾伯特博物館館藏。",
+      "tags": [
+        "vam",
+        "chair"
+      ]
+    },
+    {
+      "id": "va-O1323794",
+      "title": "B33 Chair",
+      "maker": "Breuer, Marcel Lajos",
+      "year": "1927-1928",
+      "medium": "Chair",
+      "source": "Victoria and Albert Museum",
+      "sourceId": "O1323794",
+      "sourceUrl": "https://collections.vam.ac.uk/item/O1323794/",
+      "image": "https://framemark.vam.ac.uk/collections/2016JG7849/full/!1280,/0/default.jpg",
+      "imageHi": "https://framemark.vam.ac.uk/collections/2016JG7849/full/!1280,/0/default.jpg",
+      "license": "V&A, non-commercial with attribution",
+      "credit": "B33 Chair. Breuer, Marcel Lajos. Victoria and Albert Museum, O1323794.",
+      "intro": "B33 Chair。Breuer, Marcel Lajos。維多利亞與阿爾伯特博物館館藏。",
+      "tags": [
+        "vam",
+        "chair"
+      ]
+    },
+    {
+      "id": "va-O114123",
+      "title": "Model B32",
+      "maker": "Breuer, Marcel Lajos",
+      "year": "1928",
+      "medium": "Chair",
+      "source": "Victoria and Albert Museum",
+      "sourceId": "O114123",
+      "sourceUrl": "https://collections.vam.ac.uk/item/O114123/",
+      "image": "https://framemark.vam.ac.uk/collections/2006AU8940/full/!1280,/0/default.jpg",
+      "imageHi": "https://framemark.vam.ac.uk/collections/2006AU8940/full/!1280,/0/default.jpg",
+      "license": "V&A, non-commercial with attribution",
+      "credit": "Model B32. Breuer, Marcel Lajos. Victoria and Albert Museum, O114123.",
+      "intro": "Model B32。Breuer, Marcel Lajos。維多利亞與阿爾伯特博物館館藏。",
+      "tags": [
+        "vam",
+        "chair"
+      ]
+    },
+    {
+      "id": "cma-142626",
+      "title": "Bill Poster",
+      "maker": "Carle Vernet (French, 1758–1836)",
+      "year": "c. 1780–1836",
+      "medium": "lithograph, hand colored",
+      "source": "Cleveland Museum of Art",
+      "sourceId": "142626",
+      "sourceUrl": "https://clevelandart.org/art/1966.352",
+      "image": "https://openaccess-cdn.clevelandart.org/1966.352/1966.352_print.jpg",
+      "imageHi": "https://openaccess-cdn.clevelandart.org/1966.352/1966.352_print.jpg",
+      "license": "CC0",
+      "credit": "Bill Poster, c. 1780–1836. Carle Vernet (French, 1758–1836). Lithograph, hand colored. The Cleveland Museum of Art, L. E. Holden Fund, 1966.352",
+      "intro": "Bill Poster（c. 1780–1836）。克利夫蘭藝術博物館開放典藏。",
+      "tags": [
+        "cleveland",
+        "print"
+      ]
+    },
+    {
+      "id": "va-O84526",
+      "title": "Josef Hoffmann Chair",
+      "maker": "Josef Hoffmann",
+      "year": "ca. 1905",
+      "medium": "Chair",
+      "source": "Victoria and Albert Museum",
+      "sourceId": "O84526",
+      "sourceUrl": "https://collections.vam.ac.uk/item/O84526/",
+      "image": "https://framemark.vam.ac.uk/collections/2008BT7428/full/!1280,/0/default.jpg",
+      "imageHi": "https://framemark.vam.ac.uk/collections/2008BT7428/full/!1280,/0/default.jpg",
+      "license": "V&A, non-commercial with attribution",
+      "credit": "Josef Hoffmann Chair. Josef Hoffmann. Victoria and Albert Museum, O84526.",
+      "intro": "Josef Hoffmann Chair。Josef Hoffmann。維多利亞與阿爾伯特博物館館藏。",
+      "tags": [
+        "vam",
+        "chair"
+      ]
+    },
+    {
+      "id": "va-O1024553",
+      "title": "Picture Posters",
+      "maker": "Unknown",
+      "year": "1896-early 1900s",
+      "medium": "Poster",
+      "source": "Victoria and Albert Museum",
+      "sourceId": "O1024553",
+      "sourceUrl": "https://collections.vam.ac.uk/item/O1024553/",
+      "image": "https://framemark.vam.ac.uk/collections/2014HH0974/full/!1280,/0/default.jpg",
+      "imageHi": "https://framemark.vam.ac.uk/collections/2014HH0974/full/!1280,/0/default.jpg",
+      "license": "V&A, non-commercial with attribution",
+      "credit": "Picture Posters. Unknown. Victoria and Albert Museum, O1024553.",
+      "intro": "Picture Posters。Unknown。維多利亞與阿爾伯特博物館館藏。",
+      "tags": [
+        "vam",
+        "poster"
+      ]
+    },
+    {
+      "id": "va-O66273",
+      "title": "Adjustable armchair",
+      "maker": "Josef Hoffmann",
+      "year": "ca. 1908",
+      "medium": "Armchair",
+      "source": "Victoria and Albert Museum",
+      "sourceId": "O66273",
+      "sourceUrl": "https://collections.vam.ac.uk/item/O66273/",
+      "image": "https://framemark.vam.ac.uk/collections/2006AP7917/full/!1280,/0/default.jpg",
+      "imageHi": "https://framemark.vam.ac.uk/collections/2006AP7917/full/!1280,/0/default.jpg",
+      "license": "V&A, non-commercial with attribution",
+      "credit": "Adjustable armchair. Josef Hoffmann. Victoria and Albert Museum, O66273.",
+      "intro": "Adjustable armchair。Josef Hoffmann。維多利亞與阿爾伯特博物館館藏。",
+      "tags": [
+        "vam",
+        "armchair"
+      ]
+    },
+    {
+      "id": "va-O694080",
+      "title": "Josef Albers: Lithographs",
+      "maker": "Albers, Josef",
+      "year": "1965",
+      "medium": "Poster",
+      "source": "Victoria and Albert Museum",
+      "sourceId": "O694080",
+      "sourceUrl": "https://collections.vam.ac.uk/item/O694080/",
+      "image": "https://framemark.vam.ac.uk/collections/2008BW1223/full/!1280,/0/default.jpg",
+      "imageHi": "https://framemark.vam.ac.uk/collections/2008BW1223/full/!1280,/0/default.jpg",
+      "license": "V&A, non-commercial with attribution",
+      "credit": "Josef Albers: Lithographs. Albers, Josef. Victoria and Albert Museum, O694080.",
+      "intro": "Josef Albers: Lithographs。Albers, Josef。維多利亞與阿爾伯特博物館館藏。",
+      "tags": [
+        "vam",
+        "poster"
+      ]
+    },
+    {
+      "id": "va-O7883",
+      "title": "Sussex chair",
+      "maker": "Webb, Philip (Speakman)",
+      "year": "1870-1890",
+      "medium": "Armchair",
+      "source": "Victoria and Albert Museum",
+      "sourceId": "O7883",
+      "sourceUrl": "https://collections.vam.ac.uk/item/O7883/",
+      "image": "https://framemark.vam.ac.uk/collections/2006AL6986/full/!1280,/0/default.jpg",
+      "imageHi": "https://framemark.vam.ac.uk/collections/2006AL6986/full/!1280,/0/default.jpg",
+      "license": "V&A, non-commercial with attribution",
+      "credit": "Sussex chair. Webb, Philip (Speakman). Victoria and Albert Museum, O7883.",
+      "intro": "Sussex chair。Webb, Philip (Speakman)。維多利亞與阿爾伯特博物館館藏。",
+      "tags": [
+        "vam",
+        "armchair"
+      ]
+    },
+    {
+      "id": "va-O138679",
+      "title": "Darmstadt Mai - October 1901. Die Ausstellung Der Künstler-Kolonie.",
+      "maker": "Olbrich, Joseph Maria",
+      "year": "1901",
+      "medium": "Poster",
+      "source": "Victoria and Albert Museum",
+      "sourceId": "O138679",
+      "sourceUrl": "https://collections.vam.ac.uk/item/O138679/",
+      "image": "https://framemark.vam.ac.uk/collections/2006AF2408/full/!1280,/0/default.jpg",
+      "imageHi": "https://framemark.vam.ac.uk/collections/2006AF2408/full/!1280,/0/default.jpg",
+      "license": "V&A, non-commercial with attribution",
+      "credit": "Darmstadt Mai - October 1901. Die Ausstellung Der Künstler-Kolonie.. Olbrich, Joseph Maria. Victoria and Albert Museum, O138679.",
+      "intro": "Darmstadt Mai - October 1901. Die Ausstellung Der Künstler-Kolonie.。Olbrich, Joseph Maria。維多利亞與阿爾伯特博物館館藏。",
+      "tags": [
+        "vam",
+        "poster"
+      ]
+    },
+    {
+      "id": "va-O694075",
+      "title": "Le Corbusier Lithographs",
+      "maker": "Le Corbusier",
+      "year": "1965",
+      "medium": "Poster",
+      "source": "Victoria and Albert Museum",
+      "sourceId": "O694075",
+      "sourceUrl": "https://collections.vam.ac.uk/item/O694075/",
+      "image": "https://framemark.vam.ac.uk/collections/2009BX5021/full/!1280,/0/default.jpg",
+      "imageHi": "https://framemark.vam.ac.uk/collections/2009BX5021/full/!1280,/0/default.jpg",
+      "license": "V&A, non-commercial with attribution",
+      "credit": "Le Corbusier Lithographs. Le Corbusier. Victoria and Albert Museum, O694075.",
+      "intro": "Le Corbusier Lithographs。Le Corbusier。維多利亞與阿爾伯特博物館館藏。",
+      "tags": [
+        "vam",
+        "poster"
+      ]
+    }
+  ]
+}
