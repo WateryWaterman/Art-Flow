@@ -7,7 +7,7 @@ const $ = (id) => document.getElementById(id);
 
 const slide = $("slide");
 const favBtn = $("fav");
-const favLabel = favBtn.querySelector(".fav-label");
+const favIo = $("fav-io");
 const listEl = $("list");
 const modes = $("modes");
 const mosaicBtn = $("mosaic");
@@ -16,6 +16,8 @@ const thumb = $("intro-thumb");
 const thumbLink = $("intro-thumb-link");
 const toolsEl = $("intro-tools");
 const favFile = $("fav-file");
+const chromeEl = $("chrome");
+const introEl = $("intro");
 
 const PALETTES = [
   [[26, 10, 18], [214, 42, 108], [255, 214, 86]],
@@ -130,10 +132,9 @@ function buildQueue() {
 
 function renderChrome() {
   const work = current();
-  const liked = isFav(work);
-  favLabel.textContent = liked ? "Liked" : "Like";
-  favBtn.setAttribute("aria-pressed", liked ? "true" : "false");
-  favBtn.setAttribute("aria-label", liked ? "Liked" : "Like");
+  favBtn.textContent = isFav(work) ? "已收藏" : "收藏";
+  favBtn.setAttribute("aria-pressed", isFav(work) ? "true" : "false");
+  favIo.hidden = state.mode !== "fav";
   for (const btn of modes.querySelectorAll("button")) {
     btn.setAttribute("aria-pressed", btn.dataset.mode === state.mode ? "true" : "false");
   }
@@ -148,23 +149,9 @@ function renderChrome() {
   const rows = source.length ? source : state.catalog;
   for (const item of rows) {
     const li = document.createElement("li");
+    li.textContent = item.title;
     if (item.id === current()?.id) li.classList.add("current");
     if (state.favIds.has(item.id)) li.classList.add("starred");
-    const title = document.createElement("span");
-    title.className = "list-title";
-    title.textContent = item.title;
-    const idEl = document.createElement("code");
-    idEl.className = "list-id";
-    idEl.textContent = item.id;
-    idEl.title = "Copy unique id";
-    idEl.addEventListener("click", (event) => {
-      event.stopPropagation();
-      navigator.clipboard.writeText(item.id).then(() => {
-        idEl.classList.add("copied");
-        window.setTimeout(() => idEl.classList.remove("copied"), 900);
-      });
-    });
-    li.append(title, idEl);
     li.addEventListener("click", () => jumpTo(item.id));
     listEl.append(li);
   }
@@ -472,7 +459,7 @@ function exportFavs() {
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
-  a.download = "standby-likes.json";
+  a.download = "standby-favs.json";
   document.body.append(a);
   a.click();
   a.remove();
@@ -509,6 +496,24 @@ function armIdle() {
   document.body.classList.remove("idle");
   clearTimeout(state.idle);
   state.idle = setTimeout(() => document.body.classList.add("idle"), 2000);
+}
+
+function blurInside(root) {
+  const active = document.activeElement;
+  if (active && root.contains(active) && typeof active.blur === "function") {
+    active.blur();
+  }
+}
+
+function armOverlay(root) {
+  if (!root) return;
+  root.addEventListener("mouseleave", () => blurInside(root));
+  root.addEventListener("pointerup", (event) => {
+    if (event.pointerType !== "mouse" && event.pointerType !== "touch" && event.pointerType !== "pen") {
+      return;
+    }
+    requestAnimationFrame(() => blurInside(root));
+  });
 }
 
 async function loadJson(path) {
@@ -553,6 +558,10 @@ modes.addEventListener("click", (event) => {
   const btn = event.target.closest("button[data-mode]");
   if (btn) setMode(btn.dataset.mode);
 });
+armOverlay(chromeEl);
+armOverlay(introEl);
+armOverlay($("prev"));
+armOverlay($("next"));
 
 window.addEventListener("mousemove", armIdle);
 let resizeTimer = 0;

@@ -219,8 +219,7 @@ body.idle {
   transition: height 0.28s ease, background 0.28s ease, color 0.28s ease;
 }
 
-#chrome:hover,
-#chrome:focus-within {
+#chrome:hover {
   height: min(78vh, 42rem);
   overflow: auto;
   color: var(--ink);
@@ -234,63 +233,26 @@ body.idle {
 }
 
 #chrome:hover .chrome-row,
-#chrome:hover #list,
-#chrome:focus-within .chrome-row,
-#chrome:focus-within #list {
+#chrome:hover #list {
   opacity: 1;
 }
 
 .chrome-row {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
   gap: 1.5rem;
 }
 
-#fav {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.42rem;
-}
-
-#fav .heart {
-  width: 1.05em;
-  height: 1.05em;
-  flex: 0 0 auto;
-}
-
-#fav .heart-fill {
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.55;
-  stroke-linejoin: round;
-}
-
-#fav[aria-pressed="true"] .heart-fill {
-  fill: currentColor;
-}
-
-.chrome-io {
+.chrome-left,
+.fav-io {
   display: flex;
+  align-items: baseline;
   gap: 1.25rem;
-  margin-top: 0.85rem;
-  font-size: clamp(0.88rem, 1.2vw, 1.05rem);
-  letter-spacing: 0.04em;
-  color: var(--mute);
 }
 
-#chrome .chrome-io {
-  opacity: 0;
-  transition: opacity 0.22s ease;
-}
-
-#chrome:hover .chrome-io,
-#chrome:focus-within .chrome-io {
-  opacity: 1;
-}
-
-.chrome-io button {
-  font-size: inherit;
+.fav-io[hidden] {
+  display: none;
 }
 
 #chrome button {
@@ -319,17 +281,13 @@ body.idle {
   margin-top: 1.4rem;
   overflow: auto;
   list-style: none;
-  columns: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   column-gap: 3rem;
 }
 
 #list li {
-  break-inside: avoid;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.08rem;
-  padding: 0.32rem 0;
+  padding: 0.18rem 0;
   font-size: clamp(0.95rem, 1.3vw, 1.15rem);
   line-height: 1.35;
   color: var(--mute);
@@ -341,26 +299,8 @@ body.idle {
   color: var(--ink);
 }
 
-#list li.starred .list-title::before {
+#list li.starred::before {
   content: "· ";
-  color: var(--accent);
-}
-
-.list-id {
-  font-family: inherit;
-  font-size: 0.72em;
-  font-weight: 400;
-  letter-spacing: 0.03em;
-  color: color-mix(in srgb, var(--ink) 38%, var(--paper));
-  cursor: copy;
-}
-
-#list li:hover .list-id,
-#list li.current .list-id {
-  color: color-mix(in srgb, var(--ink) 62%, var(--paper));
-}
-
-.list-id.copied {
   color: var(--accent);
 }
 
@@ -432,8 +372,7 @@ body.idle {
   transition: opacity 0.28s ease, transform 0.28s ease;
 }
 
-#intro:hover,
-#intro:focus-within {
+#intro:hover {
   height: min(58vh, 32rem);
   overflow: auto;
   color: var(--ink);
@@ -446,14 +385,7 @@ body.idle {
 #intro:hover .body,
 #intro:hover .cite,
 #intro:hover .control,
-#intro:hover .intro-thumb,
-#intro:focus-within .kicker,
-#intro:focus-within #intro-title,
-#intro:focus-within .lede,
-#intro:focus-within .body,
-#intro:focus-within .cite,
-#intro:focus-within .control,
-#intro:focus-within .intro-thumb {
+#intro:hover .intro-thumb {
   opacity: 1;
   transform: none;
 }
@@ -522,7 +454,7 @@ body.idle {
 
 @media (max-width: 720px) {
   #list {
-    columns: 1;
+    grid-template-columns: 1fr;
   }
 
   .edge {

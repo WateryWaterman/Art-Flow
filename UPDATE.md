@@ -35,7 +35,7 @@ You are not adding a feature. You are swapping the pictures.
 - Images stay hotlinked. Do not commit JPEGs. Do not hammer Wikimedia (sleep ≥ 1s between Commons calls).
 - `data/archive.json` is merge-only. Never delete a row. Updating a row in place is allowed when the same id gets a fresher image URL.
 - Mosaic (3×3, tiles pan together) is already implemented. You do not restyle it. Sub-1080p works will use it when the toggle is on.
-- UI language on the board stays as it is (全部 / 收藏 / 穿插, Like / Liked). Artwork titles stay in their original language.
+- UI language on the board stays as it is (收藏／已收藏, 全部 / 收藏 / 穿插, 導出 / 導入). Artwork titles stay in their original language. Unique ids stay in the repo; do not paint them on the board.
 
 ---
 
@@ -63,11 +63,11 @@ The unique mark and the metadata live in the same repo.
 
 | You see on the page | Stored as | File |
 | --- | --- | --- |
-| List row under 全部 | `id` + `title` | `data/catalog.json` |
-| List row under 收藏 for a past like | `id` resolved through archive | `data/archive.json` |
+| List row under 全部 | `title` (every current push work) | `data/catalog.json` |
+| List row under 收藏 for a past favourite | `id` resolved through archive | `data/archive.json` |
 | Intro thumbnail click | `sourceUrl` | same record |
 | Fullscreen picture | `image` / `imageHi` | same record |
-| Like heart | id appended to `standby.favs` | browser only |
+| 收藏 | id appended to `standby.favs` | browser only |
 
 Id prefixes:
 
@@ -79,7 +79,7 @@ Id prefixes:
 
 The page lookup is `catalog.find(id)` then `archive.get(id)`. That path is already fast: both JSON files load once at boot into memory. Do not invent a second id scheme.
 
-On the board, click **全部**, hover the top, and you get every current id. Click an id to copy it. Grep that string in `data/` or in `CMA_PINNED` / `VAM_PINNED`. That is the weekly edit loop.
+On the board, click **全部** and hover the top: every current push title must be listed. Ids stay in `data/` and in `CMA_PINNED` / `VAM_PINNED`. That is the weekly edit loop.
 
 ---
 
@@ -164,12 +164,12 @@ python -m http.server 5173
 ```
 
 1. Open the page. A picture must appear. F11 is the intended viewing mode.
-2. Hover top → **全部**. Every row must show a unique id under the title. Spot-check three ids in `data/catalog.json` — same title, same `sourceUrl`, same `image`.
-3. Click an id: clipboard gets that mark. Click a title: the board jumps to that work.
+2. Hover top → **全部**. Every current push title must be in the list (count matches `data/catalog.json`). Spot-check three titles against the JSON — same `sourceUrl`, same `image`.
+3. Click a title: the board shows that work. Ids are not on the page.
 4. Hover bottom. Thumbnail is the original picture. Click it: the museum / Commons page opens.
-5. Empty heart says Like. Click: filled heart, Liked. `localStorage.standby.favs` is a JSON array of ids only.
-6. Switch to 收藏: liked works play, including a work you then remove from the mental “this week” set only if it still exists in archive.
-7. Export likes, download `standby-likes.json`. Import likes merges ids.
+5. 收藏 / 已收藏 toggles. `localStorage.standby.favs` is a JSON array of ids only.
+6. Switch to the 收藏 playlist: favourites play, including a work that left this week’s push if it still exists in archive. **導出** and **導入** sit to the right of the left-hand 收藏.
+7. 導出 downloads `standby-favs.json`. 導入 merges ids.
 8. Low-res furniture (Thebes stool class) with mosaic on: 3×3, tiles pan **together**, not independently. Cleveland prints stay as the original photograph (no CORS).
 9. Close the tab. Reopen. Images reload from the network. Likes are still there. There is no image blob in localStorage.
 
@@ -231,9 +231,10 @@ You usually should not touch the page for a weekly swap.
 | Building names / architects | `BUILDINGS` in `scripts/build_catalog.py` |
 | Interval | `data/catalog.json` `intervalSeconds` |
 | 全部 / 收藏 / 穿插 labels | `index.html` |
-| Like / Liked | `app.js` `renderChrome` |
+| 收藏 / 已收藏 | `app.js` `renderChrome` |
+| 導出 / 導入 | `index.html` `#fav-io` |
 | Mosaic on/off copy | `app.js` `renderMosaicBtn` |
-| Pan, gutters, heart, list id style | `styles.css` |
+| Pan, gutters, list | `styles.css` |
 | Lookup / like storage / mosaic trigger | `app.js` |
 
 ---

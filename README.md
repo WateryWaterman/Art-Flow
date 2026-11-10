@@ -1,8 +1,8 @@
 # Standby
 
-Open the page, press **F11**, and the browser becomes a fullscreen standby board. It behaves like a screensaver: one design work at a time, filling the screen, advancing on its own. Hover the top edge to **Like** a work so you can keep watching it after the weekly push changes.
+Open the page, press **F11**, and the browser becomes a fullscreen standby board. It behaves like a screensaver: one design work at a time, filling the screen, advancing on its own. Hover the top edge to **收藏** a work so you can keep watching it after the weekly push changes.
 
-The author replaces the current push with a new set of works each week. Likes are stored as unique ids in this browser. Closing the tab drops the images; the ids remain, and the next visit loads the works again from the repo.
+The author replaces the current push with a new set of works each week. Favourites are stored as unique ids in this browser. Closing the tab drops the images; the ids remain, and the next visit loads the works again from the repo.
 
 This is a static GitHub Pages site. There is no account, no backend, and no images in git.
 
@@ -26,9 +26,9 @@ Nothing is on screen until the pointer reaches an edge.
 | --- | --- |
 | Left ~9vw | Previous work. Semi-transparent ink gradient and an opaque chevron. |
 | Right ~9vw | Next work. |
-| Top ~9vh | Empty heart + **Like** / filled heart + **Liked**. Playlist: 全部 (all) · 收藏 (likes) · 穿插 (interleave). **Export likes** / **Import likes**. The list under 全部 and 收藏 shows each title and its unique id. Click a title to jump. Click an id to copy it. |
+| Top ~9vh | 收藏 / 已收藏. Playlist: 全部 · 收藏 · 穿插. After opening the 收藏 playlist, **導出** and **導入** appear to the right of the left-hand 收藏, as the same kind of control. The list under 全部 shows every work in the current push (titles only). |
 | Bottom ~14vh | Short credit. Original thumbnail on the right — click it to open the source webpage. **低清拼合** on/off. |
-| Keyboard | ← → change work. F likes / unlikes. F11 fullscreen. |
+| Keyboard | ← → change work. F 收藏 / 取消收藏. F11 fullscreen. |
 
 Auto-advance is **180 seconds**, set in `data/catalog.json` as `intervalSeconds`.
 
@@ -36,13 +36,13 @@ Auto-advance is **180 seconds**, set in `data/catalog.json` as `intervalSeconds`
 
 ## Unique ids, catalog, archive, likes
 
-Every work has one stable id, written next to its metadata in this same repository.
+Every work has one stable id, stored next to its metadata in this same repository. Ids are an editing protocol; they are not shown on the board.
 
 | Layer | Where | Who writes it | What it holds |
 | --- | --- | --- | --- |
 | Current push | `data/catalog.json` | Weekly update (script or hand) | The 32–36 works on the board now, each with id, title, image URL, source page, license, intro |
-| Past + current | `data/archive.json` | Merge-only, never delete | Full metadata for every work that has ever been pushed, so an old Like still resolves |
-| Likes | Browser `localStorage` key `standby.favs` | Only the Like heart | An array of ids. No images. No full cards |
+| Past + current | `data/archive.json` | Merge-only, never delete | Full metadata for every work that has ever been pushed, so an old favourite still resolves |
+| Favourites | Browser `localStorage` key `standby.favs` | Only the 收藏 control | An array of ids. No images. No full cards |
 
 Lookup order: current catalog, then archive. A liked work that left the weekly push still plays if its row remains in `archive.json`.
 
@@ -52,7 +52,7 @@ Id shapes:
 - V&A: `va-{systemNumber}` example `va-O7878`
 - Wikimedia Commons: `commons-{pageid}` example `commons-73392906`
 
-The 全部 list is the practical index for a weekly swap: title + id in one row, id copied on click, metadata one grep away in `data/catalog.json` / `data/archive.json`.
+The 全部 list is the on-screen index of the current push (every title). For a weekly swap, grep the id in `data/catalog.json` / `data/archive.json` / the pin lists in `scripts/build_catalog.py`.
 
 ### Cache contract
 
@@ -62,7 +62,7 @@ On close, mosaic blob URLs are discarded with the page. Images are hotlinked and
 - `standby.mode` — all / fav / mix
 - `standby.mosaic` — mosaic toggle (`"0"` means off; missing means on)
 
-A cleared browser profile wipes likes. **Export likes** downloads `standby-likes.json`. **Import likes** merges that file (JSON `{ "ids": [...] }`, a JSON array, or a newline/comma list) back into `standby.favs`.
+A cleared browser profile wipes favourites. Open the 收藏 playlist, then **導出** downloads `standby-favs.json`. **導入** merges that file (JSON `{ "ids": [...] }`, a JSON array, or a newline/comma list) back into `standby.favs`.
 
 ---
 
@@ -70,7 +70,7 @@ A cleared browser profile wipes likes. **Export likes** downloads `standby-likes
 
 ```
 index.html                 page shell and chrome labels
-styles.css                 paper/ink layout, pan, mosaic grid, heart, list
+styles.css                 paper/ink layout, pan, mosaic grid, list
 app.js                     queue, like, mosaic, lookup, export/import
 data/catalog.json          current push
 data/archive.json          union of every push
@@ -128,9 +128,8 @@ Architecture titles, architects, years, and intros are overwritten from the `BUI
 | On screen | Edit here |
 | --- | --- |
 | 全部 / 收藏 / 穿插 | `index.html` `#modes` |
-| Like / Liked, heart | `index.html` `#fav`, labels in `app.js` `renderChrome` |
-| Export likes / Import likes | `index.html` `.chrome-io` |
-| Unique id under each title | `app.js` `renderChrome` (reads `work.id`) |
+| 收藏 / 已收藏 | `app.js` `renderChrome` |
+| 導出 / 導入 | `index.html` `#fav-io`, shown when the 收藏 playlist is active |
 | 低清拼合 開 / 關 | `app.js` `renderMosaicBtn` |
 | Title, maker, year, intro, credit | `data/catalog.json` (and archive). Architecture intros: `BUILDINGS` in `scripts/build_catalog.py` |
 | Auto-advance seconds | `data/catalog.json` `intervalSeconds` |
@@ -145,7 +144,7 @@ If a source is added, dropped, or blocked, update [SOURCES.md](./SOURCES.md) in 
 
 ## 中文
 
-打開網頁，按 **F11** 進入全螢幕待機頁。它可以像螢幕保護程式一樣使用：每次一件設計作品，舖滿畫面，自己往前切。滑鼠移到頂部，空心愛心是 **Like**，點過之後變成實心 **Liked**，方便在每週換推送之後繼續看喜歡的作品。
+打開網頁，按 **F11** 進入全螢幕待機頁。它可以像螢幕保護程式一樣使用：每次一件設計作品，舖滿畫面，自己往前切。滑鼠移到頂部可以 **收藏** 作品，方便在每週換推送之後繼續看。
 
 作者每週會把現在這一批作品整批換成新的。收藏只在這台瀏覽器裡存唯一標記。關掉頁面會丟掉圖片；標記還在，下次進來再從倉庫載入。
 
@@ -163,23 +162,23 @@ If a source is added, dropped, or blocked, update [SOURCES.md](./SOURCES.md) in 
 | --- | --- |
 | 左緣 | 上一件。半透明漸層與不透明尖括號 |
 | 右緣 | 下一件 |
-| 頂部 | 空心／實心愛心 Like / Liked；全部 · 收藏 · 穿插；Export likes / Import likes。列表同時顯示標題與唯一標記，點標題跳轉，點標記複製 |
+| 頂部 | 收藏／已收藏；全部 · 收藏 · 穿插。點播放清單的「收藏」後，左側收藏右邊出現導出、導入。全部列表列出當前推送的每一件（只顯示標題） |
 | 底部 | 短介紹、右側縮略圖（點進來源頁）、低清拼合 |
-| 鍵盤 | ← → 切頁，F 喜歡，F11 全螢幕 |
+| 鍵盤 | ← → 切頁，F 收藏，F11 全螢幕 |
 
 自動切換 180 秒，寫在 `data/catalog.json` 的 `intervalSeconds`。
 
 ### 倉庫與唯一標記
 
-唯一標記和對應元數據在同一個倉庫裡。
+唯一標記和對應元數據在同一個倉庫裡，不畫在畫面上。
 
 - 現在推送：`data/catalog.json`
 - 過往加現在：`data/archive.json`（只增不刪）
-- 喜歡：瀏覽器 `standby.favs`，只存 id
+- 收藏：瀏覽器 `standby.favs`，只存 id
 
-對回順序：先 catalog，再 archive。關頁不存圖。清掉瀏覽器資料會丟掉喜歡清單，所以可以匯出／匯入 `standby-likes.json`。
+對回順序：先 catalog，再 archive。關頁不存圖。清掉瀏覽器資料會丟掉收藏清單，所以在收藏播放清單裡可以導出／導入 `standby-favs.json`。
 
-點「全部」列出的每一行都帶 id，改推送時用這個標記在 `catalog.json` / `archive.json` / `scripts/build_catalog.py` 的 pinned 清單裡對位。
+點「全部」會列出當前推送的每一件標題。改推送時用倉庫裡的 id 在 `catalog.json` / `archive.json` / `scripts/build_catalog.py` 的 pinned 清單裡對位。
 
 ### 若要改圖片
 
