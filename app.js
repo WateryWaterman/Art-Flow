@@ -289,9 +289,11 @@ function hideGrid() {
 }
 
 function showGrid(img) {
-  gridEl.classList.add("on");
   toolsEl.classList.add("on-grid");
-  requestAnimationFrame(() => armGridPan(img));
+  requestAnimationFrame(() => {
+    gridEl.classList.add("on");
+    armGridPan(img);
+  });
 }
 
 function sources(work) {

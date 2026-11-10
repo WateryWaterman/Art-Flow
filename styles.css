@@ -63,7 +63,7 @@ body.idle {
 }
 
 #grid {
-  display: none;
+  display: grid;
   position: absolute;
   inset: 0;
   box-sizing: border-box;
@@ -72,10 +72,14 @@ body.idle {
   background: var(--paper);
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.9s ease;
 }
 
 #grid.on {
-  display: grid;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 #grid .cell {
