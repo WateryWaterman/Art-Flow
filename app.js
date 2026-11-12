@@ -287,6 +287,7 @@ function sources(work) {
 let ahead = null;
 
 function allowsCors(url) {
+  // Image hosts with no Access-Control-Allow-Origin. SOURCES.md owns the list; add a host there when a new source is accepted.
   try {
     const host = new URL(url).hostname;
     return host !== "openaccess-cdn.clevelandart.org" && !host.endsWith(".clevelandart.org");

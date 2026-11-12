@@ -22,7 +22,7 @@ Hotlink JPEGs. Do not commit images.
 | Image field | `images.print.url` (fallback `images.web.url`) |
 | Page | `data.url` → `https://clevelandart.org/art/…` |
 | Our id | `cma-{id}` |
-| CORS | Print CDN sends **no** `Access-Control-Allow-Origin`. The page loads the original photograph. Mosaic is skipped. Expected. |
+| CORS | Print CDN sends **no** `Access-Control-Allow-Origin`. `allowsCors()` in `app.js` skips the cross-origin attempt for this host, so the JPEG is downloaded once. The original photograph still shows. Mosaic is skipped. Expected. |
 | UA | Send a real browser User-Agent; a bare Python UA can fail |
 | Good for | Belle Époque / Secession lithograph posters, some Art Nouveau furniture, Morris textiles already in CMA, Tiffany glass |
 | Avoid | Random paintings, photographs, anything not CC0 |
@@ -124,7 +124,9 @@ Archive holds these plus earlier experiments (~89 rows). Treat **all** archive i
 
 1. Confirm the institution states reuse + attribution (or CC0/PD).
 2. Confirm a hotlink JPEG ≥ ~1920 on the long edge, or accept that the work will mosaic.
-3. Confirm CORS if you care about mosaic (`Access-Control-Allow-Origin: *`). Missing CORS is allowed (Cleveland pattern): show the original.
+3. Request the hotlink JPEG and read `Access-Control-Allow-Origin` on that response, not on the API.
+   - Header present (`*` is the usual case): mosaic can read pixels. Leave the host on a normal cross-origin load. V&A and Commons are in this group.
+   - Header absent: record the image host in this file and add it to `allowsCors()` in `app.js`. The page then loads that host without a cross-origin probe. The probe would download the file twice and log an error. The photograph still shows; mosaic is skipped. The only host on this list today is Cleveland's print CDN (`openaccess-cdn.clevelandart.org`). A new source joins the list at the time it is accepted, not as a special case discovered later.
 4. Confirm no API key for GitHub Actions.
 5. Fetch three sample objects, write id / title / page / image / license into a note, then add a section here **before** pinning them in `build_catalog.py`.
 6. Prefer stable object ids so likes survive URL refreshes.

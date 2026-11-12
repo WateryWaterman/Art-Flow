@@ -18,6 +18,8 @@ Switching waits until the screen is black, then changes the picture and fades it
 
 The picture still covers the screen and keeps its shape. The browser paints it once and slides that layer with the display refresh. It does not redraw the whole JPEG on every frame. Entering a mosaic spends a short burst of CPU to make the nine colors. After that, a still board is one moving layer, or nine when the mosaic is showing. A layer you are not looking at keeps its picture and stops moving.
 
+A picture whose host does not allow cross-origin reading is fetched once. Cleveland is the only such host today. A tab in the background does not download the next work. If a picture fails to load, the caption stays with the picture still on screen.
+
 ---
 
 ## What you see
@@ -171,6 +173,8 @@ If a source is added, dropped, or blocked, update [SOURCES.md](./SOURCES.md) in 
 切換會先用 0.9 秒暗到全黑，黑了才換下一張，再淡入。慢速平移不再在切換時跳回正中。上一張停在 90 秒行程的哪裡，下一張就從那裡繼續。九宮格仍然九格齊步。
 
 舖滿和比例都沒變。變的是做法：圖先畫好，再跟著螢幕刷新滑動這一層，不再每一幀重畫整張 JPEG。進入九宮格時，CPU 會短促忙一下，用來做出九種配色。之後待機就是一層在動；九宮格打開時是九層。沒有在看的那一層，圖還留著，但不再移動、不再繪製。
+
+不能跨域讀取的圖只下載一次。目前只有克利夫蘭。分頁在背景時不抓下一張。某張載入失敗時，簡介留在仍顯示的那一件上。
 
 ### 畫面
 
