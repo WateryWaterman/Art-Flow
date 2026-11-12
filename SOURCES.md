@@ -22,7 +22,7 @@ Hotlink JPEGs. Do not commit images.
 | Image field | `images.print.url` (fallback `images.web.url`) |
 | Page | `data.url` → `https://clevelandart.org/art/…` |
 | Our id | `cma-{id}` |
-| CORS | Print CDN sends **no** `Access-Control-Allow-Origin`. `allowsCors()` in `app.js` skips the cross-origin attempt for this host, so the JPEG is downloaded once. The original photograph still shows. Mosaic is skipped. Expected. |
+| CORS | Print CDN sends **no** `Access-Control-Allow-Origin`. The host is in `NO_CORS_HOSTS` in `scripts/build_catalog.py`, copied to `noCorsHosts` in `data/catalog.json`. The page skips the cross-origin attempt, so the JPEG is downloaded once. The original photograph still shows. Mosaic is skipped. Expected. |
 | UA | Send a real browser User-Agent; a bare Python UA can fail |
 | Good for | Belle Époque / Secession lithograph posters, some Art Nouveau furniture, Morris textiles already in CMA, Tiffany glass |
 | Avoid | Random paintings, photographs, anything not CC0 |
@@ -126,7 +126,7 @@ Archive holds these plus earlier experiments (~89 rows). Treat **all** archive i
 2. Confirm a hotlink JPEG ≥ ~1920 on the long edge, or accept that the work will mosaic.
 3. Request the hotlink JPEG and read `Access-Control-Allow-Origin` on that response, not on the API.
    - Header present (`*` is the usual case): mosaic can read pixels. Leave the host on a normal cross-origin load. V&A and Commons are in this group.
-   - Header absent: record the image host in this file and add it to `allowsCors()` in `app.js`. The page then loads that host without a cross-origin probe. The probe would download the file twice and log an error. The photograph still shows; mosaic is skipped. The only host on this list today is Cleveland's print CDN (`openaccess-cdn.clevelandart.org`). A new source joins the list at the time it is accepted, not as a special case discovered later.
+   - Header absent: record the image host in this file and add it to `NO_CORS_HOSTS` in `scripts/build_catalog.py`. The catalog build copies that list to `noCorsHosts` in `data/catalog.json`. The page loads those hosts without a cross-origin probe. The probe would download the file twice and log an error. The photograph still shows; mosaic is skipped. The only host on this list today is Cleveland's print CDN (`openaccess-cdn.clevelandart.org`). A new source joins the list at the time it is accepted.
 4. Confirm no API key for GitHub Actions.
 5. Fetch three sample objects, write id / title / page / image / license into a note, then add a section here **before** pinning them in `build_catalog.py`.
 6. Prefer stable object ids so likes survive URL refreshes.

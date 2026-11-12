@@ -1,6 +1,9 @@
 {
   "generated": "2026-11-10T11:53:56Z",
   "intervalSeconds": 180,
+  "noCorsHosts": [
+    "openaccess-cdn.clevelandart.org"
+  ],
   "works": [
     {
       "id": "cma-129201",

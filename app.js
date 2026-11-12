@@ -48,6 +48,7 @@ const state = {
   tileUrls: [],
   frame: null,
   shownId: null,
+  noCorsHosts: [],
   token: 0,
   panTime: null,
   heldSurface: null,
@@ -287,13 +288,13 @@ function sources(work) {
 let ahead = null;
 
 function allowsCors(url) {
-  // Image hosts with no Access-Control-Allow-Origin. SOURCES.md owns the list; add a host there when a new source is accepted.
+  let host = "";
   try {
-    const host = new URL(url).hostname;
-    return host !== "openaccess-cdn.clevelandart.org" && !host.endsWith(".clevelandart.org");
+    host = new URL(url).hostname;
   } catch {
     return true;
   }
+  return !state.noCorsHosts.includes(host);
 }
 
 function startLoad(url, cors) {
@@ -961,6 +962,9 @@ async function loadCatalog() {
   ]);
   state.catalog = data.works || [];
   state.interval = (data.intervalSeconds || 180) * 1000;
+  state.noCorsHosts = Array.isArray(data.noCorsHosts)
+    ? data.noCorsHosts.filter((host) => typeof host === "string" && host)
+    : [];
   const all = [...(archived.works || []), ...state.catalog];
   state.archive = new Map(all.filter((w) => w && w.id).map((w) => [w.id, w]));
   hydrateFavs();

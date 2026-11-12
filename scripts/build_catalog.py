@@ -15,6 +15,12 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "data" / "catalog.json"
 ARCHIVE = ROOT / "data" / "archive.json"
 
+# Image hosts that send no Access-Control-Allow-Origin. SOURCES.md records each one
+# when a source is accepted. The page reads the copy written into catalog.json.
+NO_CORS_HOSTS = [
+    "openaccess-cdn.clevelandart.org",
+]
+
 CMA_PINNED = [
     "129201",  # May Milton
     "153129",  # Sculptress
@@ -615,6 +621,7 @@ def main() -> None:
     catalog = {
         "generated": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "intervalSeconds": 180,
+        "noCorsHosts": list(NO_CORS_HOSTS),
         "works": curated,
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
