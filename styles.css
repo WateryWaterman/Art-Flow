@@ -54,14 +54,6 @@ body.idle {
   opacity: 1;
 }
 
-#slide.pan-x {
-  animation: pan-x 90s linear infinite alternate;
-}
-
-#slide.pan-y {
-  animation: pan-y 90s linear infinite alternate;
-}
-
 #grid {
   display: grid;
   position: absolute;
@@ -97,32 +89,6 @@ body.idle {
   object-fit: cover;
   object-position: 50% 50%;
   user-select: none;
-}
-
-#grid .tile.pan-x {
-  animation: pan-x 90s linear infinite alternate;
-}
-
-#grid .tile.pan-y {
-  animation: pan-y 90s linear infinite alternate;
-}
-
-@keyframes pan-x {
-  from {
-    object-position: 0% 50%;
-  }
-  to {
-    object-position: 100% 50%;
-  }
-}
-
-@keyframes pan-y {
-  from {
-    object-position: 50% 0%;
-  }
-  to {
-    object-position: 50% 100%;
-  }
 }
 
 .edge {

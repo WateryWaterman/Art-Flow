@@ -2,6 +2,9 @@ const STORAGE_FAV = "standby.favs";
 const STORAGE_FAV_LIBRARY = "standby.library";
 const STORAGE_MODE = "standby.mode";
 const STORAGE_MOSAIC = "standby.mosaic";
+const PAN_MS = 90000;
+const PAN_CYCLE = PAN_MS * 2;
+const PAN_RATIO = 0.06;
 
 const $ = (id) => document.getElementById(id);
 
@@ -45,6 +48,8 @@ const state = {
   tileUrls: [],
   lastImg: null,
   token: 0,
+  panTime: null,
+  heldSurface: null,
 };
 
 function saveFavs() {
@@ -194,9 +199,19 @@ function renderMosaicBtn() {
   mosaicBtn.textContent = mosaicOn() ? "低清拼合 開" : "低清拼合 關";
 }
 
-function revokeTiles() {
-  for (const url of state.tileUrls) URL.revokeObjectURL(url);
-  state.tileUrls = [];
+function discardUrls(urls) {
+  for (const url of urls || []) {
+    if (url) URL.revokeObjectURL(url);
+  }
+}
+
+function publishTileUrls(urls) {
+  const next = urls || [];
+  const previous = state.tileUrls;
+  state.tileUrls = next;
+  for (const url of previous) {
+    if (url && !next.includes(url)) URL.revokeObjectURL(url);
+  }
 }
 
 function isLowRes(img, work) {
@@ -255,81 +270,9 @@ function ensureGrid() {
   }
 }
 
-async function buildTiles(img) {
-  const blobs = await Promise.all(PALETTES.map((palette) => colorizeFull(img, palette)));
-  revokeTiles();
-  state.tileUrls = blobs.map((blob) => (blob ? URL.createObjectURL(blob) : ""));
-  ensureGrid();
-  const tiles = gridEl.querySelectorAll(".tile");
-  tiles.forEach((tile, i) => {
-    tile.src = state.tileUrls[i] || "";
-  });
-  return state.tileUrls.some(Boolean);
-}
-
-function armGridPan(img) {
-  ensureGrid();
-  const cell = gridEl.querySelector(".cell");
-  if (!cell || !img) return;
-  const cr = cell.clientWidth / Math.max(1, cell.clientHeight);
-  const ir = img.naturalWidth / img.naturalHeight;
-  const axis = !ir || !cr || Math.abs(ir - cr) < 0.06 ? "" : ir > cr ? "pan-x" : "pan-y";
-  gridEl.querySelectorAll(".tile").forEach((tile) => {
-    tile.classList.remove("pan-x", "pan-y");
-    tile.style.animationDelay = "";
-    tile.style.animationDirection = "";
-    void tile.offsetWidth;
-    if (axis) tile.classList.add(axis);
-  });
-}
-
-function hideGrid() {
-  gridEl.classList.remove("on");
-  toolsEl.classList.remove("on-grid");
-}
-
-function waitFade(el) {
-  return new Promise((resolve) => {
-    const opacity = parseFloat(getComputedStyle(el).opacity);
-    if (!(opacity > 0.02)) {
-      resolve();
-      return;
-    }
-    let settled = false;
-    const finish = () => {
-      if (settled) return;
-      settled = true;
-      el.removeEventListener("transitionend", onEnd);
-      resolve();
-    };
-    const onEnd = (event) => {
-      if (event.target === el && event.propertyName === "opacity") finish();
-    };
-    el.addEventListener("transitionend", onEnd);
-    window.setTimeout(finish, 1000);
-  });
-}
-
-function showGrid(img) {
-  toolsEl.classList.add("on-grid");
-  requestAnimationFrame(() => {
-    gridEl.classList.add("on");
-    armGridPan(img);
-  });
-}
-
 function sources(work) {
   const list = [work.image, work.imageHi];
   return [...new Set(list.filter((url) => typeof url === "string" && url.length > 8))];
-}
-
-function armPan(img) {
-  slide.classList.remove("pan-x", "pan-y");
-  void slide.offsetWidth;
-  const ir = img.naturalWidth / img.naturalHeight;
-  const vr = window.innerWidth / window.innerHeight;
-  if (!ir || !vr || Math.abs(ir - vr) < 0.06) return;
-  slide.classList.add(ir > vr ? "pan-x" : "pan-y");
 }
 
 function loadSlide(urls, onDone) {
@@ -367,43 +310,423 @@ function loadSlide(urls, onDone) {
   tryNext();
 }
 
-function show(work) {
-  if (!work) return;
-  const token = (state.token += 1);
-  slide.classList.remove("on", "pan-x", "pan-y");
-  hideGrid();
-  const faded = Promise.all([waitFade(slide), waitFade(gridEl)]);
+function nextFrame() {
+  return new Promise((resolve) => requestAnimationFrame(resolve));
+}
+
+function opacityOf(el) {
+  return parseFloat(getComputedStyle(el).opacity) || 0;
+}
+
+function findPan(el) {
+  if (!el || !el.getAnimations) return null;
+  return el.getAnimations().find((anim) => anim.id === "pan") || null;
+}
+
+function panCycle(ms) {
+  if (!Number.isFinite(ms)) return null;
+  return ((ms % PAN_CYCLE) + PAN_CYCLE) % PAN_CYCLE;
+}
+
+function readPanTimeFrom(nodes) {
+  for (const el of nodes) {
+    const anim = findPan(el);
+    if (!anim || anim.currentTime == null) continue;
+    const time = panCycle(Number(anim.currentTime));
+    if (time != null) return time;
+  }
+  return null;
+}
+
+function activeNodes() {
+  if (gridEl.classList.contains("on")) return [...gridEl.querySelectorAll(".tile")];
+  if (slide.classList.contains("on")) return [slide];
+  return [];
+}
+
+// Freeze the crop that is on screen and keep its pan clock. Removing the
+// animation without this matrix snaps the picture back to the centered cover.
+function holdVisiblePan() {
+  const nodes = activeNodes();
+  if (!nodes.length) return state.panTime;
+  const time = readPanTimeFrom(nodes);
+  for (const el of nodes) {
+    const anim = findPan(el);
+    const frozen = getComputedStyle(el).transform;
+    if (!frozen || frozen === "none") continue;
+    if (anim) anim.cancel();
+    el.style.transform = frozen;
+  }
+  state.panTime = time;
+  return time;
+}
+
+function whenBlack(el) {
+  return new Promise((resolve) => {
+    let settled = false;
+    const finish = () => {
+      if (settled) return;
+      if (opacityOf(el) > 0.02) return;
+      settled = true;
+      el.removeEventListener("transitionend", onEnd);
+      clearTimeout(timer);
+      resolve();
+    };
+    const onEnd = (event) => {
+      if (event.target === el && event.propertyName === "opacity") finish();
+    };
+    el.addEventListener("transitionend", onEnd);
+    const timer = setTimeout(() => {
+      if (settled) return;
+      settled = true;
+      el.removeEventListener("transitionend", onEnd);
+      resolve();
+    }, 1600);
+  });
+}
+
+async function fadeToBlack(token) {
+  const jobs = [];
+  for (const el of [slide, gridEl]) {
+    if (opacityOf(el) <= 0.02) {
+      el.classList.remove("on");
+      continue;
+    }
+    const job = whenBlack(el);
+    el.classList.remove("on");
+    jobs.push(job);
+  }
+  await Promise.all(jobs);
+  const start = performance.now();
+  while (
+    token === state.token &&
+    (opacityOf(slide) > 0.02 || opacityOf(gridEl) > 0.02) &&
+    performance.now() - start < 2000
+  ) {
+    await nextFrame();
+  }
+  if (token !== state.token) return;
+  if (opacityOf(slide) > 0.02) slide.style.opacity = "0";
+  if (opacityOf(gridEl) > 0.02) gridEl.style.opacity = "0";
+}
+
+function panMetrics(img, boxW, boxH) {
+  const iw = img?.naturalWidth || 0;
+  const ih = img?.naturalHeight || 0;
+  if (!iw || !ih || boxW < 2 || boxH < 2) return null;
+  const ir = iw / ih;
+  const br = boxW / boxH;
+  if (!Number.isFinite(ir) || !Number.isFinite(br) || Math.abs(ir - br) < PAN_RATIO) return null;
+  if (ir > br) {
+    const h = boxH + 2;
+    const w = Math.ceil((iw * h) / ih);
+    return { axis: "x", w, h, to: boxW - w };
+  }
+  const w = boxW + 2;
+  const h = Math.ceil((ih * w) / iw);
+  return { axis: "y", w, h, to: boxH - h };
+}
+
+function clearLayout(el) {
+  el.style.inset = "";
+  el.style.top = "";
+  el.style.left = "";
+  el.style.width = "";
+  el.style.height = "";
+  el.style.objectFit = "";
+  el.style.transform = "";
+}
+
+function applyLayout(el, metrics) {
+  if (!metrics) {
+    clearLayout(el);
+    return;
+  }
+  el.style.inset = "auto";
+  el.style.top = "0px";
+  el.style.left = "0px";
+  el.style.width = `${metrics.w}px`;
+  el.style.height = `${metrics.h}px`;
+  el.style.objectFit = "fill";
+}
+
+function cancelPan(el) {
+  if (!el?.getAnimations) return;
+  for (const anim of [...el.getAnimations()]) {
+    if (anim.id === "pan") anim.cancel();
+  }
+  el.style.transform = "";
+}
+
+function playPan(el, metrics, time) {
+  cancelPan(el);
+  const keyframes =
+    metrics.axis === "x"
+      ? [
+          { transform: "translate3d(0, 0, 0)" },
+          { transform: `translate3d(${metrics.to}px, 0, 0)` },
+        ]
+      : [
+          { transform: "translate3d(0, 0, 0)" },
+          { transform: `translate3d(0, ${metrics.to}px, 0)` },
+        ];
+  const anim = el.animate(keyframes, {
+    duration: PAN_MS,
+    iterations: Infinity,
+    direction: "alternate",
+    easing: "linear",
+    fill: "both",
+    id: "pan",
+  });
+  const applyTime = () => {
+    if (time == null || !Number.isFinite(time)) return;
+    try {
+      anim.currentTime = time;
+    } catch {
+      /* the clock stays at the start edge */
+    }
+  };
+  applyTime();
+  return anim.ready.then(applyTime).catch(() => {});
+}
+
+function parkElement(el) {
+  el.classList.remove("on");
+  el.style.visibility = "hidden";
+  el.style.opacity = "";
+  const nodes = el === gridEl ? [...el.querySelectorAll(".tile")] : [el];
+  for (const node of nodes) {
+    cancelPan(node);
+    clearLayout(node);
+  }
+}
+
+function loadWorkImage(work) {
+  return new Promise((resolve) => {
+    loadSlide(sources(work), (url, img, cors) => resolve({ url, img, cors }));
+  });
+}
+
+async function colorizeUrls(img) {
+  const blobs = await Promise.all(PALETTES.map((palette) => colorizeFull(img, palette)));
+  return blobs.map((blob) => (blob ? URL.createObjectURL(blob) : ""));
+}
+
+async function prepareFrame(work, loaded, token) {
+  const { url, img, cors } = loaded;
+  if (!img || !url) return null;
+  if (!(cors && mosaicOn() && isLowRes(img, work))) {
+    return { mode: "slide", url, img, urls: null };
+  }
+  try {
+    const urls = await colorizeUrls(img);
+    if (token !== state.token) {
+      discardUrls(urls);
+      return null;
+    }
+    if (!urls.some(Boolean)) {
+      discardUrls(urls);
+      return { mode: "slide", url, img, urls: null };
+    }
+    return { mode: "grid", url, img, urls };
+  } catch {
+    return { mode: "slide", url, img, urls: null };
+  }
+}
+
+function setImgSrc(img, url, token) {
+  if (!url || token !== state.token) return Promise.resolve(false);
+  let abs = url;
+  try {
+    abs = new URL(url, window.location.href).href;
+  } catch {
+    /* keep the raw url */
+  }
+  if (img.src === abs && img.complete && img.naturalWidth) return Promise.resolve(true);
+  return new Promise((resolve) => {
+    const done = (ok) => {
+      img.removeEventListener("load", onLoad);
+      img.removeEventListener("error", onError);
+      resolve(ok);
+    };
+    const onLoad = () => done(true);
+    const onError = () => done(false);
+    img.addEventListener("load", onLoad);
+    img.addEventListener("error", onError);
+    if (token !== state.token) {
+      done(false);
+      return;
+    }
+    img.src = url;
+  });
+}
+
+function seekPan(el, time) {
+  const anim = findPan(el);
+  if (!anim || time == null || !Number.isFinite(time)) return;
+  try {
+    anim.currentTime = time;
+  } catch {
+    /* a cancelled clock is left untouched */
+  }
+}
+
+function resumeHeld(panTime) {
+  const which = state.heldSurface;
+  if (which === "grid") {
+    gridEl.style.visibility = "visible";
+    const cell = gridEl.querySelector(".cell");
+    const metrics =
+      state.lastImg && cell ? panMetrics(state.lastImg, cell.clientWidth, cell.clientHeight) : null;
+    gridEl.querySelectorAll(".tile").forEach((tile) => {
+      applyLayout(tile, metrics);
+      if (metrics) playPan(tile, metrics, panTime);
+      else tile.style.transform = "";
+    });
+    gridEl.style.opacity = "";
+    gridEl.classList.add("on");
+    return;
+  }
+  if (which !== "slide") return;
+  slide.style.visibility = "visible";
+  const stage = $("stage");
+  const metrics = state.lastImg ? panMetrics(state.lastImg, stage.clientWidth, stage.clientHeight) : null;
+  applyLayout(slide, metrics);
+  if (metrics) playPan(slide, metrics, panTime);
+  else slide.style.transform = "";
+  slide.style.opacity = "";
+  slide.classList.add("on");
+}
+
+async function mountSlide(prep, panTime, token) {
+  slide.style.visibility = "visible";
+  const ok = await setImgSrc(slide, prep.url, token);
+  if (!ok || token !== state.token) return false;
+  parkElement(gridEl);
+  toolsEl.classList.remove("on-grid");
+  const stage = $("stage");
+  const metrics = panMetrics(prep.img, stage.clientWidth, stage.clientHeight);
+  applyLayout(slide, metrics);
+  if (metrics) await playPan(slide, metrics, panTime);
+  else cancelPan(slide);
+  return token === state.token;
+}
+
+async function mountGrid(prep, panTime, token) {
+  ensureGrid();
+  gridEl.style.visibility = "visible";
+  const tiles = [...gridEl.querySelectorAll(".tile")];
+  const loaded = await Promise.all(tiles.map((tile, i) => setImgSrc(tile, prep.urls[i] || "", token)));
+  if (token !== state.token) {
+    discardUrls(prep.urls);
+    prep.urls = null;
+    return false;
+  }
+  if (!loaded.some(Boolean)) {
+    discardUrls(prep.urls);
+    prep.urls = null;
+    return false;
+  }
+  const cell = gridEl.querySelector(".cell");
+  const metrics = panMetrics(prep.img, cell.clientWidth, cell.clientHeight);
+  parkElement(slide);
+  toolsEl.classList.add("on-grid");
+  publishTileUrls(prep.urls);
+  prep.urls = null;
+  const pending = [];
+  tiles.forEach((tile) => {
+    applyLayout(tile, metrics);
+    if (metrics) pending.push(playPan(tile, metrics, panTime));
+    else cancelPan(tile);
+  });
+  await Promise.all(pending);
+  return token === state.token;
+}
+
+async function present(work, prep, panTime, token) {
+  if (opacityOf(slide) > 0.02 || opacityOf(gridEl) > 0.02) {
+    await fadeToBlack(token);
+    if (token !== state.token) return false;
+  }
+  const clock = panTime;
+  const ok =
+    prep.mode === "grid" ? await mountGrid(prep, clock, token) : await mountSlide(prep, clock, token);
+  if (!ok || token !== state.token) return false;
+  state.lastImg = prep.img;
+  state.heldSurface = prep.mode === "grid" ? "grid" : "slide";
+  state.panTime = clock;
+  if (prep.url) thumb.src = prep.url;
   renderIntro(work);
   renderChrome();
-  loadSlide(sources(work), async (url, img, cors) => {
-    if (token !== state.token) return;
-    state.lastImg = img;
-    if (url) thumb.src = url;
-    let grid = false;
-    if (cors && img && mosaicOn() && isLowRes(img, work)) {
-      try {
-        grid = await buildTiles(img);
-      } catch {
-        grid = false;
-      }
-    } else {
-      revokeTiles();
-    }
-    await faded;
-    if (token !== state.token) return;
-    if (grid) {
-      slide.classList.remove("on", "pan-x", "pan-y");
-      showGrid(img);
-    } else {
-      hideGrid();
-      if (url) slide.src = url;
-      if (img) armPan(img);
-      requestAnimationFrame(() => {
-        if (token === state.token) slide.classList.add("on");
-      });
-    }
-  });
+  const root = prep.mode === "grid" ? gridEl : slide;
+  root.style.opacity = "";
+  await nextFrame();
+  await nextFrame();
+  if (token !== state.token) return false;
+  const nodes = prep.mode === "grid" ? [...gridEl.querySelectorAll(".tile")] : [slide];
+  for (const node of nodes) seekPan(node, clock);
+  root.classList.add("on");
   preload(1);
+  return true;
+}
+
+function relayoutVisible() {
+  if (!state.lastImg) return;
+  if (gridEl.classList.contains("on")) {
+    const cell = gridEl.querySelector(".cell");
+    if (!cell) return;
+    const tiles = [...gridEl.querySelectorAll(".tile")];
+    const time = readPanTimeFrom(tiles);
+    const metrics = panMetrics(state.lastImg, cell.clientWidth, cell.clientHeight);
+    tiles.forEach((tile) => {
+      applyLayout(tile, metrics);
+      if (metrics) playPan(tile, metrics, time);
+      else cancelPan(tile);
+    });
+    return;
+  }
+  if (!slide.classList.contains("on")) return;
+  const time = readPanTimeFrom([slide]);
+  const stage = $("stage");
+  const metrics = panMetrics(state.lastImg, stage.clientWidth, stage.clientHeight);
+  applyLayout(slide, metrics);
+  if (metrics) playPan(slide, metrics, time);
+  else cancelPan(slide);
+}
+
+async function show(work) {
+  if (!work) return;
+  const token = (state.token += 1);
+  if (gridEl.classList.contains("on")) state.heldSurface = "grid";
+  else if (slide.classList.contains("on")) state.heldSurface = "slide";
+  const panTime = holdVisiblePan();
+  const black = fadeToBlack(token);
+  const loading = loadWorkImage(work);
+  await nextFrame();
+  if (token !== state.token) return;
+  const loaded = await loading;
+  if (token !== state.token) return;
+  const prep = await prepareFrame(work, loaded, token);
+  await black;
+  if (token !== state.token) {
+    discardUrls(prep?.urls);
+    return;
+  }
+  if (!prep) {
+    resumeHeld(panTime);
+    renderIntro(work);
+    renderChrome();
+    return;
+  }
+  const shown = await present(work, prep, panTime, token);
+  if (token !== state.token) {
+    discardUrls(prep?.urls);
+    return;
+  }
+  if (!shown) {
+    discardUrls(prep?.urls);
+    resumeHeld(panTime);
+  }
 }
 
 function preload(offset) {
@@ -593,10 +916,7 @@ window.addEventListener("mousemove", armIdle);
 let resizeTimer = 0;
 window.addEventListener("resize", () => {
   clearTimeout(resizeTimer);
-  resizeTimer = setTimeout(() => {
-    if (gridEl.classList.contains("on") && state.lastImg) armGridPan(state.lastImg);
-    else if (slide.naturalWidth) armPan(slide);
-  }, 240);
+  resizeTimer = setTimeout(relayoutVisible, 240);
 });
 window.addEventListener("keydown", (event) => {
   if (event.key === "ArrowRight") go(1);
