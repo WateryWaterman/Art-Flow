@@ -46,7 +46,8 @@ const state = {
   interval: 180000,
   idle: null,
   tileUrls: [],
-  lastImg: null,
+  frame: null,
+  shownId: null,
   token: 0,
   panTime: null,
   heldSurface: null,
@@ -226,20 +227,7 @@ function isLowRes(img, work) {
   return false;
 }
 
-function colorize(ctx, w, h, shadow, mid, light) {
-  const pixels = ctx.getImageData(0, 0, w, h);
-  const d = pixels.data;
-  for (let i = 0; i < d.length; i += 4) {
-    const y = 0.2126 * d[i] + 0.7152 * d[i + 1] + 0.0722 * d[i + 2];
-    const c = y < 78 ? shadow : y < 168 ? mid : light;
-    d[i] = c[0];
-    d[i + 1] = c[1];
-    d[i + 2] = c[2];
-  }
-  ctx.putImageData(pixels, 0, 0);
-}
-
-function colorizeFull(img, palette) {
+function bandsOf(img) {
   const maxEdge = 1400;
   const scale = Math.min(1, maxEdge / Math.max(img.naturalWidth, img.naturalHeight));
   const w = Math.max(1, Math.round(img.naturalWidth * scale));
@@ -249,9 +237,30 @@ function colorizeFull(img, palette) {
   off.height = h;
   const ctx = off.getContext("2d", { willReadFrequently: true, alpha: false });
   ctx.drawImage(img, 0, 0, w, h);
-  colorize(ctx, w, h, palette[0], palette[1], palette[2]);
+  const base = ctx.getImageData(0, 0, w, h);
+  const d = base.data;
+  const bands = new Uint8Array(w * h);
+  for (let p = 0, i = 0; p < bands.length; p += 1, i += 4) {
+    const y = 0.2126 * d[i] + 0.7152 * d[i + 1] + 0.0722 * d[i + 2];
+    bands[p] = y < 78 ? 0 : y < 168 ? 1 : 2;
+  }
+  return { ctx, w, h, bands };
+}
+
+function paintPalette(sheet, palette) {
+  const { ctx, w, h, bands } = sheet;
+  const pixels = ctx.createImageData(w, h);
+  const d = pixels.data;
+  for (let p = 0, i = 0; p < bands.length; p += 1, i += 4) {
+    const c = palette[bands[p]];
+    d[i] = c[0];
+    d[i + 1] = c[1];
+    d[i + 2] = c[2];
+    d[i + 3] = 255;
+  }
+  ctx.putImageData(pixels, 0, 0);
   return new Promise((resolve) => {
-    off.toBlob((blob) => resolve(blob || null), "image/jpeg", 0.88);
+    ctx.canvas.toBlob((blob) => resolve(blob || null), "image/jpeg", 0.88);
   });
 }
 
@@ -275,6 +284,52 @@ function sources(work) {
   return [...new Set(list.filter((url) => typeof url === "string" && url.length > 8))];
 }
 
+let ahead = null;
+
+function allowsCors(url) {
+  try {
+    const host = new URL(url).hostname;
+    return host !== "openaccess-cdn.clevelandart.org" && !host.endsWith(".clevelandart.org");
+  } catch {
+    return true;
+  }
+}
+
+function startLoad(url, cors) {
+  return new Promise((resolve) => {
+    const img = new Image();
+    if (cors) img.crossOrigin = "anonymous";
+    img.referrerPolicy = "no-referrer";
+    let settled = false;
+    const finish = (ok) => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      img.onload = null;
+      img.onerror = null;
+      if (!ok) {
+        img.src = "";
+        resolve(null);
+        return;
+      }
+      resolve({ url, img, cors });
+    };
+    const timer = setTimeout(() => finish(false), 15000);
+    img.onload = () => finish(true);
+    img.onerror = () => finish(false);
+    img.src = url;
+  });
+}
+
+function claimLoad(url, cors) {
+  if (ahead && ahead.url === url && ahead.cors === cors) {
+    const job = ahead.promise;
+    ahead = null;
+    return job;
+  }
+  return startLoad(url, cors);
+}
+
 function loadSlide(urls, onDone) {
   let i = 0;
   const tryNext = () => {
@@ -284,28 +339,17 @@ function loadSlide(urls, onDone) {
     }
     const url = urls[i];
     i += 1;
-    const attempt = (cors) => {
-      const img = new Image();
-      if (cors) img.crossOrigin = "anonymous";
-      img.referrerPolicy = "no-referrer";
-      const timer = setTimeout(() => {
-        img.onload = img.onerror = null;
-        img.src = "";
-        if (cors) attempt(false);
+    const run = (cors) => {
+      claimLoad(url, cors).then((hit) => {
+        if (hit) {
+          onDone(hit.url, hit.img, hit.cors);
+          return;
+        }
+        if (cors) run(false);
         else tryNext();
-      }, 15000);
-      img.onload = () => {
-        clearTimeout(timer);
-        onDone(url, img, cors);
-      };
-      img.onerror = () => {
-        clearTimeout(timer);
-        if (cors) attempt(false);
-        else tryNext();
-      };
-      img.src = url;
+      });
     };
-    attempt(true);
+    run(allowsCors(url));
   };
   tryNext();
 }
@@ -411,8 +455,8 @@ async function fadeToBlack(token) {
 }
 
 function panMetrics(img, boxW, boxH) {
-  const iw = img?.naturalWidth || 0;
-  const ih = img?.naturalHeight || 0;
+  const iw = img?.naturalWidth || img?.w || 0;
+  const ih = img?.naturalHeight || img?.h || 0;
   if (!iw || !ih || boxW < 2 || boxH < 2) return null;
   const ir = iw / ih;
   const br = boxW / boxH;
@@ -508,8 +552,13 @@ function loadWorkImage(work) {
 }
 
 async function colorizeUrls(img) {
-  const blobs = await Promise.all(PALETTES.map((palette) => colorizeFull(img, palette)));
-  return blobs.map((blob) => (blob ? URL.createObjectURL(blob) : ""));
+  const sheet = bandsOf(img);
+  const urls = [];
+  for (const palette of PALETTES) {
+    const blob = await paintPalette(sheet, palette);
+    urls.push(blob ? URL.createObjectURL(blob) : "");
+  }
+  return urls;
 }
 
 async function prepareFrame(work, loaded, token) {
@@ -576,8 +625,7 @@ function resumeHeld(panTime) {
   if (which === "grid") {
     gridEl.style.visibility = "visible";
     const cell = gridEl.querySelector(".cell");
-    const metrics =
-      state.lastImg && cell ? panMetrics(state.lastImg, cell.clientWidth, cell.clientHeight) : null;
+    const metrics = cell ? panMetrics(state.frame, cell.clientWidth, cell.clientHeight) : null;
     gridEl.querySelectorAll(".tile").forEach((tile) => {
       applyLayout(tile, metrics);
       if (metrics) playPan(tile, metrics, panTime);
@@ -590,7 +638,7 @@ function resumeHeld(panTime) {
   if (which !== "slide") return;
   slide.style.visibility = "visible";
   const stage = $("stage");
-  const metrics = state.lastImg ? panMetrics(state.lastImg, stage.clientWidth, stage.clientHeight) : null;
+  const metrics = panMetrics(state.frame, stage.clientWidth, stage.clientHeight);
   applyLayout(slide, metrics);
   if (metrics) playPan(slide, metrics, panTime);
   else slide.style.transform = "";
@@ -652,9 +700,12 @@ async function present(work, prep, panTime, token) {
   const ok =
     prep.mode === "grid" ? await mountGrid(prep, clock, token) : await mountSlide(prep, clock, token);
   if (!ok || token !== state.token) return false;
-  state.lastImg = prep.img;
+  state.frame = { w: prep.img?.naturalWidth || 0, h: prep.img?.naturalHeight || 0 };
+  state.shownId = work.id;
   state.heldSurface = prep.mode === "grid" ? "grid" : "slide";
   state.panTime = clock;
+  prep.img = null;
+  // The thumb uses the slide URL. A smaller file would be a second download, and the full-screen decode would remain.
   if (prep.url) thumb.src = prep.url;
   renderIntro(work);
   renderChrome();
@@ -671,13 +722,13 @@ async function present(work, prep, panTime, token) {
 }
 
 function relayoutVisible() {
-  if (!state.lastImg) return;
+  if (!state.frame?.w) return;
   if (gridEl.classList.contains("on")) {
     const cell = gridEl.querySelector(".cell");
     if (!cell) return;
     const tiles = [...gridEl.querySelectorAll(".tile")];
     const time = readPanTimeFrom(tiles);
-    const metrics = panMetrics(state.lastImg, cell.clientWidth, cell.clientHeight);
+    const metrics = panMetrics(state.frame, cell.clientWidth, cell.clientHeight);
     tiles.forEach((tile) => {
       applyLayout(tile, metrics);
       if (metrics) playPan(tile, metrics, time);
@@ -688,7 +739,7 @@ function relayoutVisible() {
   if (!slide.classList.contains("on")) return;
   const time = readPanTimeFrom([slide]);
   const stage = $("stage");
-  const metrics = panMetrics(state.lastImg, stage.clientWidth, stage.clientHeight);
+  const metrics = panMetrics(state.frame, stage.clientWidth, stage.clientHeight);
   applyLayout(slide, metrics);
   if (metrics) playPan(slide, metrics, time);
   else cancelPan(slide);
@@ -705,37 +756,63 @@ async function show(work) {
   await nextFrame();
   if (token !== state.token) return;
   const loaded = await loading;
-  if (token !== state.token) return;
+  if (token !== state.token) {
+    releaseLoad(loaded);
+    return;
+  }
   const prep = await prepareFrame(work, loaded, token);
   await black;
   if (token !== state.token) {
     discardUrls(prep?.urls);
+    releaseLoad(loaded);
+    if (prep) prep.img = null;
     return;
   }
   if (!prep) {
-    resumeHeld(panTime);
-    renderIntro(work);
-    renderChrome();
+    releaseLoad(loaded);
+    if (!restoreShown(panTime)) {
+      resumeHeld(panTime);
+      renderIntro(work);
+      renderChrome();
+    }
     return;
   }
   const shown = await present(work, prep, panTime, token);
+  releaseLoad(loaded);
+  prep.img = null;
   if (token !== state.token) {
     discardUrls(prep?.urls);
     return;
   }
   if (!shown) {
     discardUrls(prep?.urls);
-    resumeHeld(panTime);
+    if (!restoreShown(panTime)) resumeHeld(panTime);
   }
+}
+
+function releaseLoad(loaded) {
+  if (loaded) loaded.img = null;
+}
+
+function restoreShown(panTime) {
+  const work = state.shownId ? lookup(state.shownId) : null;
+  if (!work) return false;
+  const i = state.queue.findIndex((item) => item.id === work.id);
+  if (i >= 0) state.index = i;
+  resumeHeld(panTime);
+  renderIntro(work);
+  renderChrome();
+  return true;
 }
 
 function preload(offset) {
   const work = state.queue[(state.index + offset) % state.queue.length];
   if (!work) return;
-  const first = sources(work)[0];
-  if (!first) return;
-  const img = new Image();
-  img.src = first;
+  const url = sources(work)[0];
+  if (!url) return;
+  const cors = allowsCors(url);
+  if (ahead && ahead.url === url && ahead.cors === cors) return;
+  ahead = { url, cors, promise: startLoad(url, cors) };
 }
 
 function go(delta) {
@@ -838,7 +915,12 @@ function setMode(mode) {
 
 function restartTimer() {
   clearInterval(state.timer);
-  state.timer = setInterval(() => go(1), state.interval);
+  state.timer = null;
+  if (document.hidden) return;
+  state.timer = setInterval(() => {
+    if (document.hidden) return;
+    go(1);
+  }, state.interval);
 }
 
 function armIdle() {
@@ -913,6 +995,7 @@ armOverlay($("prev"));
 armOverlay($("next"));
 
 window.addEventListener("mousemove", armIdle);
+document.addEventListener("visibilitychange", () => restartTimer());
 let resizeTimer = 0;
 window.addEventListener("resize", () => {
   clearTimeout(resizeTimer);
