@@ -35,6 +35,7 @@ You are not adding a feature. You are swapping the pictures.
 - Images stay hotlinked. Do not commit JPEGs. Do not hammer Wikimedia (sleep ≥ 1s between Commons calls).
 - `data/archive.json` is merge-only. Never delete a row. Updating a row in place is allowed when the same id gets a fresher image URL.
 - Mosaic (3×3, tiles pan together) is already implemented. You do not restyle it. Sub-1080p works will use it when the toggle is on.
+- The pan and the fade already have a cost budget. Do not move the pan back to an `object-position` animation. Do not swap the image before the 0.9s fade has reached black. Details and expected GPU/CPU use are in [DECISIONS.md](./DECISIONS.md).
 - UI language on the board stays as it is (收藏／已收藏, 全部 / 收藏 / 穿插, 導出 / 導入). Artwork titles stay in their original language. Unique ids stay in the repo; do not paint them on the board.
 
 ---

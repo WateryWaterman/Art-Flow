@@ -8,17 +8,25 @@ The author replaces the current push with a new set of works each week. Favourit
 
 This is a static GitHub Pages site (`WateryWaterman/Art-Flow`). There is no account, no backend, and no images in git.
 
-For the weekly replacement playbook see [UPDATE.md](./UPDATE.md). For sources that are in use or already ruled out, see [SOURCES.md](./SOURCES.md). Locked product choices live in [DECISIONS.md](./DECISIONS.md).
+For the weekly replacement playbook see [UPDATE.md](./UPDATE.md). For sources that are in use or already ruled out, see [SOURCES.md](./SOURCES.md). Locked product choices, including how the picture moves and what it should cost, live in [DECISIONS.md](./DECISIONS.md).
+
+---
+
+## This update
+
+Switching waits until the screen is black, then changes the picture and fades it in. The slow pan no longer jumps back to the center. The next work continues from the same point in the 90-second pass. The nine mosaic tiles still move together.
+
+The picture still covers the screen and keeps its shape. The browser paints it once and slides that layer with the display refresh. It does not redraw the whole JPEG on every frame. Entering a mosaic spends a short burst of CPU to make the nine colors. After that, a still board is one moving layer, or nine when the mosaic is showing. A layer you are not looking at keeps its picture and stops moving.
 
 ---
 
 ## What you see
 
-The picture covers the screen (`object-fit: cover`) and keeps its aspect ratio. Overflow pans slowly (Ken Burns). The cursor hides after two seconds of stillness.
+The picture covers the screen (`object-fit: cover`) and keeps its aspect ratio. Overflow pans slowly, over 90 seconds, linear, back and forth. The cursor hides after two seconds of stillness.
 
 Works that cannot cover 1920×1080 without upscaling — and furniture still below a 2500px long edge — can be shown as a 3×3 Warhol-style mosaic: the same image, nine palettes, paper gutters, **all nine tiles panning together**. Toggle that in the bottom intro. Default is on. The original thumbnail sits on the right of the intro so you can see the whole work without waiting for the pan.
 
-Switching always dims through the black stage in 0.9s, for photographs and for the mosaic. The next picture is not swapped in until the current one has faded out, so a cached high-res pair does not flash-cut.
+Switching always dims through the black stage in 0.9s, for photographs and for the mosaic. The address of the next picture is changed only after that fade has reached black.
 
 ---
 
@@ -137,8 +145,8 @@ Architecture titles, architects, years, and intros are overwritten from the `BUI
 | 低清拼合 開 / 關 | `app.js` `renderMosaicBtn` |
 | Title, maker, year, intro, credit | `data/catalog.json` (and archive). Architecture intros: `BUILDINGS` in `scripts/build_catalog.py` |
 | Auto-advance seconds | `data/catalog.json` `intervalSeconds` |
-| Paper / ink / pan / mosaic gutters | `styles.css` |
-| Queue, like storage, mosaic trigger | `app.js` |
+| Paper / ink / mosaic gutters | `styles.css` |
+| Pan clock, black-frame swap, queue, like storage, mosaic trigger | `app.js` |
 
 Allowed reuse: CC BY / CC BY-SA / CC BY-NC / CC0 / public domain, plus V&A non-commercial with attribution. No Remedy assets. No living-designer shop photos. No Aalto furniture (still in copyright in the EU). Building façades are fine.
 
@@ -156,11 +164,17 @@ If a source is added, dropped, or blocked, update [SOURCES.md](./SOURCES.md) in 
 
 這是靜態 GitHub Pages，沒有帳號，沒有後端，圖片不進 git。
 
-每週整批替換看 [UPDATE.md](./UPDATE.md)。用過和排除過的來源看 [SOURCES.md](./SOURCES.md)。已拍板的選擇看 [DECISIONS.md](./DECISIONS.md)。
+每週整批替換看 [UPDATE.md](./UPDATE.md)。用過和排除過的來源看 [SOURCES.md](./SOURCES.md)。已拍板的選擇，以及畫面怎麼動、預期佔多少算力，看 [DECISIONS.md](./DECISIONS.md)。
+
+### 這次改了什麼
+
+切換會先用 0.9 秒暗到全黑，黑了才換下一張，再淡入。慢速平移不再在切換時跳回正中。上一張停在 90 秒行程的哪裡，下一張就從那裡繼續。九宮格仍然九格齊步。
+
+舖滿和比例都沒變。變的是做法：圖先畫好，再跟著螢幕刷新滑動這一層，不再每一幀重畫整張 JPEG。進入九宮格時，CPU 會短促忙一下，用來做出九種配色。之後待機就是一層在動；九宮格打開時是九層。沒有在看的那一層，圖還留著，但不再移動、不再繪製。
 
 ### 畫面
 
-作品舖滿螢幕、比例不變，多出來的邊會慢速平移。達不到 1080p 的圖（以及長邊仍低於 2500px 的家具）可做成九宮格：同一張圖九種配色，格間留紙色，**九格齊步平移**。底部簡介可關，預設開。簡介右側是原圖縮略圖，點它打開來源網頁。切換時原圖與九宮格都先在 0.9 秒內暗到黑底，暗完再換下一張，避免緩存裡的高清圖閃切。
+作品舖滿螢幕、比例不變，多出來的邊用 90 秒線性來回慢移。達不到 1080p 的圖（以及長邊仍低於 2500px 的家具）可做成九宮格：同一張圖九種配色，格間留紙色，**九格齊步平移**。底部簡介可關，預設開。簡介右側是原圖縮略圖，點它打開來源網頁。切換時原圖與九宮格都先在 0.9 秒內暗到黑底，暗完才換地址。
 
 ### 操作
 
