@@ -294,8 +294,21 @@ body.idle {
 }
 
 .intro-copy {
-  flex: 1;
+  flex: 1 1 auto;
+  align-self: flex-end;
   min-width: 0;
+  min-height: 0;
+  max-height: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+}
+
+.intro-copy::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 .intro-thumb {
@@ -344,9 +357,13 @@ body.idle {
 
 #intro:hover {
   height: min(58vh, 32rem);
-  overflow: auto;
+  overflow: hidden;
   color: var(--ink);
   background: linear-gradient(to top, var(--paper) 0%, color-mix(in srgb, var(--paper) 94%, transparent) 72%, transparent);
+}
+
+#intro:hover .intro-copy {
+  overflow-y: auto;
 }
 
 #intro:hover .kicker,
@@ -439,6 +456,19 @@ body.idle {
 
   .intro-thumb {
     width: min(42vw, 11rem);
-    flex-basis: auto;
+    flex: 0 1 auto;
+    min-height: 0;
+    max-height: 11rem;
+  }
+
+  .intro-thumb img {
+    max-height: 11rem;
+  }
+
+  .intro-copy {
+    align-self: stretch;
+    flex: 1 1 auto;
+    min-height: 0;
+    max-height: none;
   }
 }

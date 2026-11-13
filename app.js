@@ -171,8 +171,10 @@ function decode(text) {
 }
 
 function renderIntro(work) {
+  const title = decode(work.title);
+  const changed = $("intro-title").textContent !== title;
   $("intro-kicker").textContent = [work.year, work.source].filter(Boolean).join("  ·  ");
-  $("intro-title").textContent = decode(work.title);
+  $("intro-title").textContent = title;
   $("intro-lede").textContent = [decode(work.maker), decode(work.medium)].filter(Boolean).join("  ·  ");
   $("intro-body").textContent = decode(work.intro || "");
   $("intro-cite").textContent = `${work.license}. ${decode(work.credit)}`.trim();
@@ -190,6 +192,10 @@ function renderIntro(work) {
     thumbLink.classList.add("is-off");
   }
   renderMosaicBtn();
+  if (changed) {
+    const copy = introEl.querySelector(".intro-copy");
+    if (copy) copy.scrollTop = 0;
+  }
 }
 
 function mosaicOn() {
