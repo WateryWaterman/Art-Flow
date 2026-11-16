@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-10T11:53:56Z",
+  "updated": "2026-11-16T11:18:24Z",
   "works": [
     {
       "id": "commons-175835017",
@@ -1660,6 +1660,120 @@
       "intro": "柯布西耶的薩伏伊別墅。底層架空、自由平面與長窗，現代住宅的原型。",
       "tags": [
         "commons"
+      ]
+    },
+    {
+      "id": "va-O84534",
+      "title": "Josef Hoffmann Chair",
+      "maker": "Josef Hoffmann",
+      "year": "ca. 1907",
+      "medium": "Chair",
+      "source": "Victoria and Albert Museum",
+      "sourceId": "O84534",
+      "sourceUrl": "https://collections.vam.ac.uk/item/O84534/",
+      "image": "https://framemark.vam.ac.uk/collections/2006AP7915/full/!1920,/0/default.jpg",
+      "imageHi": "https://framemark.vam.ac.uk/collections/2006AP7915/full/!1920,/0/default.jpg",
+      "license": "V&A, non-commercial with attribution",
+      "credit": "Josef Hoffmann Chair. Josef Hoffmann. Victoria and Albert Museum, O84534.",
+      "intro": "Josef Hoffmann Chair。Josef Hoffmann。維多利亞與阿爾伯特博物館館藏。",
+      "tags": [
+        "vam",
+        "chair"
+      ]
+    },
+    {
+      "id": "va-O1168661",
+      "title": "Publicity & Display Ltd Poster",
+      "maker": "Publicity & Display Ltd",
+      "year": "late 20th century",
+      "medium": "Poster",
+      "source": "Victoria and Albert Museum",
+      "sourceId": "O1168661",
+      "sourceUrl": "https://collections.vam.ac.uk/item/O1168661/",
+      "image": "https://framemark.vam.ac.uk/collections/2016JJ3982/full/!1920,/0/default.jpg",
+      "imageHi": "https://framemark.vam.ac.uk/collections/2016JJ3982/full/!1920,/0/default.jpg",
+      "license": "V&A, non-commercial with attribution",
+      "credit": "Publicity & Display Ltd Poster. Publicity & Display Ltd. Victoria and Albert Museum, O1168661.",
+      "intro": "Publicity & Display Ltd Poster。Publicity & Display Ltd。維多利亞與阿爾伯特博物館館藏。",
+      "tags": [
+        "vam",
+        "poster"
+      ]
+    },
+    {
+      "id": "va-O84641",
+      "title": "Moser, Koloman Armchair",
+      "maker": "Moser, Koloman",
+      "year": "1904",
+      "medium": "Armchair",
+      "source": "Victoria and Albert Museum",
+      "sourceId": "O84641",
+      "sourceUrl": "https://collections.vam.ac.uk/item/O84641/",
+      "image": "https://framemark.vam.ac.uk/collections/2008BT7439/full/!1920,/0/default.jpg",
+      "imageHi": "https://framemark.vam.ac.uk/collections/2008BT7439/full/!1920,/0/default.jpg",
+      "license": "V&A, non-commercial with attribution",
+      "credit": "Moser, Koloman Armchair. Moser, Koloman. Victoria and Albert Museum, O84641.",
+      "intro": "Moser, Koloman Armchair。Moser, Koloman。維多利亞與阿爾伯特博物館館藏。",
+      "tags": [
+        "vam",
+        "armchair"
+      ]
+    },
+    {
+      "id": "va-O25136",
+      "title": "Weaver, Norman Poster",
+      "maker": "Weaver, Norman",
+      "year": "1933",
+      "medium": "Poster",
+      "source": "Victoria and Albert Museum",
+      "sourceId": "O25136",
+      "sourceUrl": "https://collections.vam.ac.uk/item/O25136/",
+      "image": "https://framemark.vam.ac.uk/collections/2006AT5687/full/!1920,/0/default.jpg",
+      "imageHi": "https://framemark.vam.ac.uk/collections/2006AT5687/full/!1920,/0/default.jpg",
+      "license": "V&A, non-commercial with attribution",
+      "credit": "Weaver, Norman Poster. Weaver, Norman. Victoria and Albert Museum, O25136.",
+      "intro": "Weaver, Norman Poster。Weaver, Norman。維多利亞與阿爾伯特博物館館藏。",
+      "tags": [
+        "vam",
+        "poster"
+      ]
+    },
+    {
+      "id": "va-O7926",
+      "title": "Mackmurdo, Arthur Heygate Chair",
+      "maker": "Mackmurdo, Arthur Heygate",
+      "year": "ca. 1883",
+      "medium": "Chair",
+      "source": "Victoria and Albert Museum",
+      "sourceId": "O7926",
+      "sourceUrl": "https://collections.vam.ac.uk/item/O7926/",
+      "image": "https://framemark.vam.ac.uk/collections/2006AJ3666/full/!1920,/0/default.jpg",
+      "imageHi": "https://framemark.vam.ac.uk/collections/2006AJ3666/full/!1920,/0/default.jpg",
+      "license": "V&A, non-commercial with attribution",
+      "credit": "Mackmurdo, Arthur Heygate Chair. Mackmurdo, Arthur Heygate. Victoria and Albert Museum, O7926.",
+      "intro": "Mackmurdo, Arthur Heygate Chair。Mackmurdo, Arthur Heygate。維多利亞與阿爾伯特博物館館藏。",
+      "tags": [
+        "vam",
+        "chair"
+      ]
+    },
+    {
+      "id": "va-O82411",
+      "title": "A to Z poster alphabet for Conways' photosetting",
+      "maker": "Forbes, Colin",
+      "year": "ca. 1973",
+      "medium": "Poster",
+      "source": "Victoria and Albert Museum",
+      "sourceId": "O82411",
+      "sourceUrl": "https://collections.vam.ac.uk/item/O82411/",
+      "image": "https://framemark.vam.ac.uk/collections/2014HH9809/full/!1920,/0/default.jpg",
+      "imageHi": "https://framemark.vam.ac.uk/collections/2014HH9809/full/!1920,/0/default.jpg",
+      "license": "V&A, non-commercial with attribution",
+      "credit": "A to Z poster alphabet for Conways' photosetting. Forbes, Colin. Victoria and Albert Museum, O82411.",
+      "intro": "A to Z poster alphabet for Conways' photosetting。Forbes, Colin。維多利亞與阿爾伯特博物館館藏。",
+      "tags": [
+        "vam",
+        "poster"
       ]
     }
   ]
