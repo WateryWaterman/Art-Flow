@@ -6,11 +6,12 @@ import html
 import json
 import re
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
 
-UA = "Mozilla/5.0 (compatible; StandbyBoard/1.0; +https://github.com/)"
+UA = "ArtFlowWeekly/1.0 (https://github.com/WateryWaterman/Art-Flow; funshenbot@mail.grokbot.com)"
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "data" / "catalog.json"
 ARCHIVE = ROOT / "data" / "archive.json"
@@ -22,95 +23,89 @@ NO_CORS_HOSTS = [
 ]
 
 CMA_PINNED = [
-    "129201",  # May Milton
-    "153129",  # Sculptress
-    "143846",  # Lembrée Gallery
-    "147115",  # Lorenzaccio
-    "160672",  # Sagot's Gallery
-    "125928",  # Square at Evening
-    "680793",  # Phänomen Vase
-    "117129",  # Strawberry Thief
-    "130609",  # Peacock and Dragon
-    "370537",  # Jack-in-the-Pulpit
-    "129173",  # Pink Wallpaper
-    "151714",  # Wright window
-    "151884",  # Bugatti cabinet
-    "156112",  # Bugatti tea table
-    "148803",  # Majorelle cabinet
-    "146091",  # Majorelle bench
+    '149015',  # Dressing Table Mirror
+    '156855',  # Tall Clock
+    '153752',  # Center Table
+    '160089',  # Fire Screen
+    '157229',  # Vase des Binelles
+    '165186',  # Frogs and Lily Pads (Grenouilles et Nénuphars) Vase
+    '146910',  # A Gallery at the Gymnasium
+    '129163',  # On the Pont de l'Europe
+    '127956',  # Front Cover
+    '127960',  # Schlomé Fuss in the Synagogue
+    '133109',  # Pierre Bonnard
+    '79381',  # On Cats by Jacques Dalbray
+    '103317',  # La Rue Coulaincourt
+    '112932',  # Beatrice
 ]
 
 VAM_PINNED = [
-    "O1405126",  # Cassandre Normandie
-    "O1103502",  # Expo 1925
-    "O201853",  # Alphabet
-    "O540389",  # book jacket
-    "O7878",  # Thebes stool
-    "O84639",  # Moser desk
+    'O11281',  # Mackintosh, Charles Rennie Chair
+    'O304876',  # Charles Rennie Mackintosh Chair
+    'O59048',  # Writing Desk and Armchair
+    'O61449',  # Morris & Co. Armchair
+    'O101934',  # Breuer, Marcel Lajos Armchair
+    'O11159',  # C. F. A. Voysey Table
+    'O112269',  # Godwin, Edward William Chair
+    'O114110',  # Model B5
+    'O122351',  # Fauteuil Transatlantique
+    'O129668',  # 'S' bend chair
+    'O74615',  # Secession. 16 Ausstellung, 1903
+    'O74626',  # L'Art Nouveau
+    'O75253',  # Frank Lloyd Wright Architectuur Tentoonstelling
+    'O759266',  # The Flower Show by Denis MacKail
+    'O88392',  # Secession - XXVII - Ausstellung - Nov-Dec
+    'O89696',  # I Internationale Kunst Ausstellung des Vereins Bildender Künstler Münchens (Secession)
 ]
 
 BUILDINGS = [
     {
-        "match": r"paimio",
-        "title": "Paimio Sanatorium",
-        "maker": "Alvar Aalto",
-        "year": "1929–1933",
-        "intro": "阿爾瓦·阿爾托為結核病療養院做的白色現代主義建築。橫向長窗把休養做成節奏。",
+        "match": 'ronchamp|notre-dame-du-haut|notre dame du haut',
+        "title": 'Notre Dame du Haut',
+        "maker": 'Le Corbusier',
+        "year": '1955',
+        "intro": '柯布西耶的朗香教堂。厚牆與捲曲屋頂把光線收成幾道切口。',
     },
     {
-        "match": r"bauhaus dessau",
-        "title": "Bauhaus Dessau",
-        "maker": "Walter Gropius",
-        "year": "1925–1926",
-        "intro": "格羅皮烏斯的德紹校舍。玻璃幕牆與不對稱體量，是二十世紀平面與建築共用的幾何語法。",
+        "match": 'tugendhat',
+        "title": 'Villa Tugendhat',
+        "maker": 'Ludwig Mies van der Rohe',
+        "year": '1930',
+        "intro": '密斯在布爾諾的圖根哈特宅。白色體量、花園與連續玻璃把居住做成水平的節奏。',
     },
     {
-        "match": r"salk institute",
-        "title": "Salk Institute",
-        "maker": "Louis Kahn",
-        "year": "1965",
-        "intro": "路易斯·康的薩克研究所。一條朝向太平洋的水渠把兩排研究室編成對稱的節奏。",
+        "match": 'neue nationalgalerie|new national gallery',
+        "title": 'Neue Nationalgalerie',
+        "maker": 'Ludwig Mies van der Rohe',
+        "year": '1968',
+        "intro": '密斯的柏林新國家美術館。巨大的鋼屋頂壓在幾乎消失的玻璃盒子上，留白就是結構。',
     },
     {
-        "match": r"fallingwater",
-        "title": "Fallingwater",
-        "maker": "Frank Lloyd Wright",
-        "year": "1935–1939",
-        "intro": "賴特的流水別墅。水平出挑疊在瀑布之上，是二十世紀最完整的一張建築構圖。",
+        "match": 'villa mairea|mairea',
+        "title": 'Villa Mairea',
+        "maker": 'Alvar Aalto',
+        "year": '1939',
+        "intro": '阿爾托的邁雷亞別墅。木、磚與白色體量被組織成一組鬆開的庭院。',
     },
     {
-        "match": r"pantheon",
-        "title": "Pantheon",
-        "maker": "Unknown",
-        "year": "c. 126",
-        "intro": "羅馬萬神殿穹頂。圓洞把光線做成建築本身，構圖封閉而完整。",
+        "match": 'kimbell',
+        "title": 'Kimbell Art Museum',
+        "maker": 'Louis Kahn',
+        "year": '1972',
+        "intro": '路易斯·康的金貝爾美術館。一排混凝土拱殼把光線從縫裡放進來。',
     },
     {
-        "match": r"farnsworth",
-        "title": "Farnsworth House",
-        "maker": "Ludwig Mies van der Rohe",
-        "year": "1951",
-        "intro": "密斯的范斯沃斯住宅。白鋼與玻璃的水平盒子，留白和結構一樣重要。",
-    },
-    {
-        "match": r"villa savoye|savoye",
-        "title": "Villa Savoye",
-        "maker": "Le Corbusier",
-        "year": "1929–1931",
-        "intro": "柯布西耶的薩伏伊別墅。底層架空、自由平面與長窗，現代住宅的原型。",
-    },
-    {
-        "match": r"ronchamp|notre-dame-du-haut|notre dame du haut",
-        "title": "Notre Dame du Haut",
-        "maker": "Le Corbusier",
-        "year": "1955",
-        "intro": "柯布西耶的朗香教堂。厚牆與捲曲屋頂把光線收成幾道切口。",
+        "match": 'exeter',
+        "title": 'Phillips Exeter Academy Library',
+        "maker": 'Louis Kahn',
+        "year": '1972',
+        "intro": '路易斯·康的埃克塞特圖書館。厚牆中央掏出大廳，書與光在圓周上相遇。',
     },
 ]
 
 TARGET_MIN = 32
 TARGET_MAX = 36
-TARGET = 34
+TARGET = 36
 ARCH_MAX = 6
 FURN_MAX = 14
 
@@ -125,9 +120,36 @@ POSTER_TYPE = re.compile(
 
 
 def fetch(url: str) -> bytes:
-    req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "application/json"})
-    with urllib.request.urlopen(req, timeout=40) as res:
-        return res.read()
+    headers = {"User-Agent": UA, "Accept": "application/json"}
+    last_exc: Exception | None = None
+    for attempt in range(1, 5):
+        if "wikimedia.org" in url or "wikipedia.org" in url:
+            time.sleep(1.2)
+        req = urllib.request.Request(url, headers=headers)
+        try:
+            with urllib.request.urlopen(req, timeout=40) as res:
+                return res.read()
+        except urllib.error.HTTPError as exc:
+            last_exc = exc
+            if exc.code in {429, 500, 502, 503, 504} and attempt < 4:
+                raw = exc.headers.get("Retry-After") if exc.headers else None
+                try:
+                    delay = min(float(raw), 60.0) if raw else min(2.0 * (2 ** (attempt - 1)), 60.0)
+                except ValueError:
+                    delay = min(2.0 * (2 ** (attempt - 1)), 60.0)
+                print(f"HTTP {exc.code} for {url} (attempt {attempt}/4); retrying in {delay:.1f}s")
+                time.sleep(delay)
+                continue
+            raise
+        except (urllib.error.URLError, TimeoutError, OSError) as exc:
+            last_exc = exc
+            if attempt < 4:
+                delay = min(2.0 * (2 ** (attempt - 1)), 60.0)
+                print(f"{type(exc).__name__} for {url} (attempt {attempt}/4); retrying in {delay:.1f}s")
+                time.sleep(delay)
+                continue
+            raise
+    raise last_exc if last_exc else RuntimeError(f"fetch failed: {url}")
 
 
 def fetch_json(url: str):
@@ -237,7 +259,7 @@ def cleveland() -> list[dict]:
             print("cleveland id fail", pid, exc)
         time.sleep(0.15)
 
-    for q in ["poster lithograph", "art nouveau poster", "vienna secession print"]:
+    for q in []:  # weekly-update: search fill disabled; pins are the catalog
         url = (
             "https://openaccess-api.clevelandart.org/api/artworks/"
             f"?q={urllib.parse.quote(q)}&cc0=1&has_image=1&limit=8"
@@ -269,19 +291,6 @@ def furniture_too_new(otype: str, year: str, maker: str) -> bool:
 
 def victoria() -> list[dict]:
     queries = [
-        "poster lithograph",
-        "josef albers poster",
-        "bauhaus poster",
-        "cassandre poster",
-        "alphabet poster",
-        "book jacket design",
-        "thonet chair",
-        "josef hoffmann chair",
-        "sussex chair webb",
-        "thebes stool",
-        "wiener werkstätte furniture",
-        "mackmurdo chair",
-        "textile print william morris",
     ]
     want_type = re.compile(
         r"poster|print|furniture|textile|wallpaper|graphic|type|alphabet|"
@@ -295,7 +304,8 @@ def victoria() -> list[dict]:
     )
     seen: set[str] = set()
     out: list[dict] = []
-    for q in queries:
+    pin_queries = list(VAM_PINNED) + [q for q in queries if q not in VAM_PINNED]
+    for q in pin_queries:
         url = (
             "https://api.vam.ac.uk/v2/objects/search?"
             + urllib.parse.urlencode({"q": q, "images_exist": 1, "page_size": 8})
@@ -350,14 +360,12 @@ def victoria() -> list[dict]:
 
 def commons_few() -> list[dict]:
     queries = [
-        "Paimio Sanatorium2",
-        "Bauhaus Dessau 2018",
-        "Salk Institute.jpg",
-        "Fallingwater, the classic view",
-        "Interior oculus of the Rome Pantheon",
-        "Farnsworth House Plano-9995",
-        "Villa Savoye Poissy",
-        "Chapelle Notre-Dame-du-Haut Ronchamp",
+        '360-degree interior panorama of Chapelle Notre-Dame du Haut de Ronchamp 2026.jpg',
+        'Tugendhat Villa in Brno.jpg',
+        'Berlin-Tiergarten, de Neue Nationalgalerie met een expositie van Andy Warhol IMG 5718 2024-09-07 09.58.jpg',
+        '4Y1A7841 Alvar Aalto, Finland (26710745140).jpg',
+        'Kimbell Art Museum (Unsplash).jpg',
+        'Phillips-Exeter-Academy-Library-Exterior-Exeter-New-Hampshire-Apr-2014-a.jpg',
     ]
     out: list[dict] = []
     seen: set[str] = set()
@@ -442,13 +450,7 @@ DROP = re.compile(
 )
 
 WANT = re.compile(
-    r"poster|lithograph|plakat|albers|mucha|lautrec|grasset|morris|"
-    r"wright|ph[äa]nomen|wallpaper|strawberry|peacock|vase|chair|stool|"
-    r"table|bench|cabinet|thonet|hoffmann|sussex|thebes|mackmurdo|"
-    r"bugatti|majorelle|bauhaus|cassandre|alphabet|type|specimen|"
-    r"textile|paimio|secession|lembrée|lorenzaccio|sagot|"
-    r"vuillard|bonnard|werkstätte|book jacket|furniture|moser|"
-    r"salk|fallingwater|pantheon|farnsworth|savoye|ronchamp|kahn",
+    'poster|lithograph|plakat|albers|mucha|lautrec|grasset|morris|wright|ph[äa]nomen|wallpaper|strawberry|peacock|vase|chair|stool|table|bench|cabinet|thonet|hoffmann|sussex|thebes|mackmurdo|bugatti|majorelle|bauhaus|cassandre|alphabet|type|specimen|textile|paimio|secession|lembrée|lorenzaccio|sagot|vuillard|bonnard|werkstätte|book jacket|furniture|moser|salk|fallingwater|pantheon|farnsworth|savoye|ronchamp|kahn|notre-dame-du-haut|notre dame du haut|Notre|Dame|Haut|Corbusier|tugendhat|Villa|Tugendhat|Ludwig|Mies|Rohe|neue nationalgalerie|new national gallery|Neue|Nationalgalerie|Ludwig|Mies|Rohe|villa mairea|mairea|Villa|Mairea|Alvar|Aalto|kimbell|Kimbell|Museum|Louis|exeter|Phillips|Exeter|Academy|Library|Louis',
     re.I,
 )
 
@@ -485,6 +487,25 @@ def maker_key(w: dict) -> str:
         "morris",
         "mackmurdo",
         "moser",
+        "mackintosh",
+        "tiffany",
+        "lalique",
+        "stickley",
+        "herter",
+        "galle",
+        "horta",
+        "guimard",
+        "rietveld",
+        "godwin",
+        "voysey",
+        "driscoll",
+        "sevre",
+        "vuillard",
+        "bonnard",
+        "mucha",
+        "lautrec",
+        "cassandre",
+        "albers",
     ):
         if family in raw:
             return family
