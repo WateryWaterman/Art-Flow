@@ -23,83 +23,83 @@ NO_CORS_HOSTS = [
 ]
 
 CMA_PINNED = [
-    '149015',  # Dressing Table Mirror
-    '156855',  # Tall Clock
-    '153752',  # Center Table
-    '160089',  # Fire Screen
-    '157229',  # Vase des Binelles
-    '165186',  # Frogs and Lily Pads (Grenouilles et Nénuphars) Vase
-    '146910',  # A Gallery at the Gymnasium
-    '129163',  # On the Pont de l'Europe
-    '127956',  # Front Cover
-    '127960',  # Schlomé Fuss in the Synagogue
-    '133109',  # Pierre Bonnard
-    '79381',  # On Cats by Jacques Dalbray
-    '103317',  # La Rue Coulaincourt
-    '112932',  # Beatrice
+    '296869',  # Peony Floor Lamp with a Bamboo Base
+    '160043',  # Cypriot Vase
+    '127964',  # A Basement Shop in Cracow
+    '129167',  # The Game of Checkers
+    '104896',  # Convalescents
+    '104982',  # Miss Ida Heath, English Dancer
+    '106983',  # Self-Portrait
+    '120810',  # Paul Cézanne
+    '123915',  # Woman in a Striped Dress
+    '125919',  # At the Theatre
+    '125920',  # Street at Evening in the Rain
+    '144595',  # Documents Decoratifs: Oriental Poppies
+    '144596',  # Documents Decoratifs: Plate 38
+    '146361',  # Viviane
+    '148499',  # Andalusia at the Time of the Moors
+    '148502',  # Bookstore Ed. Sagot
+    '148689',  # Pinning the Hat
 ]
 
 VAM_PINNED = [
-    'O11281',  # Mackintosh, Charles Rennie Chair
-    'O304876',  # Charles Rennie Mackintosh Chair
-    'O59048',  # Writing Desk and Armchair
-    'O61449',  # Morris & Co. Armchair
-    'O101934',  # Breuer, Marcel Lajos Armchair
-    'O11159',  # C. F. A. Voysey Table
-    'O112269',  # Godwin, Edward William Chair
-    'O114110',  # Model B5
-    'O122351',  # Fauteuil Transatlantique
-    'O129668',  # 'S' bend chair
-    'O74615',  # Secession. 16 Ausstellung, 1903
-    'O74626',  # L'Art Nouveau
-    'O75253',  # Frank Lloyd Wright Architectuur Tentoonstelling
-    'O759266',  # The Flower Show by Denis MacKail
-    'O88392',  # Secession - XXVII - Ausstellung - Nov-Dec
-    'O89696',  # I Internationale Kunst Ausstellung des Vereins Bildender Künstler Münchens (Secession)
+    'O62471',  # Chair for 78 Derngate
+    'O62985',  # Charles Rennie Mackintosh Armchair
+    'O114197',  # Club chair, model B3
+    'O1159333',  # Breuer, Marcel Lajos Dining chair
+    'O15896',  # Design for a writing table
+    'O166674',  # Design for a long folding chair in wood. c.1935-39. Side elevation and detail of legs, scale 1:10.
+    'O166675',  # Perspective sketches (8 on 1 sheet) for various types of chair with tubular frames.
+    'O16956',  # Liberty & Co. Ltd. Dressing table
+    'O187308',  # Thonet Pair of children's chairs
+    'O25163',  # Thonet Child's chair
+    'O301112',  # Liberty & Co. Ltd. Chair
+    'O321659',  # Greene and Greene Chair
+    'O49610',  # Majorelle, Louis Armchair
 ]
 
 BUILDINGS = [
     {
-        "match": 'ronchamp|notre-dame-du-haut|notre dame du haut',
-        "title": 'Notre Dame du Haut',
+        "match": 'crown hall',
+        "title": 'Crown Hall',
+        "maker": 'Ludwig Mies van der Rohe',
+        "year": '1956',
+        "intro": '密斯在伊利諾理工的皇冠廳。一無柱的大空間被懸吊在黑色鋼梁之下。',
+    },
+    {
+        "match": 'seagram',
+        "title": 'Seagram Building',
+        "maker": 'Ludwig Mies van der Rohe',
+        "year": '1958',
+        "intro": '密斯的西格拉姆大廈。銅質幕牆與前廣場把高層建築收成一根完整的柱式。',
+    },
+    {
+        "match": 'guggenheim',
+        "title": 'Solomon R. Guggenheim Museum',
+        "maker": 'Frank Lloyd Wright',
+        "year": '1959',
+        "intro": '賴特的古根海姆美術館。螺旋坡道把參觀做成連續的下旋，外觀是一條向上展開的白帶。',
+    },
+    {
+        "match": 'robie house',
+        "title": 'Robie House',
+        "maker": 'Frank Lloyd Wright',
+        "year": '1910',
+        "intro": '賴特的羅比住宅。深遠的水平屋簷與磚牆是草原住宅最完整的一張構圖。',
+    },
+    {
+        "match": 'twa',
+        "title": 'TWA Flight Center',
+        "maker": 'Eero Saarinen',
+        "year": '1962',
+        "intro": '沙里寧的 TWA 航站。混凝土殼體像展開的翼，把流動寫進結構。',
+    },
+    {
+        "match": 'la tourette|sainte marie de la tourette',
+        "title": 'Sainte Marie de La Tourette',
         "maker": 'Le Corbusier',
-        "year": '1955',
-        "intro": '柯布西耶的朗香教堂。厚牆與捲曲屋頂把光線收成幾道切口。',
-    },
-    {
-        "match": 'tugendhat',
-        "title": 'Villa Tugendhat',
-        "maker": 'Ludwig Mies van der Rohe',
-        "year": '1930',
-        "intro": '密斯在布爾諾的圖根哈特宅。白色體量、花園與連續玻璃把居住做成水平的節奏。',
-    },
-    {
-        "match": 'neue nationalgalerie|new national gallery',
-        "title": 'Neue Nationalgalerie',
-        "maker": 'Ludwig Mies van der Rohe',
-        "year": '1968',
-        "intro": '密斯的柏林新國家美術館。巨大的鋼屋頂壓在幾乎消失的玻璃盒子上，留白就是結構。',
-    },
-    {
-        "match": 'villa mairea|mairea',
-        "title": 'Villa Mairea',
-        "maker": 'Alvar Aalto',
-        "year": '1939',
-        "intro": '阿爾托的邁雷亞別墅。木、磚與白色體量被組織成一組鬆開的庭院。',
-    },
-    {
-        "match": 'kimbell',
-        "title": 'Kimbell Art Museum',
-        "maker": 'Louis Kahn',
-        "year": '1972',
-        "intro": '路易斯·康的金貝爾美術館。一排混凝土拱殼把光線從縫裡放進來。',
-    },
-    {
-        "match": 'exeter',
-        "title": 'Phillips Exeter Academy Library',
-        "maker": 'Louis Kahn',
-        "year": '1972',
-        "intro": '路易斯·康的埃克塞特圖書館。厚牆中央掏出大廳，書與光在圓周上相遇。',
+        "year": '1960',
+        "intro": '柯布西耶的拉圖雷特修道院。斜坡上的混凝土盒子把修士的日常收成光線與走道。',
     },
 ]
 
@@ -360,23 +360,24 @@ def victoria() -> list[dict]:
 
 def commons_few() -> list[dict]:
     queries = [
-        '360-degree interior panorama of Chapelle Notre-Dame du Haut de Ronchamp 2026.jpg',
-        'Tugendhat Villa in Brno.jpg',
-        'Berlin-Tiergarten, de Neue Nationalgalerie met een expositie van Andy Warhol IMG 5718 2024-09-07 09.58.jpg',
-        '4Y1A7841 Alvar Aalto, Finland (26710745140).jpg',
-        'Kimbell Art Museum (Unsplash).jpg',
-        'Phillips-Exeter-Academy-Library-Exterior-Exeter-New-Hampshire-Apr-2014-a.jpg',
+        'Crown Hall 1.jpg',
+        'Seagram Building Nov 2025 01.jpg',
+        'Frank Lloyd Wright - New York, NY - Solomon R. Guggenheim Museum (A).jpg',
+        'Bathroom, Frederick C. Robie House, Woodlawn Avenue and 58th Street, Hyde Park, Chicago, IL - 54213666711.jpg',
+        "Eero Saarinen's TWA Flight Center.JPG",
+        'Couvent Sainte-Marie de La Tourette Detail 1.jpg',
     ]
     out: list[dict] = []
     seen: set[str] = set()
     for q in queries:
+        title_key = str(q).strip()
+        if title_key.lower().startswith("file:"):
+            title_key = title_key[5:]
+        title_key = "File:" + title_key
         params = {
             "action": "query",
             "format": "json",
-            "generator": "search",
-            "gsrsearch": q,
-            "gsrnamespace": "6",
-            "gsrlimit": "3",
+            "titles": title_key,
             "prop": "imageinfo",
             "iiprop": "url|size|extmetadata|mime",
             "iiurlwidth": "1920",
@@ -387,10 +388,28 @@ def commons_few() -> list[dict]:
         except Exception as exc:
             print("commons fail", q, exc)
             continue
-        pages = (payload.get("query") or {}).get("pages") or {}
+        qdata = payload.get("query") or {}
+        allowed = {title_key.replace("_", " ").lower()}
+        for row in (qdata.get("normalized") or []):
+            frm = (row.get("from") or "").replace("_", " ").lower()
+            to = (row.get("to") or "").replace("_", " ").lower()
+            if frm in allowed and to:
+                allowed.add(to)
+        for row in (qdata.get("redirects") or []):
+            frm = (row.get("from") or "").replace("_", " ").lower()
+            to = (row.get("to") or "").replace("_", " ").lower()
+            if frm in allowed and to:
+                allowed.add(to)
+        pages = qdata.get("pages") or {}
         for page in pages.values():
+            if page.get("missing") is not None:
+                continue
             pid = str(page.get("pageid") or "")
-            if not pid or pid in seen:
+            if not pid or pid in seen or pid.startswith("-"):
+                continue
+            got = page.get("title") or ""
+            got_key = got if got.lower().startswith("file:") else "File:" + got
+            if got_key.replace("_", " ").lower() not in allowed:
                 continue
             infos = page.get("imageinfo") or []
             if not infos:
@@ -450,7 +469,7 @@ DROP = re.compile(
 )
 
 WANT = re.compile(
-    'poster|lithograph|plakat|albers|mucha|lautrec|grasset|morris|wright|ph[äa]nomen|wallpaper|strawberry|peacock|vase|chair|stool|table|bench|cabinet|thonet|hoffmann|sussex|thebes|mackmurdo|bugatti|majorelle|bauhaus|cassandre|alphabet|type|specimen|textile|paimio|secession|lembrée|lorenzaccio|sagot|vuillard|bonnard|werkstätte|book jacket|furniture|moser|salk|fallingwater|pantheon|farnsworth|savoye|ronchamp|kahn|notre-dame-du-haut|notre dame du haut|Notre|Dame|Haut|Corbusier|tugendhat|Villa|Tugendhat|Ludwig|Mies|Rohe|neue nationalgalerie|new national gallery|Neue|Nationalgalerie|Ludwig|Mies|Rohe|villa mairea|mairea|Villa|Mairea|Alvar|Aalto|kimbell|Kimbell|Museum|Louis|exeter|Phillips|Exeter|Academy|Library|Louis',
+    'poster|lithograph|plakat|albers|mucha|lautrec|grasset|morris|wright|ph[äa]nomen|wallpaper|strawberry|peacock|vase|chair|stool|table|bench|cabinet|thonet|hoffmann|sussex|thebes|mackmurdo|bugatti|majorelle|bauhaus|cassandre|alphabet|type|specimen|textile|paimio|secession|lembrée|lorenzaccio|sagot|vuillard|bonnard|werkstätte|book jacket|furniture|moser|salk|fallingwater|pantheon|farnsworth|savoye|ronchamp|kahn|notre-dame-du-haut|notre dame du haut|Notre|Dame|Haut|Corbusier|tugendhat|Villa|Tugendhat|Ludwig|Mies|Rohe|neue nationalgalerie|new national gallery|Neue|Nationalgalerie|Ludwig|Mies|Rohe|villa mairea|mairea|Villa|Mairea|Alvar|Aalto|kimbell|Kimbell|Museum|Louis|exeter|Phillips|Exeter|Academy|Library|Louis|crown hall|Crown|Hall|seagram|Seagram|Building|guggenheim|Solomon|Guggenheim|Frank|Lloyd|robie house|Robie|House|Frank|Lloyd|twa|Flight|Center|Eero|Saarinen|la tourette|sainte marie de la tourette|Sainte|Marie|Tourette',
     re.I,
 )
 

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-23T12:41:28Z",
+  "updated": "2026-11-25T05:12:33Z",
   "works": [
     {
       "id": "commons-175835017",
@@ -2450,6 +2450,684 @@
       "license": "CC BY-SA 4.0",
       "credit": "Phillips-Exeter-Academy-Library-Exterior-Exeter-New-Hampshire-Apr-2014-a.jpg. Gunnar Klack. CC BY-SA 4.0.",
       "intro": "路易斯·康的埃克塞特圖書館。厚牆中央掏出大廳，書與光在圓周上相遇。",
+      "tags": [
+        "commons"
+      ]
+    },
+    {
+      "id": "cma-296869",
+      "title": "Peony Floor Lamp with a Bamboo Base",
+      "maker": "Clara Wolcott Driscoll (American, 1861–1944), Tiffany Studios (United States, New York, 1902–32)",
+      "year": "c. 1905–10",
+      "medium": "Leaded glass, bronze",
+      "source": "Cleveland Museum of Art",
+      "sourceId": "296869",
+      "sourceUrl": "https://clevelandart.org/art/2018.267",
+      "image": "https://openaccess-cdn.clevelandart.org/2018.267/2018.267_print.jpg",
+      "imageHi": "https://openaccess-cdn.clevelandart.org/2018.267/2018.267_print.jpg",
+      "license": "CC0",
+      "credit": "Peony Floor Lamp with a Bamboo Base, c. 1905–10. Probably by Clara Wolcott Driscoll (American, 1861–1944), Tiffany Studios (United States, New York, 1902–32). Leaded glass, bronze; 157.5 cm (62 in.); shade diameter: 55.9 cm (22 in.). The Cleveland Museum of Art, Bequest of Charles Maurer, 2018.267",
+      "intro": "Tiffany and his designers brought the garden inside with their floral lamp designs. They also re-created the ever-changing qualities of natural light using the light and dark tonal effects of the glass when illuminated with electric lamps. This night and day version of the Peony shade could be rotated during the day to increase or decrease the amount of light it cast—intense reds for a darker glow at night, lighter pinks during the day.",
+      "tags": [
+        "cleveland",
+        "furniture and woodwork"
+      ]
+    },
+    {
+      "id": "cma-160043",
+      "title": "Cypriot Vase",
+      "maker": "Tiffany Glass & Decorating Company (America, New York, 1892–1902)",
+      "year": "c. 1895–1900",
+      "medium": "favrile glass",
+      "source": "Cleveland Museum of Art",
+      "sourceId": "160043",
+      "sourceUrl": "https://clevelandart.org/art/1997.300",
+      "image": "https://openaccess-cdn.clevelandart.org/1997.300/1997.300_print.jpg",
+      "imageHi": "https://openaccess-cdn.clevelandart.org/1997.300/1997.300_print.jpg",
+      "license": "CC0",
+      "credit": "Cypriot Vase, c. 1895–1900. Tiffany Glass & Decorating Company (America, New York, 1892–1902). Favrile glass; diameter: 6.1 cm (2 3/8 in.); overall: 11.2 cm (4 7/16 in.). The Cleveland Museum of Art, Bequest of Virginia Hubbell, 1997.300",
+      "intro": "This small vase is an example of Louis Comfort Tiffany's signature Favrile glass. It was made in the style of ancient glass from Cyprus that Tiffany had admired for the iridescent color and encrusted texture of the surface caused by oxidation while buried for many years. Tiffany had noticed these qualities in ancient glass exhibited at the Metropolitan Museum of Art and at his father's store, Tiffany & Co., in New York. When Tiffany began collaborating with artisans on new types of glass production in the 1880s, his aesthetic ambitions were realized in the development of Favrile glass, deliberately named to sound French, expensive, and “handmade.” Largely through Tiffany's marketing ability, Favrile glass became America’s greatest contribution to the Art Nouveau style. His works were exhibited at international expositions; galleries in major European cities, where his creations were bought by many museums; and in his store in Manhattan, known as the Tiffany Glass and Decorating Co., later Tiffany Studios. From the outset, Tiffany used Favrile glass in mosaic panels, stained glass windows, and his artistic line of table and floor lamps.",
+      "tags": [
+        "cleveland",
+        "glass"
+      ]
+    },
+    {
+      "id": "cma-127964",
+      "title": "A Basement Shop in Cracow",
+      "maker": "Henri de Toulouse-Lautrec (French, 1864–1901)",
+      "year": "1898",
+      "medium": "lithograph",
+      "source": "Cleveland Museum of Art",
+      "sourceId": "127964",
+      "sourceUrl": "https://clevelandart.org/art/1950.594",
+      "image": "https://openaccess-cdn.clevelandart.org/1950.594/1950.594_print.jpg",
+      "imageHi": "https://openaccess-cdn.clevelandart.org/1950.594/1950.594_print.jpg",
+      "license": "CC0",
+      "credit": "At the Foot of Mt. Sinai (Au pied du Sinaï): A Basement Shop in Cracow, 1898. Henri de Toulouse-Lautrec (French, 1864–1901). Lithograph; image: 17.5 x 14.4 cm (6 7/8 x 5 11/16 in.); sheet: 33 x 23.5 cm (13 x 9 1/4 in.). The Cleveland Museum of Art, Dudley P. Allen Fund, 1950.594",
+      "intro": "At the Foot of Mount Sinai by politician and journalist Georges Clemenceau collects six short stories about the lives of Jewish characters in the Poland of his time. As he worked on the commission to illustrate the book, Henri de Toulouse-Lautrec spent many hours sketching Russian and Polish Jews living in the Tournelle district in Paris, using them as inspiration for his depiction of Clemenceau’s characters, including the Jewish officer in the Russian army and the poor shopkeeper. The book was written and released during France’s Dreyfus affair, a political controversy surrounding false accusations of treason and espionage against Jewish officer Alfred Dreyfus. Clemenceau supported Dreyfus and, as editor of the newspaper L’Aurore (Dawn), published several articles defending him.",
+      "tags": [
+        "cleveland",
+        "print"
+      ]
+    },
+    {
+      "id": "cma-129167",
+      "title": "The Game of Checkers",
+      "maker": "Édouard Vuillard (French, 1868–1940)",
+      "year": "1899",
+      "medium": "color lithograph",
+      "source": "Cleveland Museum of Art",
+      "sourceId": "129167",
+      "sourceUrl": "https://clevelandart.org/art/1951.65.2",
+      "image": "https://openaccess-cdn.clevelandart.org/1951.65.2/1951.65.2_print.jpg",
+      "imageHi": "https://openaccess-cdn.clevelandart.org/1951.65.2/1951.65.2_print.jpg",
+      "license": "CC0",
+      "credit": "Landscapes and Interiors: The Game of Checkers, 1899. Édouard Vuillard (French, 1868–1940). Color lithograph; sheet: 38 x 30.8 cm (14 15/16 x 12 1/8 in.); image: 33 x 25.7 cm (13 x 10 1/8 in.). The Cleveland Museum of Art, Gift of the Hanna Fund, 1951.65.2",
+      "intro": "Ambroise Vollard (1865–1939), a dealer in Impressionist paintings, was also an important print publisher. In 1895 he commissioned his first portfolio from Pierre Bonnard: 12 color lithographs called Some Aspects of Paris Life (one of them is shown nearby). This was followed by many other albums of prints, including Vuillard's Landscapes and Interiors . Bonnard and Vuillard were members of a group of artists called the Nabis—the Hebrew word for \"prophet\"—which evokes both their playful mysticism and their determination to develop a new artistic language based on the notion that form and color could be used expressively. The Nabis favored subjects of the modern city and middle-class family life depicted in a decorative and even whimsical manner. Vuillard's intimate scenes of comfortable domesticity are wonderful examples of the beautiful color lithography produced in the 1890s.",
+      "tags": [
+        "cleveland",
+        "print"
+      ]
+    },
+    {
+      "id": "cma-104896",
+      "title": "Convalescents",
+      "maker": "Théophile Alexandre Steinlen (Swiss, 1859–1923)",
+      "year": "1915",
+      "medium": "lithograph",
+      "source": "Cleveland Museum of Art",
+      "sourceId": "104896",
+      "sourceUrl": "https://clevelandart.org/art/1923.138",
+      "image": "https://openaccess-cdn.clevelandart.org/1923.138/1923.138_print.jpg",
+      "imageHi": "https://openaccess-cdn.clevelandart.org/1923.138/1923.138_print.jpg",
+      "license": "CC0",
+      "credit": "Convalescents, 1915. Théophile Alexandre Steinlen (Swiss, 1859–1923). Lithograph. The Cleveland Museum of Art, Gift of National Lamp Works, Nela Park, 1923.138",
+      "intro": "Convalescents（1915）。克利夫蘭藝術博物館開放典藏。",
+      "tags": [
+        "cleveland",
+        "print"
+      ]
+    },
+    {
+      "id": "cma-104982",
+      "title": "Miss Ida Heath, English Dancer",
+      "maker": "Henri de Toulouse-Lautrec (French, 1864–1901)",
+      "year": "1894",
+      "medium": "lithograph",
+      "source": "Cleveland Museum of Art",
+      "sourceId": "104982",
+      "sourceUrl": "https://clevelandart.org/art/1923.210",
+      "image": "https://openaccess-cdn.clevelandart.org/1923.210/1923.210_print.jpg",
+      "imageHi": "https://openaccess-cdn.clevelandart.org/1923.210/1923.210_print.jpg",
+      "license": "CC0",
+      "credit": "Miss Ida Heath, English Dancer, 1894. Henri de Toulouse-Lautrec (French, 1864–1901). Lithograph. The Cleveland Museum of Art, Charles W. Harkness Endowment Fund, 1923.210",
+      "intro": "Miss Ida Heath, English Dancer（1894）。克利夫蘭藝術博物館開放典藏。",
+      "tags": [
+        "cleveland",
+        "print"
+      ]
+    },
+    {
+      "id": "cma-106983",
+      "title": "Self-Portrait",
+      "maker": "Théophile Alexandre Steinlen (Swiss, 1859–1923)",
+      "year": "1905",
+      "medium": "lithograph",
+      "source": "Cleveland Museum of Art",
+      "sourceId": "106983",
+      "sourceUrl": "https://clevelandart.org/art/1924.985",
+      "image": "https://openaccess-cdn.clevelandart.org/1924.985/1924.985_print.jpg",
+      "imageHi": "https://openaccess-cdn.clevelandart.org/1924.985/1924.985_print.jpg",
+      "license": "CC0",
+      "credit": "Self-Portrait, 1905. Théophile Alexandre Steinlen (Swiss, 1859–1923). Lithograph. The Cleveland Museum of Art, Dudley P. Allen Fund, 1924.985",
+      "intro": "Self-Portrait（1905）。克利夫蘭藝術博物館開放典藏。",
+      "tags": [
+        "cleveland",
+        "print"
+      ]
+    },
+    {
+      "id": "cma-120810",
+      "title": "Paul Cézanne",
+      "maker": "Édouard Vuillard (French, 1868–1940)",
+      "year": "1914",
+      "medium": "lithograph",
+      "source": "Cleveland Museum of Art",
+      "sourceId": "120810",
+      "sourceUrl": "https://clevelandart.org/art/1941.537",
+      "image": "https://openaccess-cdn.clevelandart.org/1941.537/1941.537_print.jpg",
+      "imageHi": "https://openaccess-cdn.clevelandart.org/1941.537/1941.537_print.jpg",
+      "license": "CC0",
+      "credit": "Paul Cézanne, 1914. Édouard Vuillard (French, 1868–1940). Lithograph. The Cleveland Museum of Art, Mr. and Mrs. Lewis B. Williams Collection, 1941.537",
+      "intro": "Paul Cézanne（1914）。克利夫蘭藝術博物館開放典藏。",
+      "tags": [
+        "cleveland",
+        "print"
+      ]
+    },
+    {
+      "id": "cma-123915",
+      "title": "Woman in a Striped Dress",
+      "maker": "Ker Xavier Roussel (French, 1867–1944), Ambroise Vollard (French, 1867–1939)",
+      "year": "c. 1900",
+      "medium": "color lithograph",
+      "source": "Cleveland Museum of Art",
+      "sourceId": "123915",
+      "sourceUrl": "https://clevelandart.org/art/1944.431",
+      "image": "https://openaccess-cdn.clevelandart.org/1944.431/1944.431_print.jpg",
+      "imageHi": "https://openaccess-cdn.clevelandart.org/1944.431/1944.431_print.jpg",
+      "license": "CC0",
+      "credit": "Landscapes: Woman in a Striped Dress, c. 1900. Ker Xavier Roussel (French, 1867–1944), Ambroise Vollard (French, 1867–1939). Color lithograph. The Cleveland Museum of Art, Gift of The Print Club of Cleveland, 1944.431",
+      "intro": "Almost indistinguishable from the patterned landscape surrounding her, a woman in a striped dress strolls through a spring landscape. In this image, Ker Xavier Roussel explored a decorative abstraction that blended figure and ground into a field of shared color.",
+      "tags": [
+        "cleveland",
+        "print"
+      ]
+    },
+    {
+      "id": "cma-125919",
+      "title": "At the Theatre",
+      "maker": "Pierre Bonnard (French, 1867–1947), Published by Ambroise Vollard; Printed by Auguste Clot",
+      "year": "1899",
+      "medium": "lithograph",
+      "source": "Cleveland Museum of Art",
+      "sourceId": "125919",
+      "sourceUrl": "https://clevelandart.org/art/1948.156.10",
+      "image": "https://openaccess-cdn.clevelandart.org/1948.156.10/1948.156.10_print.jpg",
+      "imageHi": "https://openaccess-cdn.clevelandart.org/1948.156.10/1948.156.10_print.jpg",
+      "license": "CC0",
+      "credit": "Some Scenes of Parisian Life: At the Theatre, 1899. Pierre Bonnard (French, 1867–1947), Published by Ambroise Vollard; Printed by Auguste Clot. Lithograph; sheet: 40.4 x 53.1 cm (15 7/8 x 20 7/8 in.); image: 21 x 40 cm (8 1/4 x 15 3/4 in.). The Cleveland Museum of Art, Gift of the Hanna Fund, 1948.156.10",
+      "intro": "At the Theatre（1899）。克利夫蘭藝術博物館開放典藏。",
+      "tags": [
+        "cleveland",
+        "print"
+      ]
+    },
+    {
+      "id": "cma-125920",
+      "title": "Street at Evening in the Rain",
+      "maker": "Pierre Bonnard (French, 1867–1947), Published by Ambroise Vollard; Printed by Auguste Clot",
+      "year": "1899",
+      "medium": "lithograph",
+      "source": "Cleveland Museum of Art",
+      "sourceId": "125920",
+      "sourceUrl": "https://clevelandart.org/art/1948.156.11",
+      "image": "https://openaccess-cdn.clevelandart.org/1948.156.11/1948.156.11_print.jpg",
+      "imageHi": "https://openaccess-cdn.clevelandart.org/1948.156.11/1948.156.11_print.jpg",
+      "license": "CC0",
+      "credit": "Some Scenes of Parisian Life: Street at Evening in the Rain, 1899. Pierre Bonnard (French, 1867–1947), Published by Ambroise Vollard; Printed by Auguste Clot. Lithograph; sheet: 40.8 x 53.5 cm (16 1/16 x 21 1/16 in.); image: 25.7 x 35.5 cm (10 1/8 x 14 in.). The Cleveland Museum of Art, Gift of the Hanna Fund, 1948.156.11",
+      "intro": "This suite of color lithographs collected Pierre Bonnard’s observations of city life, ranging from animated street scenes to distant observations glimpsed from the artist’s Montmartre studio window. Rather than memorializing the famous monuments of Paris, Bonnard preferred to depict small neighborhood scenes populated by urbanites shopping and strolling and by vendors selling their wares. The setting for one of the prints is the second-largest public park in Paris, the Bois de Boulogne, which was a popular place for families to relax, stroll, and enjoy carriage rides around the lakes. Two prints are nocturnal scenes in which gaslight emanating from shop windows is reflected on the wet streets, creating passages of bright yellow in the otherwise dark compositions. Bonnard’s favorite subjects, such as the Parisienne—a young, fashionable, modern woman—as well as children and dogs, appear repeatedly throughout the prints in the suite.",
+      "tags": [
+        "cleveland",
+        "print"
+      ]
+    },
+    {
+      "id": "cma-144595",
+      "title": "Documents Decoratifs: Oriental Poppies",
+      "maker": "Alphonse Mucha (Czech, 1860–1939)",
+      "year": "1901–2",
+      "medium": "lithograph",
+      "source": "Cleveland Museum of Art",
+      "sourceId": "144595",
+      "sourceUrl": "https://clevelandart.org/art/1969.236",
+      "image": "https://openaccess-cdn.clevelandart.org/1969.236/1969.236_print.jpg",
+      "imageHi": "https://openaccess-cdn.clevelandart.org/1969.236/1969.236_print.jpg",
+      "license": "CC0",
+      "credit": "Documents Decoratifs: Oriental Poppies, 1901–2. Alphonse Mucha (Czech, 1860–1939). Lithograph. The Cleveland Museum of Art, Mr. and Mrs. Charles G. Prasse Collection, gift in honor of the fiftieth anniversary of The Print Club of Cleveland, 1969.236",
+      "intro": "Documents Decoratifs: Oriental Poppies（1901–2）。克利夫蘭藝術博物館開放典藏。",
+      "tags": [
+        "cleveland",
+        "print"
+      ]
+    },
+    {
+      "id": "cma-144596",
+      "title": "Documents Decoratifs: Plate 38",
+      "maker": "Alphonse Mucha (Czech, 1860–1939)",
+      "year": "1901–2",
+      "medium": "lithograph",
+      "source": "Cleveland Museum of Art",
+      "sourceId": "144596",
+      "sourceUrl": "https://clevelandart.org/art/1969.237",
+      "image": "https://openaccess-cdn.clevelandart.org/1969.237/1969.237_print.jpg",
+      "imageHi": "https://openaccess-cdn.clevelandart.org/1969.237/1969.237_print.jpg",
+      "license": "CC0",
+      "credit": "Documents Decoratifs: Plate 38, 1901–2. Alphonse Mucha (Czech, 1860–1939). Lithograph. The Cleveland Museum of Art, Mr. and Mrs. Charles G. Prasse Collection, gift in honor of the fiftieth anniversary of The Print Club of Cleveland, 1969.237",
+      "intro": "Documents Decoratifs: Plate 38（1901–2）。克利夫蘭藝術博物館開放典藏。",
+      "tags": [
+        "cleveland",
+        "print"
+      ]
+    },
+    {
+      "id": "cma-146361",
+      "title": "Viviane",
+      "maker": "Jules Chéret (French, 1836–1932)",
+      "year": "1886",
+      "medium": "color lithograph",
+      "source": "Cleveland Museum of Art",
+      "sourceId": "146361",
+      "sourceUrl": "https://clevelandart.org/art/1972.1126",
+      "image": "https://openaccess-cdn.clevelandart.org/1972.1126/1972.1126_print.jpg",
+      "imageHi": "https://openaccess-cdn.clevelandart.org/1972.1126/1972.1126_print.jpg",
+      "license": "CC0",
+      "credit": "Viviane, 1886. Jules Chéret (French, 1836–1932). Color lithograph; sheet: 78.2 x 55.9 cm (30 13/16 x 22 in.); image: 66.5 x 48.8 cm (26 3/16 x 19 3/16 in.). The Cleveland Museum of Art, The Harold T. Clark Educational Extension Fund, 1972.1126",
+      "intro": "Viviane（1886）。克利夫蘭藝術博物館開放典藏。",
+      "tags": [
+        "cleveland",
+        "print"
+      ]
+    },
+    {
+      "id": "cma-148499",
+      "title": "Andalusia at the Time of the Moors",
+      "maker": "Eugène Grasset (French, 1841–1917)",
+      "year": "c. 1900",
+      "medium": "color lithograph",
+      "source": "Cleveland Museum of Art",
+      "sourceId": "148499",
+      "sourceUrl": "https://clevelandart.org/art/1976.1071",
+      "image": "https://openaccess-cdn.clevelandart.org/1976.1071/1976.1071_print.jpg",
+      "imageHi": "https://openaccess-cdn.clevelandart.org/1976.1071/1976.1071_print.jpg",
+      "license": "CC0",
+      "credit": "Andalusia at the Time of the Moors, c. 1900. Eugène Grasset (French, 1841–1917). Color lithograph; sheet: 133.2 x 88 cm (52 7/16 x 34 5/8 in.); image: 124.7 x 84.7 cm (49 1/8 x 33 3/8 in.). The Cleveland Museum of Art, The Harold T. Clark Educational Extension Fund, 1976.1071",
+      "intro": "Andalusia at the Time of the Moors（c. 1900）。克利夫蘭藝術博物館開放典藏。",
+      "tags": [
+        "cleveland",
+        "print"
+      ]
+    },
+    {
+      "id": "cma-148502",
+      "title": "Bookstore Ed. Sagot",
+      "maker": "Jules Chéret (French, 1836–1932)",
+      "year": "1891",
+      "medium": "color lithograph",
+      "source": "Cleveland Museum of Art",
+      "sourceId": "148502",
+      "sourceUrl": "https://clevelandart.org/art/1976.1072",
+      "image": "https://openaccess-cdn.clevelandart.org/1976.1072/1976.1072_print.jpg",
+      "imageHi": "https://openaccess-cdn.clevelandart.org/1976.1072/1976.1072_print.jpg",
+      "license": "CC0",
+      "credit": "Bookstore Ed. Sagot, 1891. Jules Chéret (French, 1836–1932). Color lithograph; sheet: 122.5 x 85 cm (48 1/4 x 33 7/16 in.); image: 122.5 x 85 cm (48 1/4 x 33 7/16 in.). The Cleveland Museum of Art, The Harold T. Clark Educational Extension Fund, 1976.1072",
+      "intro": "Bookstore Ed. Sagot（1891）。克利夫蘭藝術博物館開放典藏。",
+      "tags": [
+        "cleveland",
+        "print"
+      ]
+    },
+    {
+      "id": "cma-148689",
+      "title": "Pinning the Hat",
+      "maker": "Pierre-Auguste Renoir (French, 1841–1919)",
+      "year": "1898",
+      "medium": "color lithograph",
+      "source": "Cleveland Museum of Art",
+      "sourceId": "148689",
+      "sourceUrl": "https://clevelandart.org/art/1976.143",
+      "image": "https://openaccess-cdn.clevelandart.org/1976.143/1976.143_print.jpg",
+      "imageHi": "https://openaccess-cdn.clevelandart.org/1976.143/1976.143_print.jpg",
+      "license": "CC0",
+      "credit": "Pinning the Hat, 1898. Pierre-Auguste Renoir (French, 1841–1919). Color lithograph; image: 61.5 x 49.5 cm (24 3/16 x 19 1/2 in.). The Cleveland Museum of Art, Mr. and Mrs. Charles G. Prasse Collection, 1976.143",
+      "intro": "Pinning the Hat was a favorite subject for Auguste Renoir, and several versions exist including an 1893 painting and later variations in pastel, etching, and lithography. Renoir's models were Julie Morisot (daughter of Impressionist painter Berthe Morisot [1841-1895]) and her cousin. To produce the range of colors in this print, Renoir worked with the master printer Auguste Clot. The artist drew a design on a lithographic stone and then colored a proof impression as guidance for Clot, who then printed each tone separately.",
+      "tags": [
+        "cleveland",
+        "print"
+      ]
+    },
+    {
+      "id": "va-O62471",
+      "title": "Chair for 78 Derngate",
+      "maker": "Mackintosh, Charles Rennie",
+      "year": "1916",
+      "medium": "Chair",
+      "source": "Victoria and Albert Museum",
+      "sourceId": "O62471",
+      "sourceUrl": "https://collections.vam.ac.uk/item/O62471/",
+      "image": "https://framemark.vam.ac.uk/collections/2006AN4036/full/!1920,/0/default.jpg",
+      "imageHi": "https://framemark.vam.ac.uk/collections/2006AN4036/full/!1920,/0/default.jpg",
+      "license": "V&A, non-commercial with attribution",
+      "credit": "Chair for 78 Derngate. Mackintosh, Charles Rennie. Victoria and Albert Museum, O62471.",
+      "intro": "Chair for 78 Derngate。Mackintosh, Charles Rennie。維多利亞與阿爾伯特博物館館藏。",
+      "tags": [
+        "vam",
+        "chair"
+      ]
+    },
+    {
+      "id": "va-O62985",
+      "title": "Charles Rennie Mackintosh Armchair",
+      "maker": "Charles Rennie Mackintosh",
+      "year": "1917",
+      "medium": "Armchair",
+      "source": "Victoria and Albert Museum",
+      "sourceId": "O62985",
+      "sourceUrl": "https://collections.vam.ac.uk/item/O62985/",
+      "image": "https://framemark.vam.ac.uk/collections/2006AN4037/full/!1920,/0/default.jpg",
+      "imageHi": "https://framemark.vam.ac.uk/collections/2006AN4037/full/!1920,/0/default.jpg",
+      "license": "V&A, non-commercial with attribution",
+      "credit": "Charles Rennie Mackintosh Armchair. Charles Rennie Mackintosh. Victoria and Albert Museum, O62985.",
+      "intro": "Charles Rennie Mackintosh Armchair。Charles Rennie Mackintosh。維多利亞與阿爾伯特博物館館藏。",
+      "tags": [
+        "vam",
+        "armchair"
+      ]
+    },
+    {
+      "id": "va-O114197",
+      "title": "Club chair, model B3",
+      "maker": "Breuer, Marcel Lajos",
+      "year": "1925-1926",
+      "medium": "Armchair",
+      "source": "Victoria and Albert Museum",
+      "sourceId": "O114197",
+      "sourceUrl": "https://collections.vam.ac.uk/item/O114197/",
+      "image": "https://framemark.vam.ac.uk/collections/2006AC7448/full/!1920,/0/default.jpg",
+      "imageHi": "https://framemark.vam.ac.uk/collections/2006AC7448/full/!1920,/0/default.jpg",
+      "license": "V&A, non-commercial with attribution",
+      "credit": "Club chair, model B3. Breuer, Marcel Lajos. Victoria and Albert Museum, O114197.",
+      "intro": "Club chair, model B3。Breuer, Marcel Lajos。維多利亞與阿爾伯特博物館館藏。",
+      "tags": [
+        "vam",
+        "armchair"
+      ]
+    },
+    {
+      "id": "va-O1159333",
+      "title": "Breuer, Marcel Lajos Dining chair",
+      "maker": "Breuer, Marcel Lajos",
+      "year": "1936-37",
+      "medium": "Dining chair",
+      "source": "Victoria and Albert Museum",
+      "sourceId": "O1159333",
+      "sourceUrl": "https://collections.vam.ac.uk/item/O1159333/",
+      "image": "https://framemark.vam.ac.uk/collections/2008BT7420/full/!1920,/0/default.jpg",
+      "imageHi": "https://framemark.vam.ac.uk/collections/2008BT7420/full/!1920,/0/default.jpg",
+      "license": "V&A, non-commercial with attribution",
+      "credit": "Breuer, Marcel Lajos Dining chair. Breuer, Marcel Lajos. Victoria and Albert Museum, O1159333.",
+      "intro": "Breuer, Marcel Lajos Dining chair。Breuer, Marcel Lajos。維多利亞與阿爾伯特博物館館藏。",
+      "tags": [
+        "vam",
+        "dining-chair"
+      ]
+    },
+    {
+      "id": "va-O15896",
+      "title": "Design for a writing table",
+      "maker": "C. F. A. Voysey",
+      "year": "1895",
+      "medium": "Design",
+      "source": "Victoria and Albert Museum",
+      "sourceId": "O15896",
+      "sourceUrl": "https://collections.vam.ac.uk/item/O15896/",
+      "image": "https://framemark.vam.ac.uk/collections/2014HG3613/full/!1920,/0/default.jpg",
+      "imageHi": "https://framemark.vam.ac.uk/collections/2014HG3613/full/!1920,/0/default.jpg",
+      "license": "V&A, non-commercial with attribution",
+      "credit": "Design for a writing table. C. F. A. Voysey. Victoria and Albert Museum, O15896.",
+      "intro": "Design for a writing table。C. F. A. Voysey。維多利亞與阿爾伯特博物館館藏。",
+      "tags": [
+        "vam",
+        "design"
+      ]
+    },
+    {
+      "id": "va-O166674",
+      "title": "Design for a long folding chair in wood. c.1935-39. Side elevation and detail of legs, scale 1:10.",
+      "maker": "gray",
+      "year": "ca. 1935 - 1939",
+      "medium": "Design",
+      "source": "Victoria and Albert Museum",
+      "sourceId": "O166674",
+      "sourceUrl": "https://collections.vam.ac.uk/item/O166674/",
+      "image": "https://framemark.vam.ac.uk/collections/2020MM6642/full/!1920,/0/default.jpg",
+      "imageHi": "https://framemark.vam.ac.uk/collections/2020MM6642/full/!1920,/0/default.jpg",
+      "license": "V&A, non-commercial with attribution",
+      "credit": "Design for a long folding chair in wood. c.1935-39. Side elevation and detail of legs, scale 1:10.. gray. Victoria and Albert Museum, O166674.",
+      "intro": "Design for a long folding chair in wood. c.1935-39. Side elevation and detail of legs, scale 1:10.。gray。維多利亞與阿爾伯特博物館館藏。",
+      "tags": [
+        "vam",
+        "design"
+      ]
+    },
+    {
+      "id": "va-O166675",
+      "title": "Perspective sketches (8 on 1 sheet) for various types of chair with tubular frames.",
+      "maker": "Gray, Eileen",
+      "year": "ca.1965 - ca.1970",
+      "medium": "Design",
+      "source": "Victoria and Albert Museum",
+      "sourceId": "O166675",
+      "sourceUrl": "https://collections.vam.ac.uk/item/O166675/",
+      "image": "https://framemark.vam.ac.uk/collections/2020MM0677/full/!1920,/0/default.jpg",
+      "imageHi": "https://framemark.vam.ac.uk/collections/2020MM0677/full/!1920,/0/default.jpg",
+      "license": "V&A, non-commercial with attribution",
+      "credit": "Perspective sketches (8 on 1 sheet) for various types of chair with tubular frames.. Gray, Eileen. Victoria and Albert Museum, O166675.",
+      "intro": "Perspective sketches (8 on 1 sheet) for various types of chair with tubular frames.。Gray, Eileen。維多利亞與阿爾伯特博物館館藏。",
+      "tags": [
+        "vam",
+        "design"
+      ]
+    },
+    {
+      "id": "va-O16956",
+      "title": "Liberty & Co. Ltd. Dressing table",
+      "maker": "Liberty & Co. Ltd.",
+      "year": "post 1894",
+      "medium": "Dressing table",
+      "source": "Victoria and Albert Museum",
+      "sourceId": "O16956",
+      "sourceUrl": "https://collections.vam.ac.uk/item/O16956/",
+      "image": "https://framemark.vam.ac.uk/collections/2006AY9373/full/!1920,/0/default.jpg",
+      "imageHi": "https://framemark.vam.ac.uk/collections/2006AY9373/full/!1920,/0/default.jpg",
+      "license": "V&A, non-commercial with attribution",
+      "credit": "Liberty & Co. Ltd. Dressing table. Liberty & Co. Ltd.. Victoria and Albert Museum, O16956.",
+      "intro": "Liberty & Co. Ltd. Dressing table。Liberty & Co. Ltd.。維多利亞與阿爾伯特博物館館藏。",
+      "tags": [
+        "vam",
+        "dressing-table"
+      ]
+    },
+    {
+      "id": "va-O187308",
+      "title": "Thonet Pair of children's chairs",
+      "maker": "Thonet",
+      "year": "1850-1900",
+      "medium": "Pair of children's chairs",
+      "source": "Victoria and Albert Museum",
+      "sourceId": "O187308",
+      "sourceUrl": "https://collections.vam.ac.uk/item/O187308/",
+      "image": "https://framemark.vam.ac.uk/collections/2017KK4822/full/!1920,/0/default.jpg",
+      "imageHi": "https://framemark.vam.ac.uk/collections/2017KK4822/full/!1920,/0/default.jpg",
+      "license": "V&A, non-commercial with attribution",
+      "credit": "Thonet Pair of children's chairs. Thonet. Victoria and Albert Museum, O187308.",
+      "intro": "Thonet Pair of children's chairs。Thonet。維多利亞與阿爾伯特博物館館藏。",
+      "tags": [
+        "vam",
+        "pair-of-children's-chairs"
+      ]
+    },
+    {
+      "id": "va-O25163",
+      "title": "Thonet Child's chair",
+      "maker": "Thonet",
+      "year": "1920-1929",
+      "medium": "Child's chair",
+      "source": "Victoria and Albert Museum",
+      "sourceId": "O25163",
+      "sourceUrl": "https://collections.vam.ac.uk/item/O25163/",
+      "image": "https://framemark.vam.ac.uk/collections/2017KK4828/full/!1920,/0/default.jpg",
+      "imageHi": "https://framemark.vam.ac.uk/collections/2017KK4828/full/!1920,/0/default.jpg",
+      "license": "V&A, non-commercial with attribution",
+      "credit": "Thonet Child's chair. Thonet. Victoria and Albert Museum, O25163.",
+      "intro": "Thonet Child's chair。Thonet。維多利亞與阿爾伯特博物館館藏。",
+      "tags": [
+        "vam",
+        "child's-chair"
+      ]
+    },
+    {
+      "id": "va-O301112",
+      "title": "Liberty & Co. Ltd. Chair",
+      "maker": "Liberty & Co. Ltd.",
+      "year": "1904-1906",
+      "medium": "Chair",
+      "source": "Victoria and Albert Museum",
+      "sourceId": "O301112",
+      "sourceUrl": "https://collections.vam.ac.uk/item/O301112/",
+      "image": "https://framemark.vam.ac.uk/collections/2017JU5291/full/!1920,/0/default.jpg",
+      "imageHi": "https://framemark.vam.ac.uk/collections/2017JU5291/full/!1920,/0/default.jpg",
+      "license": "V&A, non-commercial with attribution",
+      "credit": "Liberty & Co. Ltd. Chair. Liberty & Co. Ltd.. Victoria and Albert Museum, O301112.",
+      "intro": "Liberty & Co. Ltd. Chair。Liberty & Co. Ltd.。維多利亞與阿爾伯特博物館館藏。",
+      "tags": [
+        "vam",
+        "chair"
+      ]
+    },
+    {
+      "id": "va-O321659",
+      "title": "Greene and Greene Chair",
+      "maker": "Greene and Greene",
+      "year": "1907",
+      "medium": "Chair",
+      "source": "Victoria and Albert Museum",
+      "sourceId": "O321659",
+      "sourceUrl": "https://collections.vam.ac.uk/item/O321659/",
+      "image": "https://framemark.vam.ac.uk/collections/2006AV4430/full/!1920,/0/default.jpg",
+      "imageHi": "https://framemark.vam.ac.uk/collections/2006AV4430/full/!1920,/0/default.jpg",
+      "license": "V&A, non-commercial with attribution",
+      "credit": "Greene and Greene Chair. Greene and Greene. Victoria and Albert Museum, O321659.",
+      "intro": "Greene and Greene Chair。Greene and Greene。維多利亞與阿爾伯特博物館館藏。",
+      "tags": [
+        "vam",
+        "chair"
+      ]
+    },
+    {
+      "id": "va-O49610",
+      "title": "Majorelle, Louis Armchair",
+      "maker": "Majorelle, Louis",
+      "year": "1899-1900",
+      "medium": "Armchair",
+      "source": "Victoria and Albert Museum",
+      "sourceId": "O49610",
+      "sourceUrl": "https://collections.vam.ac.uk/item/O49610/",
+      "image": "https://framemark.vam.ac.uk/collections/2006AP2627/full/!1920,/0/default.jpg",
+      "imageHi": "https://framemark.vam.ac.uk/collections/2006AP2627/full/!1920,/0/default.jpg",
+      "license": "V&A, non-commercial with attribution",
+      "credit": "Majorelle, Louis Armchair. Majorelle, Louis. Victoria and Albert Museum, O49610.",
+      "intro": "Majorelle, Louis Armchair。Majorelle, Louis。維多利亞與阿爾伯特博物館館藏。",
+      "tags": [
+        "vam",
+        "armchair"
+      ]
+    },
+    {
+      "id": "commons-15260356",
+      "title": "Crown Hall",
+      "maker": "Ludwig Mies van der Rohe",
+      "year": "1956",
+      "medium": "Photograph",
+      "source": "Wikimedia Commons",
+      "sourceId": "15260356",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Crown_Hall_1.jpg",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Crown_Hall_1.jpg?width=1920",
+      "imageHi": "https://commons.wikimedia.org/wiki/Special:FilePath/Crown_Hall_1.jpg?width=1920",
+      "license": "Public domain",
+      "credit": "Crown Hall 1.jpg. Joe Ravi. Public domain.",
+      "intro": "密斯在伊利諾理工的皇冠廳。一無柱的大空間被懸吊在黑色鋼梁之下。",
+      "tags": [
+        "commons"
+      ]
+    },
+    {
+      "id": "commons-177975196",
+      "title": "Seagram Building",
+      "maker": "Ludwig Mies van der Rohe",
+      "year": "1958",
+      "medium": "Photograph",
+      "source": "Wikimedia Commons",
+      "sourceId": "177975196",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Seagram_Building_Nov_2025_01.jpg",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Seagram_Building_Nov_2025_01.jpg?width=1920",
+      "imageHi": "https://commons.wikimedia.org/wiki/Special:FilePath/Seagram_Building_Nov_2025_01.jpg?width=1920",
+      "license": "CC BY-SA 4.0",
+      "credit": "Seagram Building Nov 2025 01.jpg. Epicgenius. CC BY-SA 4.0.",
+      "intro": "密斯的西格拉姆大廈。銅質幕牆與前廣場把高層建築收成一根完整的柱式。",
+      "tags": [
+        "commons"
+      ]
+    },
+    {
+      "id": "commons-145920932",
+      "title": "Solomon R. Guggenheim Museum",
+      "maker": "Frank Lloyd Wright",
+      "year": "1959",
+      "medium": "Photograph",
+      "source": "Wikimedia Commons",
+      "sourceId": "145920932",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Frank_Lloyd_Wright_-_New_York,_NY_-_Solomon_R._Guggenheim_Museum_(A).jpg",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Frank_Lloyd_Wright_-_New_York%2C_NY_-_Solomon_R._Guggenheim_Museum_%28A%29.jpg?width=1920",
+      "imageHi": "https://commons.wikimedia.org/wiki/Special:FilePath/Frank_Lloyd_Wright_-_New_York%2C_NY_-_Solomon_R._Guggenheim_Museum_%28A%29.jpg?width=1920",
+      "license": "CC BY 4.0",
+      "credit": "Frank Lloyd Wright - New York, NY - Solomon R. Guggenheim Museum (A).jpg. Bmzuckerman. CC BY 4.0.",
+      "intro": "賴特的古根海姆美術館。螺旋坡道把參觀做成連續的下旋，外觀是一條向上展開的白帶。",
+      "tags": [
+        "commons"
+      ]
+    },
+    {
+      "id": "commons-159517560",
+      "title": "Robie House",
+      "maker": "Frank Lloyd Wright",
+      "year": "1910",
+      "medium": "Photograph",
+      "source": "Wikimedia Commons",
+      "sourceId": "159517560",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bathroom,_Frederick_C._Robie_House,_Woodlawn_Avenue_and_58th_Street,_Hyde_Park,_Chicago,_IL_-_54213666711.jpg",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bathroom%2C_Frederick_C._Robie_House%2C_Woodlawn_Avenue_and_58th_Street%2C_Hyde_Park%2C_Chicago%2C_IL_-_54213666711.jpg?width=1920",
+      "imageHi": "https://commons.wikimedia.org/wiki/Special:FilePath/Bathroom%2C_Frederick_C._Robie_House%2C_Woodlawn_Avenue_and_58th_Street%2C_Hyde_Park%2C_Chicago%2C_IL_-_54213666711.jpg?width=1920",
+      "license": "CC BY-SA 2.0",
+      "credit": "Bathroom, Frederick C. Robie House, Woodlawn Avenue and 58th Street, Hyde Park, Chicago, IL - 54213666711.jpg. w_lemay. CC BY-SA 2.0.",
+      "intro": "賴特的羅比住宅。深遠的水平屋簷與磚牆是草原住宅最完整的一張構圖。",
+      "tags": [
+        "commons"
+      ]
+    },
+    {
+      "id": "commons-44384721",
+      "title": "TWA Flight Center",
+      "maker": "Eero Saarinen",
+      "year": "1962",
+      "medium": "Photograph",
+      "source": "Wikimedia Commons",
+      "sourceId": "44384721",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Eero_Saarinen%27s_TWA_Flight_Center.JPG",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Eero_Saarinen%27s_TWA_Flight_Center.JPG?width=1920",
+      "imageHi": "https://commons.wikimedia.org/wiki/Special:FilePath/Eero_Saarinen%27s_TWA_Flight_Center.JPG?width=1920",
+      "license": "CC BY-SA 4.0",
+      "credit": "Eero Saarinen's TWA Flight Center.JPG. Elsie140. CC BY-SA 4.0.",
+      "intro": "沙里寧的 TWA 航站。混凝土殼體像展開的翼，把流動寫進結構。",
+      "tags": [
+        "commons"
+      ]
+    },
+    {
+      "id": "commons-123367969",
+      "title": "Sainte Marie de La Tourette",
+      "maker": "Le Corbusier",
+      "year": "1960",
+      "medium": "Photograph",
+      "source": "Wikimedia Commons",
+      "sourceId": "123367969",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Couvent_Sainte-Marie_de_La_Tourette_Detail_1.jpg",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Couvent_Sainte-Marie_de_La_Tourette_Detail_1.jpg?width=1920",
+      "imageHi": "https://commons.wikimedia.org/wiki/Special:FilePath/Couvent_Sainte-Marie_de_La_Tourette_Detail_1.jpg?width=1920",
+      "license": "CC BY-SA 4.0",
+      "credit": "Couvent Sainte-Marie de La Tourette Detail 1.jpg. Flibust1er. CC BY-SA 4.0.",
+      "intro": "柯布西耶的拉圖雷特修道院。斜坡上的混凝土盒子把修士的日常收成光線與走道。",
       "tags": [
         "commons"
       ]
